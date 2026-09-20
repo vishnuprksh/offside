@@ -39,7 +39,7 @@ export type PlayerRow = {
   team_short_name: string;
 };
 
-export type GwPrediction = { gw: number; prob_gt_6: number | null };
+export type GwPrediction = { gw: number; prob_gt_5: number | null };
 
 export type PredictionRow = {
   player_id: number;
@@ -225,9 +225,9 @@ export async function fetchPredictions(): Promise<PredictionRow[]> {
     price: Number(r.price),
     team_name: r.team_name,
     gw_predictions: (typeof r.gw_predictions === "string" ? JSON.parse(r.gw_predictions) : r.gw_predictions).map(
-      (forecast: { gw: number; prob_gt_6?: unknown }) => ({
+      (forecast: { gw: number; prob_gt_5?: unknown }) => ({
         gw: Number(forecast.gw),
-        prob_gt_6: typeof forecast.prob_gt_6 === "number" && Number.isFinite(forecast.prob_gt_6) ? forecast.prob_gt_6 : null,
+        prob_gt_5: typeof forecast.prob_gt_5 === "number" && Number.isFinite(forecast.prob_gt_5) ? forecast.prob_gt_5 : null,
       })
     ),
     agg_pred_prob: Number(r.agg_pred_prob),

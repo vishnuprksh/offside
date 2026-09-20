@@ -470,7 +470,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-xs text-[var(--muted)] mb-4">
-              Maximises model probability of scoring &gt;6 pts, respecting budget, 3-per-club limit and position limits. Multiple transfers reinvest the remaining bank after each planned swap.
+              Maximises model probability of scoring &gt;5 pts, respecting budget, 3-per-club limit and position limits. Multiple transfers reinvest the remaining bank after each planned swap.
               Clubs at 3-player limit: {Object.entries(clubCount).filter(([, n]) => n >= 3).map(([c]) => c).join(", ") || "none"}
             </p>
             {suggestingTransfer ? (
@@ -526,7 +526,7 @@ export default function Home() {
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3 flex-wrap">
                       <div className="text-xs text-[var(--muted)]">
-                        GW forecasts: {s.in.gw_predictions.map((g) => `GW${g.gw}: ${g.prob_gt_6?.toFixed(2) ?? "N/A"}`).join("  ")}
+                        GW forecasts: {s.in.gw_predictions.map((g) => `GW${g.gw}: ${g.prob_gt_5?.toFixed(2) ?? "N/A"}`).join("  ")}
                       </div>
                       <div className="flex items-center gap-2">
                         <button

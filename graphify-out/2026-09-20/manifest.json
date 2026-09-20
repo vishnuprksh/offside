@@ -12,8 +12,8 @@
     "semantic_hash": "ad07375445fefb5a085d2cd63c91b925"
   },
   "frontend/app/api/data/route.ts": {
-    "mtime": 1789732873.4341073,
-    "seen": 1789914825.4162042,
+    "mtime": 1789725481.0371013,
+    "seen": 1789725618.7420254,
     "ast_hash": "acdaa6f8391eb2e35d4abd3d137a4d5d",
     "semantic_hash": "acdaa6f8391eb2e35d4abd3d137a4d5d"
   },
@@ -36,28 +36,28 @@
     "semantic_hash": "76d5595a6c87d1ad71b4d2ac5aca53d8"
   },
   "frontend/app/page.tsx": {
-    "mtime": 1789914547.3182878,
-    "seen": 1789914825.4162207,
-    "ast_hash": "405be1d64216b9b067fbdca8000cd9d6",
-    "semantic_hash": ""
+    "mtime": 1789725481.0371013,
+    "seen": 1789725618.7421796,
+    "ast_hash": "362b26d0448a2a64388327f8daa1b1c9",
+    "semantic_hash": "362b26d0448a2a64388327f8daa1b1c9"
   },
   "frontend/lib/db.ts": {
-    "mtime": 1789914474.3332846,
-    "seen": 1789914825.4162252,
-    "ast_hash": "d4aac467395d922ac0fcc088b885beb8",
-    "semantic_hash": ""
+    "mtime": 1789725481.036101,
+    "seen": 1789725618.7421877,
+    "ast_hash": "850cfb6108fd2bd5d1e421678829f68e",
+    "semantic_hash": "850cfb6108fd2bd5d1e421678829f68e"
   },
   "frontend/lib/fpl.ts": {
-    "mtime": 1789732873.4351072,
-    "seen": 1789914825.4162295,
+    "mtime": 1789725481.0371013,
+    "seen": 1789725618.7421906,
     "ast_hash": "7ec00c6b1fca306556e5c6eb51af6703",
     "semantic_hash": "7ec00c6b1fca306556e5c6eb51af6703"
   },
   "frontend/lib/suggestions.ts": {
-    "mtime": 1789914514.5462863,
-    "seen": 1789914825.4162323,
-    "ast_hash": "f662608b83a685f123ce246cb3e06d03",
-    "semantic_hash": ""
+    "mtime": 1789724627.6471584,
+    "seen": 1789725618.7421932,
+    "ast_hash": "3120080b4dd608035b3660841db79f5e",
+    "semantic_hash": "3120080b4dd608035b3660841db79f5e"
   },
   "frontend/next-env.d.ts": {
     "mtime": 1789322245.7171657,
@@ -138,16 +138,16 @@
     "semantic_hash": "ffd90a533a366eb1588805a37cfdd112"
   },
   "frontend/app/players/page.tsx": {
-    "mtime": 1789732873.4351072,
-    "seen": 1789914825.4162226,
+    "mtime": 1789725481.0381012,
+    "seen": 1789725618.7421827,
     "ast_hash": "87ca7c3948de9120b28ded2d469046d2",
     "semantic_hash": "87ca7c3948de9120b28ded2d469046d2"
   },
   "frontend/components/SiteHeader.tsx": {
-    "mtime": 1789754054.1097505,
-    "seen": 1789914825.4162238,
-    "ast_hash": "2fd1d8e7c50744e9b851cf1ab8ff4432",
-    "semantic_hash": ""
+    "mtime": 1789724627.6381583,
+    "seen": 1789725618.742185,
+    "ast_hash": "e895f935ba7b90a5781d78409514d592",
+    "semantic_hash": "e895f935ba7b90a5781d78409514d592"
   },
   "frontend/types/javascript-lp-solver.d.ts": {
     "mtime": 1789724627.6491585,
@@ -160,41 +160,5 @@
     "seen": 1789725618.742534,
     "ast_hash": "a7ccff81d08a2d1d9daaacb788a9862a",
     "semantic_hash": "a7ccff81d08a2d1d9daaacb788a9862a"
-  },
-  "frontend/app/api/fixture-matrix/route.ts": {
-    "mtime": 1789754054.1087506,
-    "seen": 1789914825.4162068,
-    "ast_hash": "29fe7f5ad3f68cc31b95872dcf718917",
-    "semantic_hash": ""
-  },
-  "frontend/app/api/fixtures/route.ts": {
-    "mtime": 1789754054.1087506,
-    "seen": 1789914825.4162087,
-    "ast_hash": "5f7b23e6d55a363fc1d4f9accd43a1a5",
-    "semantic_hash": ""
-  },
-  "frontend/app/fixtures/page.tsx": {
-    "mtime": 1789754054.1087506,
-    "seen": 1789914825.4162169,
-    "ast_hash": "d3de07833dce9d967a43e6fc48b06e16",
-    "semantic_hash": ""
-  },
-  ".github/copilot-instructions.md": {
-    "mtime": 1789620335.0175145,
-    "seen": 1789914825.416258,
-    "ast_hash": "ca1b7e331a7a7b500c48e02fb47c3792",
-    "semantic_hash": ""
-  },
-  "README.md": {
-    "mtime": 1789551735.9370465,
-    "seen": 1789914825.4162595,
-    "ast_hash": "75ec96cafec23af7a3f18572d79f1272",
-    "semantic_hash": ""
-  },
-  "frontend/README.md": {
-    "mtime": 1789620335.0175145,
-    "seen": 1789914825.416261,
-    "ast_hash": "f6a22d096655f8d99b2bf71208b00819",
-    "semantic_hash": ""
   }
 }

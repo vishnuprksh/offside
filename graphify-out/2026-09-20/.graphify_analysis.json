@@ -1,0 +1,342 @@
+{
+  "communities": {
+    "0": [
+      "frontend_dbtest",
+      "frontend_dbtest_fs",
+      "frontend_dbtest_pool",
+      "frontend_package",
+      "frontend_package_dependencies",
+      "frontend_package_dependencies_javascript_lp_solver",
+      "frontend_package_dependencies_next",
+      "frontend_package_dependencies_pg",
+      "frontend_package_dependencies_react",
+      "frontend_package_dependencies_react_dom",
+      "frontend_package_name",
+      "frontend_package_private",
+      "frontend_package_scripts",
+      "frontend_package_scripts_build",
+      "frontend_package_scripts_dev",
+      "frontend_package_scripts_start",
+      "frontend_package_version",
+      "package",
+      "package_dependencies",
+      "package_dependencies_javascript_lp_solver",
+      "package_json_ref_javascript_lp_solver",
+      "ref_autoprefixer",
+      "ref_pg",
+      "ref_postcss",
+      "ref_react_dom",
+      "ref_tailwindcss",
+      "ref_types_node",
+      "ref_types_pg",
+      "ref_types_react",
+      "ref_typescript"
+    ],
+    "1": [
+      "frontend_app_dream15_page",
+      "frontend_app_dream15_page_dream15page",
+      "frontend_app_dream15_page_dreampitch",
+      "frontend_app_dream15_page_dreamplayercard",
+      "frontend_app_dream15_page_dreamview",
+      "frontend_app_dream15_page_pos_colors",
+      "frontend_app_dream15_page_row_bg",
+      "frontend_app_dream15_page_row_order",
+      "frontend_app_dream15_page_stat",
+      "frontend_app_page_home",
+      "frontend_lib_suggestions",
+      "frontend_lib_suggestions_buildsquadwithpred",
+      "frontend_lib_suggestions_computesellprices",
+      "frontend_lib_suggestions_dream15result",
+      "frontend_lib_suggestions_dreamplayers",
+      "frontend_lib_suggestions_findbesttransfer",
+      "frontend_lib_suggestions_findbesttransferplan",
+      "frontend_lib_suggestions_findreplacements",
+      "frontend_lib_suggestions_generatesuggestions",
+      "frontend_lib_suggestions_listtransferoptions",
+      "frontend_lib_suggestions_optimizedream15",
+      "frontend_lib_suggestions_optimizestartingeleven",
+      "frontend_lib_suggestions_pos_by_element",
+      "frontend_lib_suggestions_resolvestatsbyid",
+      "frontend_lib_suggestions_squadplayer",
+      "frontend_lib_suggestions_statsbyplayerid",
+      "frontend_lib_suggestions_transferrecord"
+    ],
+    "2": [
+      "frontend_tsconfig",
+      "frontend_tsconfig_compileroptions",
+      "frontend_tsconfig_compileroptions_allowjs",
+      "frontend_tsconfig_compileroptions_esmoduleinterop",
+      "frontend_tsconfig_compileroptions_incremental",
+      "frontend_tsconfig_compileroptions_isolatedmodules",
+      "frontend_tsconfig_compileroptions_jsx",
+      "frontend_tsconfig_compileroptions_lib",
+      "frontend_tsconfig_compileroptions_module",
+      "frontend_tsconfig_compileroptions_moduleresolution",
+      "frontend_tsconfig_compileroptions_noemit",
+      "frontend_tsconfig_compileroptions_paths",
+      "frontend_tsconfig_compileroptions_plugins",
+      "frontend_tsconfig_compileroptions_resolvejsonmodule",
+      "frontend_tsconfig_compileroptions_skiplibcheck",
+      "frontend_tsconfig_compileroptions_strict",
+      "frontend_tsconfig_compileroptions_target",
+      "frontend_tsconfig_exclude",
+      "frontend_tsconfig_include"
+    ],
+    "3": [
+      "frontend_app_page",
+      "frontend_app_page_bootstrap",
+      "frontend_app_page_injurycardclass",
+      "frontend_app_page_islegalfplsubstitution",
+      "frontend_app_page_manager",
+      "frontend_app_page_pitch",
+      "frontend_app_page_playercard",
+      "frontend_app_page_pos_colors",
+      "frontend_app_page_posbadge",
+      "frontend_app_page_row_bg",
+      "frontend_app_page_row_order",
+      "frontend_app_page_stat",
+      "frontend_app_page_transfermodal",
+      "frontend_lib_suggestions_optimizeresult",
+      "frontend_lib_suggestions_replacement",
+      "frontend_lib_suggestions_statsrow",
+      "frontend_lib_suggestions_suggestion"
+    ],
+    "4": [
+      "frontend_app_api_data_route",
+      "frontend_app_api_data_route_get",
+      "frontend_app_players_page",
+      "frontend_app_players_page_playerspage",
+      "frontend_app_players_page_pos_colors",
+      "frontend_app_players_page_posbadge",
+      "frontend_app_players_page_sortkey",
+      "frontend_lib_db",
+      "frontend_lib_db_fetchplayers",
+      "frontend_lib_db_fetchpredictions",
+      "frontend_lib_db_getpool",
+      "frontend_lib_db_gwprediction",
+      "frontend_lib_db_playerrow",
+      "frontend_lib_db_predictionrow",
+      "ref_react"
+    ],
+    "5": [
+      "frontend_app_api_bootstrap_route",
+      "frontend_app_api_bootstrap_route_get",
+      "frontend_app_api_manager_route",
+      "frontend_app_api_manager_route_get",
+      "frontend_app_api_picks_route",
+      "frontend_app_api_picks_route_get",
+      "frontend_lib_fpl",
+      "frontend_lib_fpl_base_url",
+      "frontend_lib_fpl_buildteamrows",
+      "frontend_lib_fpl_choosegameweek",
+      "frontend_lib_fpl_fetchfpljson",
+      "frontend_lib_fpl_headers",
+      "frontend_lib_fpl_teamrow"
+    ],
+    "6": [
+      "research_fpl_team_manager",
+      "research_fpl_team_manager_build_team_rows",
+      "research_fpl_team_manager_choose_gameweek",
+      "research_fpl_team_manager_fetch_fpl_json",
+      "research_fpl_team_manager_find_replacements",
+      "research_fpl_team_manager_rationale_31",
+      "research_fpl_team_manager_rationale_348",
+      "research_fpl_team_manager_rationale_51",
+      "research_fpl_team_manager_rationale_81"
+    ],
+    "7": [
+      "frontend_package_devdependencies",
+      "frontend_package_devdependencies_autoprefixer",
+      "frontend_package_devdependencies_postcss",
+      "frontend_package_devdependencies_tailwindcss",
+      "frontend_package_devdependencies_types_node",
+      "frontend_package_devdependencies_types_pg",
+      "frontend_package_devdependencies_types_react",
+      "frontend_package_devdependencies_typescript"
+    ],
+    "8": [
+      "frontend_app_layout",
+      "frontend_app_layout_metadata",
+      "frontend_app_layout_rootlayout",
+      "frontend_components_siteheader",
+      "frontend_components_siteheader_siteheader",
+      "ref_next"
+    ],
+    "9": [
+      "research_connect_database",
+      "research_connect_database_main",
+      "research_connect_database_rationale_1",
+      "research_connect_database_rationale_12",
+      "research_connect_database_redact_url"
+    ],
+    "10": [
+      "frontend_types_javascript_lp_solver_d",
+      "frontend_types_javascript_lp_solver_d_javascript_lp_solver",
+      "frontend_types_javascript_lp_solver_d_lpmodel"
+    ],
+    "11": [
+      "research_create_table",
+      "research_create_table_main",
+      "research_create_table_rationale_1"
+    ],
+    "12": [
+      "frontend_app_about_page",
+      "frontend_app_about_page_aboutpage"
+    ],
+    "13": [
+      "frontend_next_config",
+      "frontend_next_config_nextconfig"
+    ],
+    "14": [
+      "frontend_next_env_d",
+      "frontend_next_env_d_rationale_4"
+    ],
+    "15": [
+      "research_test_static_creds",
+      "research_test_static_creds_rationale_1"
+    ],
+    "16": [
+      "frontend_postcss_config"
+    ],
+    "17": [
+      "frontend_tailwind_config"
+    ],
+    "18": [
+      "research_inspect_fpl"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06666666666666667,
+    "1": 0.1111111111111111,
+    "2": 0.10526315789473684,
+    "3": 0.1323529411764706,
+    "4": 0.20952380952380953,
+    "5": 0.2564102564102564,
+    "6": 0.2222222222222222,
+    "7": 0.25,
+    "8": 0.4,
+    "9": 0.5,
+    "10": 0.6666666666666666,
+    "11": 0.6666666666666666,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0
+  },
+  "gods": [
+    {
+      "id": "frontend_tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "frontend_lib_fpl_fetchfpljson",
+      "label": "fetchFplJson()",
+      "degree": 9
+    },
+    {
+      "id": "frontend_lib_suggestions_optimizestartingeleven",
+      "label": "optimizeStartingEleven()",
+      "degree": 6
+    },
+    {
+      "id": "frontend_lib_db_predictionrow",
+      "label": "PredictionRow",
+      "degree": 5
+    },
+    {
+      "id": "frontend_lib_suggestions_optimizedream15",
+      "label": "optimizeDream15()",
+      "degree": 5
+    },
+    {
+      "id": "frontend_lib_suggestions_findbesttransferplan",
+      "label": "findBestTransferPlan()",
+      "degree": 5
+    },
+    {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "degree": 4
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 4
+    },
+    {
+      "id": "frontend_app_api_data_route_get",
+      "label": "GET()",
+      "degree": 4
+    },
+    {
+      "id": "frontend_app_page_home",
+      "label": "Home()",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Dream15Page()",
+      "target": "optimizeDream15()",
+      "source_files": [
+        "frontend/app/dream15/page.tsx",
+        "frontend/lib/suggestions.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "peripheral node `Dream15Page()` unexpectedly reaches hub `optimizeDream15()`"
+    },
+    {
+      "source": "GET()",
+      "target": "fetchFplJson()",
+      "source_files": [
+        "frontend/app/api/manager/route.ts",
+        "frontend/lib/fpl.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "peripheral node `GET()` unexpectedly reaches hub `fetchFplJson()`"
+    },
+    {
+      "source": "GET()",
+      "target": "fetchFplJson()",
+      "source_files": [
+        "frontend/app/api/picks/route.ts",
+        "frontend/lib/fpl.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "peripheral node `GET()` unexpectedly reaches hub `fetchFplJson()`"
+    },
+    {
+      "source": "GET()",
+      "target": "fetchFplJson()",
+      "source_files": [
+        "frontend/app/api/data/route.ts",
+        "frontend/lib/fpl.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "GET()",
+      "target": "chooseGameweek()",
+      "source_files": [
+        "frontend/app/api/bootstrap/route.ts",
+        "frontend/lib/fpl.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

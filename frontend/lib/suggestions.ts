@@ -32,7 +32,7 @@ export type Replacement = {
   form: number;
   ppg: number;
   costDiff: number;
-  gw_predictions: { gw: number; prob_gt_6: number | null }[];
+  gw_predictions: { gw: number; prob_gt_5: number | null }[];
 };
 
 export type Suggestion = {

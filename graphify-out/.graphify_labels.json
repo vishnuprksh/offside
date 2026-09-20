@@ -1,1 +1,26 @@
-{"0": "Squad Suggestions UI", "1": "App Layout & Package", "2": "TypeScript Config", "3": "FPL API Routes", "4": "Database Layer", "5": "Research Team Manager", "6": "Dev Dependencies", "7": "Runtime Dependencies", "8": "Next.js Config", "9": "DB Table Creation", "10": "Next Env Types", "11": "Tailwind Config", "12": "Credential Tests", "13": "PostCSS Config", "14": "FPL Inspection Script"}
+{
+  "0": "frontend/package.json",
+  "1": "dream15/page.tsx",
+  "2": "TypeScript Config",
+  "3": "app/page.tsx",
+  "4": "db.ts",
+  "5": "fpl.ts",
+  "6": "fpl_team_manager.py",
+  "7": "devDependencies",
+  "8": "layout.tsx",
+  "9": "connect_database.py",
+  "10": "javascript-lp-solver.d.ts",
+  "11": "create_table.py",
+  "12": "about/page.tsx",
+  "13": "next.config.js",
+  "14": "next-env.d.ts",
+  "15": "test_static_creds.py",
+  "16": "postcss.config.js",
+  "17": "tailwind.config.js",
+  "18": "_inspect_fpl.py",
+  "19": "fixtures/page.tsx",
+  "20": "offside — Vercel Frontend",
+  "21": "Copilot Instructions — databricks (FPL Team Manager)",
+  "22": "package.json",
+  "23": "README.md"
+}
