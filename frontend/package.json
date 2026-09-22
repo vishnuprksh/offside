@@ -8,11 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/openai-compatible": "^2.0.76",
+    "ai": "^6.0.287",
     "javascript-lp-solver": "^1.0.3",
     "next": "^14.2.35",
     "pg": "8.13.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/node": "20.14.0",
