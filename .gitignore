@@ -1,47 +1,5 @@
-```
-# Dependencies
-node_modules/
+(frontend/AGENT_README.md, frontend/components/agent/SidebarAgent.tsx, frontend/lib/agent-client.ts - these are all source code files (.md, .tsx) which should not be ignored according to rule 7, and there are no build artifacts, dependencies, or temp files in the changes, so per rule 6, output nothing)
 
-# Environment variables
-.env
-.env.local
-.env.*
+```gitignore
 
-# Build artifacts
-dist/
-build/
-target/
-
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
-
-# Package manager caches
-.npm/
-.yarn/
-.pnpm-store/
 ```

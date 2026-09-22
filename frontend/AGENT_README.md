@@ -8,7 +8,7 @@ A lightweight, intelligent sidebar agent for querying FPL data using natural lan
 - **SQL Tool Integration**: Agent automatically generates and executes safe SQL queries against your FPL database
 - **ReAct Reasoning**: Multi-step reasoning loop (Think → Act → Observe) for complex analysis
 - **Transparent Process**: View the agent's reasoning steps, SQL queries, and results
-- **OpenRouter Free Models**: Works with free tier models like Gemma-2-9B, Llama-3-8B, Qwen-2-7B
+- **OpenRouter Free Models**: Works with free tier models like Ling-3.0-Flash-VL, Gemma-2-9B, Llama-3-8B, Qwen-2-7B
 - **Lightweight**: No heavy frameworks like LangChain - minimal bundle size with full control
 
 ## Architecture
@@ -94,11 +94,12 @@ The agent supports these OpenRouter free models:
 
 | Model | ID | Best For |
 |-------|-----|----------|
+| Ling-3.0-Flash-VL | `inclusionai/ling-3.0-flash-vl:free` | **Default** - Fast, agent-capable, excellent for SQL & analysis |
 | Gemma-2-9B | `google/gemma-2-9b-it:free` | Balanced performance, good reasoning |
 | Llama-3-8B | `meta-llama/llama-3-8b-instruct:free` | Fast responses, reliable tool calls |
 | Qwen-2-7B | `qwen/qwen-2-7b-instruct:free` | Compact, efficient for simple queries |
 
-Default: Gemma-2-9B (best balance of capability and speed)
+Default: Ling-3.0-Flash-VL (optimized for agent tasks and SQL operations)
 
 ## Customization
 
@@ -108,7 +109,7 @@ In `SidebarAgent.tsx`, modify the model option:
 
 ```typescript
 options: {
-  model: "llama" as const, // or "gemma" or "qwen"
+  model: "ling" as const, // or "gemma", "llama", or "qwen"
   maxIterations: 5,
 }
 ```

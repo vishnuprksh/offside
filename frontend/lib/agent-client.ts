@@ -17,6 +17,7 @@ type Message = ModelMessage;
 
 // Model configuration for free models
 const FREE_MODELS = {
+  ling: "inclusionai/ling-3.0-flash-vl:free",
   gemma: "google/gemma-2-9b-it:free",
   llama: "meta-llama/llama-3-8b-instruct:free",
   qwen: "qwen/qwen-2-7b-instruct:free",
@@ -48,7 +49,7 @@ export async function runAgentChat(
   conversationHistory: Array<{ role: string; content: string }> = [],
   options: AgentChatOptions = {}
 ): Promise<AgentResponse> {
-  const { model: modelType = "gemma", maxIterations = 5 } = options;
+  const { model: modelType = "ling", maxIterations = 5 } = options;
   const model = getModel(modelType);
   
   const systemPrompt = buildSystemPrompt();
@@ -94,7 +95,7 @@ export async function streamAgentChat(
   conversationHistory: Array<{ role: string; content: string }> = [],
   options: AgentChatOptions = {}
 ) {
-  const { model: modelType = "gemma", maxIterations = 5 } = options;
+  const { model: modelType = "ling", maxIterations = 5 } = options;
   const model = getModel(modelType);
   
   const systemPrompt = buildSystemPrompt();

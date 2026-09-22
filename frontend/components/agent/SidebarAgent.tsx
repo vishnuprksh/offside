@@ -71,7 +71,7 @@ export default function SidebarAgent({ isOpen, onClose }: SidebarAgentProps) {
           message: userMessage.content,
           conversationHistory,
           options: {
-            model: "gemma" as const,
+            model: "ling" as const,
             maxIterations: 5,
           },
         }),
