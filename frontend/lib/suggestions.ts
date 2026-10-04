@@ -32,7 +32,7 @@ export type Replacement = {
   form: number;
   ppg: number;
   costDiff: number;
-  gw_predictions: { gw: number; prob_gt_5: number | null }[];
+  gw_predictions: { gw: number; prob_gt_5: number | null; pred_points: number | null }[];
 };
 
 export type Suggestion = {
@@ -78,7 +78,7 @@ export function buildSquadWithPred(
       pos: r.position,
       nowPrice: r.price,
       sellPrice: sellPrices[r.player_name] ?? r.price,
-      pred: pred ? pred.agg_pred_prob : null,
+      pred: pred ? pred.avg_prob_gt_5 : null,
       starter: r.is_starter,
       club: r.club,
     };
@@ -126,7 +126,7 @@ function findReplacements(
       player_id: s.player_id,
       name: s.web_name,
       price: s.price,
-      pred: pred.agg_pred_prob,
+      pred: pred.avg_prob_gt_5,
       club: targetClub,
       form: s.form,
       ppg: s.points_per_game,
@@ -251,7 +251,7 @@ function dreamPlayers(players: PlayerRow[], predictions: PredictionRow[]): Squad
       pos: player.position,
       nowPrice: player.price,
       sellPrice: player.price,
-      pred: prediction.agg_pred_prob,
+      pred: prediction.avg_prob_gt_5,
       starter: false,
       club: player.team_name,
     };
@@ -617,7 +617,7 @@ export function listTransferOptions(
       player_id: s.player_id,
       name: s.web_name,
       price: s.price,
-      pred: pred.agg_pred_prob,
+      pred: pred.avg_prob_gt_5,
       club: targetClub,
       form: s.form,
       ppg: s.points_per_game,
