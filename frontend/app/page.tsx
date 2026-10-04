@@ -323,19 +323,31 @@ export default function Home() {
   const finalBank = bank - totalCost;
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10">
-      <header className="mb-8">
-        <h1 className="text-3xl font-extrabold tracking-tight">
-          ⚽ <span className="text-[var(--accent)]">offside</span>
-        </h1>
-        <p className="text-[var(--muted)] mt-1">
-          Squad overview, gameweek stats and ML-powered transfer suggestions
-        </p>
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <header className="mb-8 flex flex-col gap-3 border-b border-[var(--border)] pb-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+            <span className="size-2 rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)]" />
+            FPL intelligence platform
+          </div>
+          <h1 className="text-4xl font-black tracking-[-0.04em] sm:text-5xl">Your edge starts here.</h1>
+          <p className="mt-3 max-w-xl text-base leading-7 text-[var(--muted)]">
+            Build a stronger gameweek with data-led squad analysis, lineup optimization and confident transfer decisions.
+          </p>
+        </div>
+        <div className="hidden rounded-xl border border-[var(--border)] bg-white/[0.03] px-4 py-3 text-right text-xs text-[var(--muted)] sm:block">
+          <div className="mb-1 font-semibold uppercase tracking-wider text-white/70">Live workspace</div>
+          <div>Premier League · 2026/27</div>
+        </div>
       </header>
 
       {/* Input form */}
-      <section className="card p-5 mb-8">
-        <div className="flex flex-wrap gap-3 items-end">
+      <section className="card mb-8 p-5 sm:p-6">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-[var(--accent)]/10 text-sm font-bold text-[var(--accent)]">01</span>
+          <div><h2 className="font-semibold">Connect your team</h2><p className="text-xs text-[var(--muted)]">Enter your FPL details to unlock your workspace.</p></div>
+        </div>
+        <div className="flex flex-wrap items-end gap-3">
           <div className="flex-1 min-w-[220px]">
             <label className="block text-xs uppercase tracking-wide text-[var(--muted)] mb-1">FPL Team ID</label>
             <input
@@ -343,7 +355,7 @@ export default function Home() {
               onChange={(e) => setTeamId(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && load()}
               placeholder="e.g. 1234567"
-              className="w-full bg-[#0d1526] border border-[var(--border)] rounded-lg px-3 py-2 outline-none focus:border-[var(--accent)]"
+              className="w-full rounded-xl border border-[var(--border)] bg-[#0a1729] px-3.5 py-2.5 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10"
             />
           </div>
           <div className="w-40">
@@ -353,13 +365,13 @@ export default function Home() {
               onChange={(e) => setGwInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && load()}
               placeholder="current"
-              className="w-full bg-[#0d1526] border border-[var(--border)] rounded-lg px-3 py-2 outline-none focus:border-[var(--accent)]"
+              className="w-full rounded-xl border border-[var(--border)] bg-[#0a1729] px-3.5 py-2.5 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10"
             />
           </div>
           <button
             onClick={load}
             disabled={loading}
-            className="bg-[var(--accent)] text-[#04140b] font-bold px-6 py-2 rounded-lg hover:brightness-110 disabled:opacity-50"
+            className="rounded-xl bg-[var(--accent)] px-6 py-2.5 font-bold text-[#08111f] shadow-[0_8px_24px_rgba(184,243,74,0.16)] hover:brightness-105 disabled:opacity-50"
           >
             {loading ? "Loading…" : "Fetch Team"}
           </button>
