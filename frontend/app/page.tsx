@@ -103,9 +103,16 @@ export default function Home() {
   };
 
   const skipTransfer = (suggestion: Suggestion) => {
-    const nextSkipped = [...skipped, suggestion];
+    const nextSkipped = skipped.some((item) => item.in.player_id === suggestion.in.player_id)
+      ? skipped
+      : [...skipped, suggestion];
     setSkipped(nextSkipped);
     suggestBestTransfer(nextSkipped);
+  };
+
+  const resetSkipped = () => {
+    setSkipped([]);
+    suggestBestTransfer([]);
   };
 
   const approveTransfer = (suggestion: Suggestion) => {
@@ -481,6 +488,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            <div className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3">
+              <div className="text-xs uppercase tracking-wider text-emerald-200/70">Total plan gain</div>
+              <div className={`text-2xl font-black ${totalGain >= 0 ? "text-emerald-300" : "text-rose-300"}`}>
+                {totalGain >= 0 ? "+" : ""}{totalGain.toFixed(3)} predicted points
+              </div>
+            </div>
             <p className="text-xs text-[var(--muted)] mb-4">
               Maximises model probability of scoring &gt;5 pts, respecting budget, 3-per-club limit and position limits. Multiple transfers reinvest the remaining bank after each planned swap.
               Clubs at 3-player limit: {Object.entries(clubCount).filter(([, n]) => n >= 3).map(([c]) => c).join(", ") || "none"}
@@ -543,14 +556,12 @@ export default function Home() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => approveTransfer(s)}
-                          disabled={index !== 0}
                           className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold px-3 py-1.5 rounded-lg hover:bg-emerald-500/30"
                         >
-                          {index === 0 ? "✓ Approve" : "Approve in order"}
+                          ✓ Approve
                         </button>
                         <button
                           onClick={() => skipTransfer(s)}
-                          disabled={index !== 0}
                           className="bg-rose-500/10 text-rose-300 border border-rose-500/40 font-semibold px-3 py-1.5 rounded-lg hover:bg-rose-500/20"
                         >
                           ✕ Skip
@@ -573,7 +584,15 @@ export default function Home() {
             {/* Skipped transfers — user can approve later */}
             {skipped.length > 0 && (
               <div className="mt-4">
-                <h3 className="text-sm font-bold mb-2 text-[var(--muted)]">⤵ Skipped ({skipped.length})</h3>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <h3 className="text-sm font-bold text-[var(--muted)]">⤵ Skipped ({skipped.length})</h3>
+                  <button
+                    onClick={resetSkipped}
+                    className="rounded-lg border border-[var(--border)] px-3 py-1 text-xs font-semibold text-[var(--muted)] hover:border-[var(--accent)] hover:text-white"
+                  >
+                    Reset skipped
+                  </button>
+                </div>
                 <div className="space-y-2">
                   {skipped.map((s) => (
                     <div key={s.in.name} className="flex items-center justify-between gap-3 flex-wrap border border-[var(--border)] rounded-lg px-3 py-2 bg-[#0d1526] text-sm">
