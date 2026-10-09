@@ -1,4 +1,4 @@
-# Graph Report - frontend  (2026-09-20)
+# Graph Report - frontend  (2026-10-09)
 
 ## Corpus Check
 - 25 files · ~12,087 words
@@ -11,9 +11,23 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `67f8790d`
+- Built from commit: `c8e5d2e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
+
+## Objective
+Keep the architecture report current and record the team-form layout decision.
+
+## Changelog
+| # | date       | details                                                     | reasoning                                                       | reference |
+|---|------------|-------------------------------------------------------------|-----------------------------------------------------------------|-----------|
+| 1 | 2026-10-09 | Updated report freshness metadata and implementation note.  | JSX-only layout changes do not alter nodes or dependency edges. | User request |
+
+## Results/Takeaways
+The existing graph topology remains accurate; its report now records the current commit and centered team-form control alignment.
+
+## Recent Implementation Decisions
+- The home page team-connection form uses centered vertical alignment for its responsive control row. The optional recent-team-ID list increases the team-ID field height, so center alignment keeps the gameweek field and submit button visually aligned with the primary input.
 
 ## Community Hubs (Navigation)
 - app/page.tsx
