@@ -1,5 +1,17 @@
 # 🏆 FPL Team Manager — Offside
 
+## Objective
+Keep the Next.js application, package configuration, and deployment entry point at the repository root.
+
+## Changelog
+| # | Date | Details | Reasoning | Reference |
+|---|---|---|---|---|
+| 1 | 2026-10-09 | Moved the Next.js app and runtime configuration from `frontend/` to the repository root. | Make root the single frontend source and Vercel project root. | `app/`, `components/`, `lib/`, `package.json` |
+| 2 | 2026-10-09 | Updated setup, project structure, and deployment commands for root-level execution. | Keep developer and deployment instructions aligned with the new layout. | This README |
+
+## Results/Takeaways
+Run `npm install`, `npm run dev`, and `vercel` from the repository root. Set `DATABASE_URL` in `.env.local` for local database-backed features.
+
 > **Fantasy Premier League team management with ML-powered transfer suggestions**
 
 A full-stack application that helps you manage your Fantasy Premier League (FPL) team. Fetch your squad from the official FPL API, view gameweek stats, and get intelligent transfer recommendations powered by machine learning predictions.
@@ -87,7 +99,6 @@ A full-stack application that helps you manage your Fantasy Premier League (FPL)
 ### Frontend Setup
 
 ```bash
-cd frontend
 npm install
 
 # Create .env.local
@@ -113,24 +124,11 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ```
 .
-├── frontend/                 # Next.js application
-│   ├── app/                  # App router pages & API routes
-│   │   ├── api/              # Backend endpoints
-│   │   │   ├── bootstrap/    # FPL bootstrap-static
-│   │   │   ├── manager/      # Team manager info
-│   │   │   ├── picks/        # Squad picks + transfers
-│   │   │   ├── data/         # Player predictions from DB
-│   │   │   └── fixtures/     # Fixture difficulty matrix
-│   │   ├── page.tsx          # Home page (pitch view)
-│   │   ├── players/          # Player market explorer
-│   │   └── dream15/          # Dream15 optimizer
-│   ├── components/           # React components
-│   ├── lib/                  # Utilities & helpers
-│   │   ├── db.ts             # Database queries
-│   │   ├── fpl.ts            # FPL API client
-│   │   └── suggestions.ts    # Transfer suggestion logic
-│   └── types/                # TypeScript definitions
-│
+├── app/                      # Next.js App Router pages & API routes
+├── components/               # React components
+├── lib/                      # Database, FPL API, and suggestion logic
+├── types/                    # TypeScript definitions
+├── package.json              # Root application scripts and dependencies
 ├── research/                 # Python notebooks & scripts
 │   ├── fpl_team_manager.py   # Main notebook logic
 │   ├── connect_database.py   # DB connectivity utilities
@@ -177,7 +175,6 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ```bash
 npm i -g vercel
-cd frontend
 vercel
 vercel env add DATABASE_URL
 vercel --prod
@@ -244,8 +241,8 @@ See [`graphify-out/GRAPH_REPORT.md`](./graphify-out/GRAPH_REPORT.md) for:
 
 ## 🤝 Contributing
 
-1. **Understand the codebase** — Run `graphify update .` and review the graph
-2. **Make changes** — Follow existing patterns in `frontend/lib/`
+1. **Understand the codebase** — Review `graphify-out/GRAPH_REPORT.md`
+2. **Make changes** — Follow existing patterns in `lib/`
 3. **Update graph** — Run `graphify update .` after significant changes
 4. **Test locally** — Verify at `http://127.0.0.1:3000/`
 
