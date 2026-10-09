@@ -19,6 +19,9 @@ import type { PredictionRow, PlayerMatchRow } from "@/lib/db";
 type Manager = any;
 type Bootstrap = any;
 
+const RECENT_TEAM_IDS_KEY = "offside-recent-team-ids";
+const MAX_RECENT_TEAM_IDS = 5;
+
 const POS_COLORS: Record<string, string> = {
   GKP: "bg-amber-500/20 text-amber-300",
   DEF: "bg-sky-500/20 text-sky-300",
@@ -32,6 +35,7 @@ function PosBadge({ pos }: { pos: string }) {
 
 export default function Home() {
   const [teamId, setTeamId] = useState("");
+  const [recentTeamIds, setRecentTeamIds] = useState<string[]>([]);
   const [gwInput, setGwInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -57,6 +61,27 @@ export default function Home() {
   const [skipped, setSkipped] = useState<Suggestion[]>([]);
   const [pinnedIds, setPinnedIds] = useState<number[]>([]);
   const [photoById, setPhotoById] = useState<Record<number, string>>({});
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(RECENT_TEAM_IDS_KEY);
+      if (!saved) return;
+      const parsed: unknown = JSON.parse(saved);
+      if (Array.isArray(parsed)) {
+        setRecentTeamIds(parsed.filter((id): id is string => typeof id === "string").slice(0, MAX_RECENT_TEAM_IDS));
+      }
+    } catch {
+      window.localStorage.removeItem(RECENT_TEAM_IDS_KEY);
+    }
+  }, []);
+
+  const saveRecentTeamId = (value: string) => {
+    const normalized = value.trim();
+    if (!normalized) return;
+    const next = [normalized, ...recentTeamIds.filter((id) => id !== normalized)].slice(0, MAX_RECENT_TEAM_IDS);
+    setRecentTeamIds(next);
+    window.localStorage.setItem(RECENT_TEAM_IDS_KEY, JSON.stringify(next));
+  };
 
   const optimize = async () => {
     if (squad.length !== 15) {
@@ -212,6 +237,7 @@ export default function Home() {
       const mRes = await fetch(`/api/manager?teamId=${encodeURIComponent(teamId)}`);
       const md = await mRes.json();
       if (!mRes.ok) throw new Error(md.error);
+      saveRecentTeamId(teamId);
       setManager(md.manager);
 
       // 3. Picks + transfers
@@ -359,18 +385,38 @@ export default function Home() {
             <label className="block text-xs uppercase tracking-wide text-[var(--muted)] mb-1">FPL Team ID</label>
             <input
               value={teamId}
-              onChange={(e) => setTeamId(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && load()}
-              placeholder="e.g. 1234567"
+  onChange={(e) => setTeamId(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) load();
+  }}
+  placeholder="e.g. 1234567"
               className="w-full rounded-xl border border-[var(--border)] bg-[#0a1729] px-3.5 py-2.5 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10"
-            />
-          </div>
-          <div className="w-40">
+  />
+  {recentTeamIds.length > 0 && (
+    <div className="mt-2 flex flex-wrap items-center gap-1.5">
+      <span className="text-[11px] uppercase tracking-wide text-[var(--muted)]">Recent</span>
+      {recentTeamIds.map((id) => (
+        <button
+          key={id}
+          type="button"
+          onClick={() => setTeamId(id)}
+          className="rounded-lg border border-[var(--border)] px-2 py-1 text-xs text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
+          aria-label={`Use recent team ID ${id}`}
+        >
+          {id}
+        </button>
+      ))}
+    </div>
+  )}
+  </div>
+  <div className="w-40">
             <label className="block text-xs uppercase tracking-wide text-[var(--muted)] mb-1">Gameweek</label>
             <input
               value={gwInput}
               onChange={(e) => setGwInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && load()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) load();
+              }}
               placeholder="current"
               className="w-full rounded-xl border border-[var(--border)] bg-[#0a1729] px-3.5 py-2.5 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10"
             />
