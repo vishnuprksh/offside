@@ -137,7 +137,7 @@ export default function PlayersPage() {
             <table className="data">
               <thead>
                 <tr>
-                  <th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Scraped injury</th><th>Injury risk</th>
+                  <th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Details</th><th>risk</th>
                   <th><button onClick={() => changeSort("price")} className="hover:text-[var(--accent)]">Price</button></th>
                   <th><button onClick={() => changeSort("total_points")} className="hover:text-[var(--accent)]">Total</button></th>
                   <th><button onClick={() => changeSort("form")} className="hover:text-[var(--accent)]">Form</button></th>
