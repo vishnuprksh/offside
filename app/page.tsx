@@ -16,6 +16,20 @@ import type {
 } from "@/lib/suggestions";
 import type { PredictionRow, PlayerMatchRow } from "@/lib/db";
 
+/*
+## Objective
+Explain the symbols and colors used on manager squad player cards.
+
+## Changelog
+| # | date       | details | reasoning | reference |
+|---|------------|---------|-----------|-----------|
+| 1 | 2026-10-09 | Added click and keyboard access to fixture details on incoming/outgoing suggestion cards and skipped suggestions. | Reuse the existing player fixtures modal and API flow. | User request |
+| 2 | 2026-10-09 | Added a player-card legend and limited optimal-XI highlighting to completed optimizations. | Make squad symbols/colors understandable and avoid implying an unrun optimization. | User request |
+
+## Results/Takeaways
+Manager squad cards now have an adjacent key for position, availability, role, optimization, pin, and bench indicators. Optimal-XI styling only appears after optimization.
+*/
+
 type Manager = any;
 type Bootstrap = any;
 
@@ -492,6 +506,37 @@ export default function Home() {
                 {optimizing ? "Optimizing…" : optResult ? "Re-optimize" : "⚡ Optimize Team"}
               </button>
             </div>
+            <section aria-labelledby="player-card-key-title" className="mb-4 rounded-lg border border-[var(--border)] bg-black/20 px-3 py-2.5 text-[11px] text-[var(--muted)]">
+              <h3 id="player-card-key-title" className="mb-2 font-semibold text-[var(--text)]">Player card key</h3>
+              <div className="flex flex-wrap gap-x-4 gap-y-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span>Position:</span>
+                  {[
+                    ["GKP", "Goalkeeper"],
+                    ["DEF", "Defender"],
+                    ["MID", "Midfielder"],
+                    ["FWD", "Forward"],
+                  ].map(([pos, label]) => (
+                    <span key={pos} className="inline-flex items-center gap-1">
+                      <span className={`badge ${POS_COLORS[pos]} !text-[8px] !px-1 !py-0`}>{pos}</span>
+                      {label}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span>Chance to play:</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-amber-300/50 bg-amber-500/20" />75-99%</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-orange-300/60 bg-orange-500/25" />50-74%</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-rose-300/60 bg-rose-500/25" />Below 50%</span>
+                  <span>Neutral = 100% or unknown</span>
+                </div>
+                <span><span className="mr-1 inline-flex size-4 items-center justify-center rounded-full bg-amber-400 text-[9px] font-bold text-[#04140b]">C</span>Captain</span>
+                <span><span className="mr-1 inline-flex size-4 items-center justify-center rounded-full bg-slate-300 text-[9px] font-bold text-[#04140b]">V</span>Vice-captain</span>
+                <span><span className="mr-1">⚡</span><span className="mr-1 inline-block size-3 rounded-sm ring-2 ring-emerald-400" />Optimizer-selected XI</span>
+                <span><span className="mr-1">📌</span><span className="mr-1 inline-block size-3 rounded-sm ring-2 ring-amber-300" />Pinned player</span>
+                <span>🪑 Bench</span>
+              </div>
+            </section>
             <Pitch
               teamRows={teamRows}
               optResult={optResult}
@@ -578,6 +623,8 @@ export default function Home() {
                       <div className="border border-rose-500/30 bg-rose-500/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2">
                         <div className="self-stretch text-xs uppercase text-rose-300 font-bold mb-1">Out</div>
                         <MiniPlayerCard
+                          playerId={s.out.player_id}
+                          onShowFixtures={(playerId) => setFixturesModal({ playerId, playerName: s.out.name })}
                           name={s.out.name}
                           pos={s.out.pos}
                           club={s.out.club}
@@ -595,6 +642,8 @@ export default function Home() {
                           <div className="text-xs text-[var(--muted)]">cost {s.in.costDiff >= 0 ? "+" : ""}£{s.in.costDiff.toFixed(1)}m</div>
                         </div>
                         <MiniPlayerCard
+                          playerId={s.in.player_id}
+                          onShowFixtures={(playerId) => setFixturesModal({ playerId, playerName: s.in.name })}
                           name={s.in.name}
                           pos={s.out.pos}
                           club={s.in.club}
@@ -654,7 +703,12 @@ export default function Home() {
                   {skipped.map((s) => (
                     <div key={s.in.name} className="flex items-center justify-between gap-3 flex-wrap border border-[var(--border)] rounded-lg px-3 py-2 bg-[#0d1526] text-sm">
                       <div>
-                        <span className="font-semibold">{s.in.name}</span> <PosBadge pos={s.out.pos} />
+                        <button
+                          type="button"
+                          onClick={() => setFixturesModal({ playerId: s.in.player_id, playerName: s.in.name })}
+                          className="font-semibold hover:text-[var(--accent)]"
+                          title="Click for last/next 4 matches"
+                        >{s.in.name}</button> <PosBadge pos={s.out.pos} />
                         <span className="text-xs text-[var(--muted)] ml-2">
                           {s.in.club} · £{s.in.price.toFixed(1)}m · pred {s.in.pred.toFixed(3)} · in for {s.out.name}
                         </span>
@@ -820,7 +874,7 @@ function Pitch({ teamRows, optResult, gameweek, squad, pinnedIds, onPlayerTransf
                     row={r}
                     squad={squad}
                     onBench={false}
-                    isOptXI={true}
+                    isOptXI={!!optResult}
                     isCaptain={optResult ? optResult.captain === r.player_name : r.is_captain}
                     isVice={optResult ? optResult.viceCaptain === r.player_name : r.is_vice_captain}
                     isPinned={pinnedIds.includes(r.player_id)}
@@ -1025,6 +1079,8 @@ const MINI_CARD_TONE: Record<string, string> = {
 
 /** Compact photo card used in transfer suggestion Out/In panels. */
 function MiniPlayerCard({
+  playerId,
+  onShowFixtures,
   name,
   pos,
   club,
@@ -1035,6 +1091,8 @@ function MiniPlayerCard({
   photo,
   tone,
 }: {
+  playerId?: number;
+  onShowFixtures?: (playerId: number) => void;
   name: string;
   pos: string;
   club: string;
@@ -1046,8 +1104,11 @@ function MiniPlayerCard({
   tone: "rose" | "emerald";
 }) {
   return (
-    <div
-      className={`flex flex-col items-center w-[92px] rounded-lg p-1.5 ${MINI_CARD_TONE[tone]}`}
+    <button
+      type="button"
+      onClick={() => playerId != null && onShowFixtures?.(playerId)}
+      disabled={playerId == null || !onShowFixtures}
+      className={`flex flex-col items-center w-[92px] rounded-lg p-1.5 text-left disabled:cursor-default disabled:opacity-100 ${MINI_CARD_TONE[tone]} ${playerId != null && onShowFixtures ? "cursor-pointer hover:ring-2 hover:ring-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" : ""}`}
       title={`${name} · ${club} · £${price.toFixed(1)}m · pred ${pred != null ? pred.toFixed(3) : "N/A"}${extra ? ` · ${extra}` : ""}`}
     >
       {photo ? (
@@ -1071,7 +1132,7 @@ function MiniPlayerCard({
         pred <span className="text-[var(--accent)]">{pred != null ? pred.toFixed(2) : "N/A"}</span>
       </div>
       {extra && <div className="text-[9px] text-[var(--muted)] text-center truncate w-full">{extra}</div>}
-    </div>
+    </button>
   );
 }
 

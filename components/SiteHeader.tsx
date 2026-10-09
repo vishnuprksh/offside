@@ -11,8 +11,8 @@ export default function SiteHeader() {
           <span className="text-lg group-hover:text-[var(--accent)]">offside<span className="text-[var(--accent)]">.</span></span>
         </Link>
         <nav aria-label="Main navigation" className="flex items-center gap-1 overflow-x-auto text-sm">
-        <Link href="/" title="Team Manager" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
-          Team Manager
+        <Link href="/" title="Manager" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
+          Manager
         </Link>
         <Link href="/players" title="Players" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           Players
@@ -20,8 +20,8 @@ export default function SiteHeader() {
         <Link href="/fixtures" title="Fixtures" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           Fixtures
         </Link>
-        <Link href="/dream15" title="Dream 15" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
-          Dream 15
+        <Link href="/dream15" title="Dream15" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
+          Dream15
         </Link>
         <Link href="/about" title="About" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           About

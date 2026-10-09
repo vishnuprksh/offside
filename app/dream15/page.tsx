@@ -99,7 +99,7 @@ function DreamView({ result }: { result: Dream15Result }) {
 function DreamPitch({ result }: { result: Dream15Result }) {
   return (
     <div className="rounded-xl overflow-hidden border border-[var(--border)]" style={{ background: "repeating-linear-gradient(0deg, #0c2a18 0px, #0c2a18 44px, #0e3120 44px, #0e3120 88px)" }}>
-      <div className="px-4 py-3 text-center text-[10px] uppercase tracking-widest text-emerald-200/60">Dream 15 · {result.formation}</div>
+      <div className="px-4 py-3 text-center text-[10px] uppercase tracking-widest text-emerald-200/60">Dream15 · {result.formation}</div>
       <div className="flex flex-col gap-2 px-3 pb-3">
         {ROW_ORDER.map((position) => {
           const players = result.xi.filter((player) => player.pos === position);
