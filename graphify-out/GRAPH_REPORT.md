@@ -1,7 +1,7 @@
 # Graph Report - offside  (2026-10-09)
 
 ## Corpus Check
-- 30 files · ~15,692 words
+- 30 files · ~15,875 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `33393300`
+- Built from commit: `b1fd6922`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

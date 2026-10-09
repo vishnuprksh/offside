@@ -56,7 +56,7 @@
       "file_type": "code",
       "norm_label": "playermatchrow",
       "source_file": "lib/db.ts",
-      "source_location": "L88"
+      "source_location": "L90"
     },
     {
       "id": "lib_suggestions_dream15result",
@@ -186,7 +186,7 @@
       "file_type": "code",
       "norm_label": "sortkey",
       "source_file": "app/players/page.tsx",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "lib_db_fixturedifficultyrow",
@@ -199,7 +199,7 @@
       "file_type": "code",
       "norm_label": "fixturedifficultyrow",
       "source_file": "lib/db.ts",
-      "source_location": "L70"
+      "source_location": "L72"
     },
     {
       "id": "lib_db_gwprediction",
@@ -212,7 +212,7 @@
       "file_type": "code",
       "norm_label": "gwprediction",
       "source_file": "lib/db.ts",
-      "source_location": "L55"
+      "source_location": "L57"
     },
     {
       "id": "lib_db_playerrow",
@@ -225,7 +225,7 @@
       "file_type": "code",
       "norm_label": "playerrow",
       "source_file": "lib/db.ts",
-      "source_location": "L34"
+      "source_location": "L35"
     },
     {
       "id": "lib_db_predictionrow",
@@ -238,7 +238,7 @@
       "file_type": "code",
       "norm_label": "predictionrow",
       "source_file": "lib/db.ts",
-      "source_location": "L57"
+      "source_location": "L59"
     },
     {
       "id": "lib_fpl_teamrow",
@@ -624,7 +624,7 @@
       "file_type": "code",
       "norm_label": "playerspage()",
       "source_file": "app/players/page.tsx",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "app_players_page_posbadge",
@@ -636,7 +636,7 @@
       "file_type": "code",
       "norm_label": "posbadge()",
       "source_file": "app/players/page.tsx",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "lib_db_fetchplayermatchdetails",
@@ -648,7 +648,7 @@
       "file_type": "code",
       "norm_label": "fetchplayermatchdetails()",
       "source_file": "lib/db.ts",
-      "source_location": "L111"
+      "source_location": "L113"
     },
     {
       "id": "lib_db_getpool",
@@ -660,7 +660,7 @@
       "file_type": "code",
       "norm_label": "getpool()",
       "source_file": "lib/db.ts",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "lib_db_numornull",
@@ -672,7 +672,7 @@
       "file_type": "code",
       "norm_label": "numornull()",
       "source_file": "lib/db.ts",
-      "source_location": "L227"
+      "source_location": "L229"
     },
     {
       "id": "app_about_page_aboutpage",
@@ -708,7 +708,7 @@
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "app/api/data/route.ts",
-      "source_location": "L5"
+      "source_location": "L18"
     },
     {
       "id": "app_api_manager_route_get",
@@ -768,7 +768,7 @@
       "file_type": "code",
       "norm_label": "fetchplayers()",
       "source_file": "lib/db.ts",
-      "source_location": "L257"
+      "source_location": "L259"
     },
     {
       "id": "lib_db_fetchpredictions",
@@ -780,7 +780,7 @@
       "file_type": "code",
       "norm_label": "fetchpredictions()",
       "source_file": "lib/db.ts",
-      "source_location": "L233"
+      "source_location": "L235"
     },
     {
       "id": "lib_fpl_buildteamrows",
@@ -1751,7 +1751,7 @@
       "file_type": "code",
       "norm_label": "pos_colors",
       "source_file": "app/players/page.tsx",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "lib_db",
@@ -2404,18 +2404,6 @@
     },
     {
       "source": "app_api_data_route_get",
-      "target": "lib_fpl_fetchfpljson",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "app/api/data/route.ts",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "app_api_data_route_get",
       "target": "lib_db_fetchplayers",
       "relation": "calls",
       "_origin": "ast",
@@ -2423,7 +2411,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/api/data/route.ts",
-      "source_location": "L8",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -2435,7 +2423,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/api/data/route.ts",
-      "source_location": "L9",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "app_api_data_route_get",
+      "target": "lib_fpl_fetchfpljson",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "app/api/data/route.ts",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -2771,7 +2771,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/players/page.tsx",
-      "source_location": "L157",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -2783,7 +2783,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/db.ts",
-      "source_location": "L115",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -2795,7 +2795,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/db.ts",
-      "source_location": "L170",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -2807,7 +2807,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/db.ts",
-      "source_location": "L258",
+      "source_location": "L260",
       "weight": 1.0
     },
     {
@@ -2819,7 +2819,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/db.ts",
-      "source_location": "L234",
+      "source_location": "L236",
       "weight": 1.0
     },
     {
@@ -4167,7 +4167,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/api/data/route.ts",
-      "source_location": "L5",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4607,7 +4607,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/players/page.tsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -4618,7 +4618,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/players/page.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -4629,7 +4629,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/players/page.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4640,7 +4640,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/players/page.tsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4684,7 +4684,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L111",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -4695,7 +4695,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -4706,7 +4706,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L227",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -4717,7 +4717,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L233",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -4728,7 +4728,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L257",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -4739,7 +4739,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4750,7 +4750,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L55",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -4761,7 +4761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L57",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -4772,7 +4772,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L70",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -4783,7 +4783,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/db.ts",
-      "source_location": "L88",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -5796,5 +5796,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3339330039e136784df23996e9c842eaeee36f5b"
+  "built_at_commit": "b1fd692267996a5d163e8fa6e492197792842182"
 }

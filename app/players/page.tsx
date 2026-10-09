@@ -5,18 +5,19 @@ import type { PlayerRow, PredictionRow } from "@/lib/db";
 
 /*
 ## Objective
-Show scraped injury reports alongside player performance and predictions.
+Show official gameweek net transfers alongside player performance and predictions.
 
 ## Changelog
 | # | date       | details | reasoning | reference |
 |---|------------|---------|-----------|-----------|
 | 1 | 2026-10-09 | Added unofficial injury status and type to the player table. | Make scraped player availability information visible in the market view. | User request |
+| 2 | 2026-10-09 | Added sortable gameweek net transfers column. | Make official FPL transfer momentum visible in the player market. | User request |
 
 ## Results/Takeaways
-The existing prediction lookup supplies injury reports without another data request.
+The existing /api/data response supplies net event transfers without another data request.
 */
 
-type SortKey = "web_name" | "total_points" | "form" | "price" | "avg_pred_points";
+type SortKey = "web_name" | "total_points" | "form" | "price" | "net_transfers_event" | "avg_pred_points";
 
 const POS_COLORS: Record<string, string> = {
   GKP: "bg-amber-500/20 text-amber-300",
@@ -142,6 +143,7 @@ export default function PlayersPage() {
                   <th><button onClick={() => changeSort("total_points")} className="hover:text-[var(--accent)]">Total</button></th>
                   <th><button onClick={() => changeSort("form")} className="hover:text-[var(--accent)]">Form</button></th>
                   <th>PPG</th><th>Own %</th>
+                  <th><button onClick={() => changeSort("net_transfers_event")} className="hover:text-[var(--accent)]">Net transfers (GW)</button></th>
                   <th><button onClick={() => changeSort("avg_pred_points")} className="hover:text-[var(--accent)]">Prediction</button></th>
                 </tr>
               </thead>
@@ -172,6 +174,9 @@ export default function PlayersPage() {
                       <td>{player.form.toFixed(1)}</td>
                       <td>{player.points_per_game.toFixed(1)}</td>
                       <td>{player.selected_by_percent.toFixed(1)}%</td>
+                      <td className={player.net_transfers_event == null ? "text-[var(--muted)]" : player.net_transfers_event > 0 ? "text-emerald-400" : player.net_transfers_event < 0 ? "text-rose-400" : "text-[var(--muted)]"}>
+                        {player.net_transfers_event == null ? "—" : player.net_transfers_event.toLocaleString()}
+                      </td>
                       <td className="font-semibold text-[var(--accent)]">{prediction ? prediction.avg_pred_points.toFixed(3) : "N/A"}</td>
                     </tr>
                   );

@@ -2,15 +2,16 @@ import { Pool } from "pg";
 
 /*
 ## Objective
-Expose scraped injury metadata from predictions to the app.
+Define shared database row types consumed by the app.
 
 ## Changelog
 | # | date       | details | reasoning | reference |
 |---|------------|---------|-----------|-----------|
 | 1 | 2026-10-09 | Added unofficial injury status and type to prediction rows. | Preserve the new database fields in the shared data path. | User request |
+| 2 | 2026-10-09 | Added optional official event net transfers to player rows. | Type the value added by the existing /api/data bootstrap enrichment. | User request |
 
 ## Results/Takeaways
-Both Players and Manager consume scraped injury data through fetchPredictions().
+PlayerRow types database player fields; official API enrichments are optional until returned by /api/data.
 */
 
 declare global {
@@ -44,6 +45,7 @@ export type PlayerRow = {
   news: string;
   chance_of_playing_next_round: number | null;
   injury_percent: number | null;
+  net_transfers_event?: number | null;
   total_points: number;
   form: number;
   points_per_game: number;
