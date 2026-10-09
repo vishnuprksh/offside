@@ -132,7 +132,7 @@ Keep Graphify current and record the team-connection form alignment decision.
 ## Changelog
 | # | date       | details                                                        | reasoning                                                        | reference |
 |---|------------|----------------------------------------------------------------|------------------------------------------------------------------|-----------|
-| 1 | 2026-10-09 | Regenerated the graph and documented centered form controls.  | The recent-ID row makes the team-ID field taller than siblings.  | PR #18 |
+| 1 | 2026-10-09 | Regenerated the graph and documented responsive form alignment. | The recent-ID row makes the team-ID field taller than siblings. | PR #18 |
 
 ## Results/Takeaways
-The graph reflects the current workspace source, and the form aligns related controls to the center of the team-ID input.
+The graph reflects the current workspace source. Desktop inputs share a top-aligned grid row, the submit button aligns with their input row, and narrow screens stack controls without overlap.
