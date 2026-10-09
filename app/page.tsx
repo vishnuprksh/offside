@@ -18,15 +18,16 @@ import type { PredictionRow, PlayerMatchRow } from "@/lib/db";
 
 /*
 ## Objective
-Expose last and next four fixture details from transfer suggestion entries.
+Explain the symbols and colors used on manager squad player cards.
 
 ## Changelog
 | # | date       | details | reasoning | reference |
 |---|------------|---------|-----------|-----------|
 | 1 | 2026-10-09 | Added click and keyboard access to fixture details on incoming/outgoing suggestion cards and skipped suggestions. | Reuse the existing player fixtures modal and API flow. | User request |
+| 2 | 2026-10-09 | Added a player-card legend and limited optimal-XI highlighting to completed optimizations. | Make squad symbols/colors understandable and avoid implying an unrun optimization. | User request |
 
 ## Results/Takeaways
-Transfer recommendations now share the squad's existing fixture-detail experience; fixture fetching and presentation remain centralized.
+Manager squad cards now have an adjacent key for position, availability, role, optimization, pin, and bench indicators. Optimal-XI styling only appears after optimization.
 */
 
 type Manager = any;
@@ -505,6 +506,37 @@ export default function Home() {
                 {optimizing ? "Optimizing…" : optResult ? "Re-optimize" : "⚡ Optimize Team"}
               </button>
             </div>
+            <section aria-labelledby="player-card-key-title" className="mb-4 rounded-lg border border-[var(--border)] bg-black/20 px-3 py-2.5 text-[11px] text-[var(--muted)]">
+              <h3 id="player-card-key-title" className="mb-2 font-semibold text-[var(--text)]">Player card key</h3>
+              <div className="flex flex-wrap gap-x-4 gap-y-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span>Position:</span>
+                  {[
+                    ["GKP", "Goalkeeper"],
+                    ["DEF", "Defender"],
+                    ["MID", "Midfielder"],
+                    ["FWD", "Forward"],
+                  ].map(([pos, label]) => (
+                    <span key={pos} className="inline-flex items-center gap-1">
+                      <span className={`badge ${POS_COLORS[pos]} !text-[8px] !px-1 !py-0`}>{pos}</span>
+                      {label}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span>Chance to play:</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-amber-300/50 bg-amber-500/20" />75-99%</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-orange-300/60 bg-orange-500/25" />50-74%</span>
+                  <span className="inline-flex items-center gap-1"><span className="size-3 rounded-sm border border-rose-300/60 bg-rose-500/25" />Below 50%</span>
+                  <span>Neutral = 100% or unknown</span>
+                </div>
+                <span><span className="mr-1 inline-flex size-4 items-center justify-center rounded-full bg-amber-400 text-[9px] font-bold text-[#04140b]">C</span>Captain</span>
+                <span><span className="mr-1 inline-flex size-4 items-center justify-center rounded-full bg-slate-300 text-[9px] font-bold text-[#04140b]">V</span>Vice-captain</span>
+                <span><span className="mr-1">⚡</span><span className="mr-1 inline-block size-3 rounded-sm ring-2 ring-emerald-400" />Optimizer-selected XI</span>
+                <span><span className="mr-1">📌</span><span className="mr-1 inline-block size-3 rounded-sm ring-2 ring-amber-300" />Pinned player</span>
+                <span>🪑 Bench</span>
+              </div>
+            </section>
             <Pitch
               teamRows={teamRows}
               optResult={optResult}
@@ -842,7 +874,7 @@ function Pitch({ teamRows, optResult, gameweek, squad, pinnedIds, onPlayerTransf
                     row={r}
                     squad={squad}
                     onBench={false}
-                    isOptXI={true}
+                    isOptXI={!!optResult}
                     isCaptain={optResult ? optResult.captain === r.player_name : r.is_captain}
                     isVice={optResult ? optResult.viceCaptain === r.player_name : r.is_vice_captain}
                     isPinned={pinnedIds.includes(r.player_id)}
