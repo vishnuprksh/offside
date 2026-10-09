@@ -16,6 +16,19 @@ import type {
 } from "@/lib/suggestions";
 import type { PredictionRow, PlayerMatchRow } from "@/lib/db";
 
+/*
+## Objective
+Expose last and next four fixture details from transfer suggestion entries.
+
+## Changelog
+| # | date       | details | reasoning | reference |
+|---|------------|---------|-----------|-----------|
+| 1 | 2026-10-09 | Added click and keyboard access to fixture details on incoming/outgoing suggestion cards and skipped suggestions. | Reuse the existing player fixtures modal and API flow. | User request |
+
+## Results/Takeaways
+Transfer recommendations now share the squad's existing fixture-detail experience; fixture fetching and presentation remain centralized.
+*/
+
 type Manager = any;
 type Bootstrap = any;
 
@@ -578,6 +591,8 @@ export default function Home() {
                       <div className="border border-rose-500/30 bg-rose-500/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2">
                         <div className="self-stretch text-xs uppercase text-rose-300 font-bold mb-1">Out</div>
                         <MiniPlayerCard
+                          playerId={s.out.player_id}
+                          onShowFixtures={(playerId) => setFixturesModal({ playerId, playerName: s.out.name })}
                           name={s.out.name}
                           pos={s.out.pos}
                           club={s.out.club}
@@ -595,6 +610,8 @@ export default function Home() {
                           <div className="text-xs text-[var(--muted)]">cost {s.in.costDiff >= 0 ? "+" : ""}£{s.in.costDiff.toFixed(1)}m</div>
                         </div>
                         <MiniPlayerCard
+                          playerId={s.in.player_id}
+                          onShowFixtures={(playerId) => setFixturesModal({ playerId, playerName: s.in.name })}
                           name={s.in.name}
                           pos={s.out.pos}
                           club={s.in.club}
@@ -654,7 +671,12 @@ export default function Home() {
                   {skipped.map((s) => (
                     <div key={s.in.name} className="flex items-center justify-between gap-3 flex-wrap border border-[var(--border)] rounded-lg px-3 py-2 bg-[#0d1526] text-sm">
                       <div>
-                        <span className="font-semibold">{s.in.name}</span> <PosBadge pos={s.out.pos} />
+                        <button
+                          type="button"
+                          onClick={() => setFixturesModal({ playerId: s.in.player_id, playerName: s.in.name })}
+                          className="font-semibold hover:text-[var(--accent)]"
+                          title="Click for last/next 4 matches"
+                        >{s.in.name}</button> <PosBadge pos={s.out.pos} />
                         <span className="text-xs text-[var(--muted)] ml-2">
                           {s.in.club} · £{s.in.price.toFixed(1)}m · pred {s.in.pred.toFixed(3)} · in for {s.out.name}
                         </span>
@@ -1025,6 +1047,8 @@ const MINI_CARD_TONE: Record<string, string> = {
 
 /** Compact photo card used in transfer suggestion Out/In panels. */
 function MiniPlayerCard({
+  playerId,
+  onShowFixtures,
   name,
   pos,
   club,
@@ -1035,6 +1059,8 @@ function MiniPlayerCard({
   photo,
   tone,
 }: {
+  playerId?: number;
+  onShowFixtures?: (playerId: number) => void;
   name: string;
   pos: string;
   club: string;
@@ -1046,8 +1072,11 @@ function MiniPlayerCard({
   tone: "rose" | "emerald";
 }) {
   return (
-    <div
-      className={`flex flex-col items-center w-[92px] rounded-lg p-1.5 ${MINI_CARD_TONE[tone]}`}
+    <button
+      type="button"
+      onClick={() => playerId != null && onShowFixtures?.(playerId)}
+      disabled={playerId == null || !onShowFixtures}
+      className={`flex flex-col items-center w-[92px] rounded-lg p-1.5 text-left disabled:cursor-default disabled:opacity-100 ${MINI_CARD_TONE[tone]} ${playerId != null && onShowFixtures ? "cursor-pointer hover:ring-2 hover:ring-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" : ""}`}
       title={`${name} · ${club} · £${price.toFixed(1)}m · pred ${pred != null ? pred.toFixed(3) : "N/A"}${extra ? ` · ${extra}` : ""}`}
     >
       {photo ? (
@@ -1071,7 +1100,7 @@ function MiniPlayerCard({
         pred <span className="text-[var(--accent)]">{pred != null ? pred.toFixed(2) : "N/A"}</span>
       </div>
       {extra && <div className="text-[9px] text-[var(--muted)] text-center truncate w-full">{extra}</div>}
-    </div>
+    </button>
   );
 }
 

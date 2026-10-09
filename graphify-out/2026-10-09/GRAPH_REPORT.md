@@ -16,18 +16,20 @@
 - Run `graphify update .` after code changes (no API cost).
 
 ## Objective
-Keep the architecture report current and record the team-form layout decision.
+Keep the architecture report current and record user-facing implementation decisions.
 
 ## Changelog
 | # | date       | details                                                     | reasoning                                                       | reference |
 |---|------------|-------------------------------------------------------------|-----------------------------------------------------------------|-----------|
 | 1 | 2026-10-09 | Updated report freshness metadata and implementation note.  | JSX-only layout changes do not alter nodes or dependency edges. | User request |
+| 2 | 2026-10-09 | Transfer suggestion cards open the existing player fixtures modal. | Reuse the existing fixture API and modal rather than introducing duplicate fixture behavior. | PR |
 
 ## Results/Takeaways
-The existing graph topology remains accurate; its report now records the current commit and centered team-form control alignment.
+The existing graph topology remains accurate; its report records the shared fixture-details flow for squad and transfer suggestion players.
 
 ## Recent Implementation Decisions
 - The home page team-connection form uses centered vertical alignment for its responsive control row. The optional recent-team-ID list increases the team-ID field height, so center alignment keeps the gameweek field and submit button visually aligned with the primary input.
+- Transfer suggestion incoming/outgoing cards and skipped suggestion names open the existing last/next-four fixtures modal using the player's FPL ID; no separate fixture fetch or modal is maintained.
 
 ## Community Hubs (Navigation)
 - app/page.tsx
