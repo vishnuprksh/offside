@@ -1,1 +1,6 @@
-Nothing to output - the changes only include a README.md file which is a source/config file, and there are no build artifacts, dependencies, or temp files in the changes.
+node_modules
+.next
+.env
+.env.local
+.vercel
+*.tsbuildinfo
