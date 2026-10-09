@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { PlayerRow, PredictionRow } from "@/lib/db";
 
-type SortKey = "web_name" | "total_points" | "form" | "price" | "avg_prob_gt_5";
+type SortKey = "web_name" | "total_points" | "form" | "price" | "avg_pred_points";
 
 const POS_COLORS: Record<string, string> = {
   GKP: "bg-amber-500/20 text-amber-300",
@@ -55,10 +55,10 @@ export default function PlayersPage() {
         return matchesPosition && matchesQuery;
       })
       .sort((a, b) => {
-        const aPrediction = predictionById.get(a.player_id)?.avg_prob_gt_5 ?? -1;
-        const bPrediction = predictionById.get(b.player_id)?.avg_prob_gt_5 ?? -1;
-        const aValue = sortKey === "avg_prob_gt_5" ? aPrediction : a[sortKey];
-        const bValue = sortKey === "avg_prob_gt_5" ? bPrediction : b[sortKey];
+        const aPrediction = predictionById.get(a.player_id)?.avg_pred_points ?? -1;
+        const bPrediction = predictionById.get(b.player_id)?.avg_pred_points ?? -1;
+        const aValue = sortKey === "avg_pred_points" ? aPrediction : a[sortKey];
+        const bValue = sortKey === "avg_pred_points" ? bPrediction : b[sortKey];
         const comparison = typeof aValue === "string" && typeof bValue === "string"
           ? aValue.localeCompare(bValue)
           : Number(aValue) - Number(bValue);
@@ -129,7 +129,7 @@ export default function PlayersPage() {
                   <th><button onClick={() => changeSort("total_points")} className="hover:text-[var(--accent)]">Total</button></th>
                   <th><button onClick={() => changeSort("form")} className="hover:text-[var(--accent)]">Form</button></th>
                   <th>PPG</th><th>Own %</th>
-                  <th><button onClick={() => changeSort("avg_prob_gt_5")} className="hover:text-[var(--accent)]">Prediction</button></th>
+                  <th><button onClick={() => changeSort("avg_pred_points")} className="hover:text-[var(--accent)]">Prediction</button></th>
                 </tr>
               </thead>
               <tbody>
@@ -152,7 +152,7 @@ export default function PlayersPage() {
                       <td>{player.form.toFixed(1)}</td>
                       <td>{player.points_per_game.toFixed(1)}</td>
                       <td>{player.selected_by_percent.toFixed(1)}%</td>
-                      <td className="font-semibold text-[var(--accent)]">{prediction ? prediction.avg_prob_gt_5.toFixed(3) : "N/A"}</td>
+                      <td className="font-semibold text-[var(--accent)]">{prediction ? prediction.avg_pred_points.toFixed(3) : "N/A"}</td>
                     </tr>
                   );
                 })}
