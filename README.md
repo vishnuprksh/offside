@@ -107,6 +107,19 @@ Open [http://localhost:3000](http://localhost:3000)
 
 > ⚠️ **Important:** Include `sslmode=require` in your connection URL. The older OAuth JWT method expires every ~1 hour and is not used.
 
+For local development, create `frontend/.env.local` and set `DATABASE_URL` there. Next.js loads this file when the server starts; restart the server after changing it. Never commit database credentials.
+
+## Objective
+Document the local database URL setup to resolve the missing `DATABASE_URL` runtime error.
+
+## changelog table
+| # | Date | Details | Reasoning | Reference |
+|---|---|---|---|---|
+| 1 | 2026-10-09 | Added local `.env.local` setup and server restart guidance. | Ensure the root setup guide describes Next.js environment loading. | `frontend/lib/db.ts` |
+
+## Results/Takeaways
+For local development, set `DATABASE_URL` in `frontend/.env.local` and restart the Next.js server. Keep credentials untracked.
+
 ---
 
 ## 📁 Project Structure
@@ -235,6 +248,17 @@ graphify update .
 ```
 
 See [`graphify-out/GRAPH_REPORT.md`](./graphify-out/GRAPH_REPORT.md) for:
+
+## Objective
+Document the local database URL setup so developers can resolve the missing `DATABASE_URL` runtime error.
+
+## changelog table
+| # | Date | Details | Reasoning | Reference |
+|---|---|---|---|---|
+| 1 | 2026-10-09 | Added local `.env.local` setup and server restart guidance. | Ensure the root setup guide describes Next.js environment loading. | `frontend/lib/db.ts` |
+
+## Results/Takeaways
+For local development, set `DATABASE_URL` in `frontend/.env.local` and restart the Next.js server. Keep credentials untracked.
 - Community structure analysis
 - Import cycle detection
 - Node connectivity metrics

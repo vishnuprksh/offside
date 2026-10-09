@@ -1,5 +1,18 @@
 import { Pool } from "pg";
 
+/*
+## Objective
+Provide a shared PostgreSQL pool and actionable configuration feedback.
+
+## changelog table
+| # | Date | Details | Reasoning | Reference |
+|---|---|---|---|---|
+| 1 | 2026-10-09 | Point missing DATABASE_URL errors to frontend/.env.local and server restart. | Make the runtime failure directly actionable without duplicating environment loading. | Next.js environment variable documentation |
+
+## Results/Takeaways
+Next.js loads local environment files at server startup; the pool continues to consume process.env.DATABASE_URL.
+*/
+
 declare global {
   // eslint-disable-next-line no-var
   var _fplPool: Pool | undefined;
@@ -8,7 +21,9 @@ declare global {
 export function getPool(): Pool {
   if (!global._fplPool) {
     const databaseUrl = process.env.DATABASE_URL;
-    if (!databaseUrl) throw new Error("DATABASE_URL is not set");
+    if (!databaseUrl) {
+      throw new Error("DATABASE_URL is not set. Add it to frontend/.env.local and restart the Next.js server.");
+    }
     global._fplPool = new Pool({
       connectionString: databaseUrl,
       ssl: { rejectUnauthorized: false },

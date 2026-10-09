@@ -9,12 +9,14 @@ Next.js frontend replicating `fpl_team_manager(1).py`:
 ## Setup (local dev)
 
 ```bash
-cd fpl-frontend
+cd frontend
 npm install
-# create .env.local (never commit):
-#   DATABASE_URL=postgresql://user:password@host/databricks_postgres?sslmode=require
+# Create .env.local (never commit) with:
+# DATABASE_URL=postgresql://user:password@host/databricks_postgres?sslmode=require
 npm run dev
 ```
+
+Next.js loads `.env.local` automatically when the dev server starts. Restart the server after changing the file.
 
 ## Deploy to Vercel
 
@@ -50,3 +52,14 @@ vercel --prod
 | `/players` | Searchable player market with stats and predictions |
 
 Transfer suggestion logic lives in `lib/suggestions.ts` (port of the notebook's algorithm).
+
+## Objective
+Document the correct local database URL setup and make the missing-variable error actionable.
+
+## changelog table
+| # | Date | Details | Reasoning | Reference |
+|---|---|---|---|---|
+| 1 | 2026-10-09 | Corrected local directory and clarified `.env.local` loading/restart behavior. | Align setup instructions with the actual Next.js workspace and environment loading. | `frontend/lib/db.ts` |
+
+## Results/Takeaways
+Set `DATABASE_URL` in `frontend/.env.local`; Next.js loads it at startup. Do not commit credentials.
