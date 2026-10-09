@@ -25,13 +25,18 @@ Explain the symbols and colors used on manager squad player cards.
 |---|------------|---------|-----------|-----------|
 | 1 | 2026-10-09 | Added click and keyboard access to fixture details on incoming/outgoing suggestion cards and skipped suggestions. | Reuse the existing player fixtures modal and API flow. | User request |
 | 2 | 2026-10-09 | Added a player-card legend and limited optimal-XI highlighting to completed optimizations. | Make squad symbols/colors understandable and avoid implying an unrun optimization. | User request |
+| 3 | 2026-10-09 | Added scraped injury reports to manager squad player cards. | Surface prediction injury metadata where managers review their squad. | User request |
 
 ## Results/Takeaways
-Manager squad cards now have an adjacent key for position, availability, role, optimization, pin, and bench indicators. Optimal-XI styling only appears after optimization.
+Manager squad cards now have an adjacent key for position, availability, scraped injury report, role, optimization, pin, and bench indicators. Optimal-XI styling only appears after optimization.
 */
 
 type Manager = any;
 type Bootstrap = any;
+type ManagerTeamRow = TeamRow & {
+  unofficial_injury_status?: string | null;
+  unofficial_injury_type?: string | null;
+};
 
 const RECENT_TEAM_IDS_KEY = "offside-recent-team-ids";
 const MAX_RECENT_TEAM_IDS = 5;
@@ -283,6 +288,8 @@ export default function Home() {
             price: player.now_cost / 10,
             selected_by_percent: parseFloat(player.selected_by_percent),
             chance_of_playing_next_round: player.chance_of_playing_next_round ?? null,
+            unofficial_injury_status: null,
+            unofficial_injury_type: null,
             total_points: player.total_points,
             form: parseFloat(player.form),
             gameweek_points: pick.points ?? 0,
@@ -293,7 +300,7 @@ export default function Home() {
             photo: (player.photo ?? "").replace(/\.jpg$/, ""), // e.g. "95658" → /p95658.png
           };
         })
-        .filter(Boolean) as TeamRow[];
+        .filter(Boolean) as ManagerTeamRow[];
       setTeamRows(rows);
       setEntryHistory(pk.picks.entry_history ?? {});
       setActiveChip(pk.picks.active_chip ?? null);
@@ -313,6 +320,11 @@ export default function Home() {
 
       const predById: Record<number, any> = {};
       for (const p of data.predictions) predById[p.player_id] = p;
+      for (const row of rows) {
+        const prediction = predById[row.player_id];
+        row.unofficial_injury_status = prediction?.unofficial_injury_status ?? null;
+        row.unofficial_injury_type = prediction?.unofficial_injury_type ?? null;
+      }
       setPredictions(data.predictions);
 
       // Sell prices from transfer history
@@ -1024,6 +1036,15 @@ function PlayerCard({
         )}
         {onBench && <span className="ml-1">🪑</span>}
       </div>
+      {(row as ManagerTeamRow).unofficial_injury_status || (row as ManagerTeamRow).unofficial_injury_type ? (
+        <div className="w-full truncate text-center text-[8px] text-amber-300" title={[
+          (row as ManagerTeamRow).unofficial_injury_status,
+          (row as ManagerTeamRow).unofficial_injury_type,
+        ].filter(Boolean).join(" · ")}>
+          {[(row as ManagerTeamRow).unofficial_injury_status, (row as ManagerTeamRow).unofficial_injury_type]
+            .filter(Boolean).join(" · ")}
+        </div>
+      ) : null}
       {isPinned && <span className="absolute bottom-1 right-1 text-[10px]" aria-label="Pinned">📌</span>}
       {menuOpen && (
         <div

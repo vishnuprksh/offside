@@ -1,5 +1,18 @@
 import { Pool } from "pg";
 
+/*
+## Objective
+Expose scraped injury metadata from predictions to the app.
+
+## Changelog
+| # | date       | details | reasoning | reference |
+|---|------------|---------|-----------|-----------|
+| 1 | 2026-10-09 | Added unofficial injury status and type to prediction rows. | Preserve the new database fields in the shared data path. | User request |
+
+## Results/Takeaways
+Both Players and Manager consume scraped injury data through fetchPredictions().
+*/
+
 declare global {
   // eslint-disable-next-line no-var
   var _fplPool: Pool | undefined;
@@ -50,6 +63,8 @@ export type PredictionRow = {
   gw_predictions: GwPrediction[];
   avg_prob_gt_5: number;
   avg_pred_points: number;
+  unofficial_injury_status: string | null;
+  unofficial_injury_type: string | null;
 };
 
 export type FixtureDifficultyRow = {
@@ -217,7 +232,7 @@ function numOrNull(v: unknown): number | null {
 
 export async function fetchPredictions(): Promise<PredictionRow[]> {
   const { rows } = await getPool().query(
-    "SELECT player_id, player_name, position, price, team_name, gw_predictions, avg_prob_gt_5, avg_pred_points FROM fpl.predictions"
+    "SELECT player_id, player_name, position, price, team_name, gw_predictions, avg_prob_gt_5, avg_pred_points, unofficial_injury_status, unofficial_injury_type FROM fpl.predictions"
   );
   return rows.map((r) => ({
     player_id: Number(r.player_id),
@@ -234,6 +249,8 @@ export async function fetchPredictions(): Promise<PredictionRow[]> {
     ),
     avg_prob_gt_5: Number(r.avg_prob_gt_5),
     avg_pred_points: Number(r.avg_pred_points),
+    unofficial_injury_status: r.unofficial_injury_status == null ? null : String(r.unofficial_injury_status),
+    unofficial_injury_type: r.unofficial_injury_type == null ? null : String(r.unofficial_injury_type),
   }));
 }
 

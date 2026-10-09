@@ -3,6 +3,19 @@
 import { useEffect, useMemo, useState } from "react";
 import type { PlayerRow, PredictionRow } from "@/lib/db";
 
+/*
+## Objective
+Show scraped injury reports alongside player performance and predictions.
+
+## Changelog
+| # | date       | details | reasoning | reference |
+|---|------------|---------|-----------|-----------|
+| 1 | 2026-10-09 | Added unofficial injury status and type to the player table. | Make scraped player availability information visible in the market view. | User request |
+
+## Results/Takeaways
+The existing prediction lookup supplies injury reports without another data request.
+*/
+
 type SortKey = "web_name" | "total_points" | "form" | "price" | "avg_pred_points";
 
 const POS_COLORS: Record<string, string> = {
@@ -124,7 +137,7 @@ export default function PlayersPage() {
             <table className="data">
               <thead>
                 <tr>
-                  <th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Injury risk</th>
+                  <th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Scraped injury</th><th>Injury risk</th>
                   <th><button onClick={() => changeSort("price")} className="hover:text-[var(--accent)]">Price</button></th>
                   <th><button onClick={() => changeSort("total_points")} className="hover:text-[var(--accent)]">Total</button></th>
                   <th><button onClick={() => changeSort("form")} className="hover:text-[var(--accent)]">Form</button></th>
@@ -144,6 +157,13 @@ export default function PlayersPage() {
                       <td><PosBadge pos={player.position} /></td>
                       <td className="text-[var(--muted)]">{player.team_name}</td>
                       <td><span className={player.status === "a" ? "text-emerald-400" : "text-rose-400"}>{player.status === "a" ? "Available" : player.status}</span></td>
+                      <td>
+                        {prediction?.unofficial_injury_status || prediction?.unofficial_injury_type ? (
+                          <span className="text-amber-300" title={[prediction.unofficial_injury_status, prediction.unofficial_injury_type].filter(Boolean).join(" · ")}>
+                            {[prediction.unofficial_injury_status, prediction.unofficial_injury_type].filter(Boolean).join(" · ")}
+                          </span>
+                        ) : <span className="text-[var(--muted)]">—</span>}
+                      </td>
                       <td className={player.injury_percent == null ? "text-[var(--muted)]" : player.injury_percent >= 50 ? "text-rose-400" : player.injury_percent > 0 ? "text-amber-300" : "text-emerald-400"}>
                         {player.injury_percent == null ? "—" : `${player.injury_percent}%`}
                       </td>

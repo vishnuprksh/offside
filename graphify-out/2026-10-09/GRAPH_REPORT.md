@@ -1,7 +1,7 @@
 # Graph Report - offside  (2026-10-09)
 
 ## Corpus Check
-- 30 files · ~15,057 words
+- 30 files · ~15,397 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `66ebafce`
+- Built from commit: `4e4de966`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -127,12 +127,12 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.11965811965811966 - nodes in this community are weakly interconnected._
 
 ## Objective
-Keep Graphify current and record the team-connection form alignment decision.
+Keep the architecture graph current and record manager player-card indicator decisions.
 
 ## Changelog
-| # | date       | details                                                        | reasoning                                                        | reference |
-|---|------------|----------------------------------------------------------------|------------------------------------------------------------------|-----------|
-| 1 | 2026-10-09 | Regenerated the graph and documented responsive form alignment. | The recent-ID row makes the team-ID field taller than siblings. | PR #18 |
+| # | date       | details | reasoning | reference |
+|---|------------|---------|-----------|-----------|
+| 1 | 2026-10-09 | Refreshed the graph and documented the manager player-card key. | Make the current manager-page UI and its visual indicators understandable. | User request |
 
 ## Results/Takeaways
-The graph reflects the current workspace source. Desktop inputs share a top-aligned grid row, the submit button aligns with their input row, and narrow screens stack controls without overlap.
+The manager pitch remains a UI concern in `app/page.tsx`; no new dependencies or architecture layers were needed. Its legend maps position badges, availability backgrounds, captain/vice-captain markers, optimizer and pin highlights, and the bench marker.
