@@ -1,17 +1,17 @@
 # Graph Report - offside  (2026-10-09)
 
 ## Corpus Check
-- 30 files · ~15,397 words
+- 30 files · ~15,692 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
 ## Summary
-- 205 nodes · 296 edges · 16 communities (11 shown, 5 thin omitted)
+- 206 nodes · 297 edges · 15 communities (10 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4e4de966`
+- Built from commit: `33393300`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,14 +20,13 @@
 - package.json
 - compilerOptions
 - db.ts
-- suggestions.ts
+- devDependencies
 - fpl.ts
 - fixtures/page.tsx
 - connect_database.py
 - offside — Vercel Frontend
 - fpl_team_manager.py
 - javascript-lp-solver.d.ts
-- _dbtest.js
 - next.config.js
 
 ## God Nodes (most connected - your core abstractions)
@@ -43,8 +42,6 @@
 10. `fetchPlayerMatchDetails()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `GET()` --calls--> `fetchFplJson()`  [EXTRACTED]
-  app/api/data/route.ts → lib/fpl.ts
 - `GET()` --calls--> `getPool()`  [EXTRACTED]
   app/api/fixture-matrix/route.ts → lib/db.ts
 - `GET()` --calls--> `fetchPlayerMatchDetails()`  [EXTRACTED]
@@ -53,39 +50,41 @@
   app/api/manager/route.ts → lib/fpl.ts
 - `GET()` --calls--> `fetchFplJson()`  [EXTRACTED]
   app/api/picks/route.ts → lib/fpl.ts
+- `GET()` --calls--> `chooseGameweek()`  [EXTRACTED]
+  app/api/bootstrap/route.ts → lib/fpl.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (16 total, 5 thin omitted)
+## Communities (15 total, 5 thin omitted)
 
 ### Community 0 - "app/page.tsx"
-Cohesion: 0.16
-Nodes (19): Bootstrap, FixturesModal(), Home(), injuryCardClass(), isLegalFplSubstitution(), Manager, MINI_CARD_TONE, MiniPlayerCard() (+11 more)
+Cohesion: 0.08
+Nodes (35): Dream15Page(), Bootstrap, FixturesModal(), Home(), injuryCardClass(), isLegalFplSubstitution(), Manager, ManagerTeamRow (+27 more)
 
 ### Community 1 - "package.json"
-Cohesion: 0.06
-Nodes (30): dependencies, javascript-lp-solver, next, pg, react, react-dom, devDependencies, autoprefixer (+22 more)
+Cohesion: 0.07
+Nodes (25): fs, { Pool }, dependencies, javascript-lp-solver, next, pg, react, react-dom (+17 more)
 
 ### Community 2 - "compilerOptions"
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 3 - "db.ts"
-Cohesion: 0.13
-Nodes (20): GET(), dynamic, FixtureMatrixRow, GET(), dynamic, GET(), PlayersPage(), POS_COLORS (+12 more)
+Cohesion: 0.11
+Nodes (24): dynamic, FixtureMatrixRow, GET(), dynamic, GET(), DreamPitch(), DreamPlayerCard(), DreamView() (+16 more)
 
-### Community 4 - "suggestions.ts"
-Cohesion: 0.12
-Nodes (21): Dream15Page(), DreamPitch(), DreamPlayerCard(), DreamView(), POS_COLORS, ROW_BG, ROW_ORDER, Stat() (+13 more)
+### Community 4 - "devDependencies"
+Cohesion: 0.25
+Nodes (8): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/pg, @types/react, typescript
 
 ### Community 5 - "fpl.ts"
-Cohesion: 0.15
-Nodes (12): GET(), GET(), GET(), metadata, RootLayout(), SiteHeader(), BASE_URL, chooseGameweek() (+4 more)
+Cohesion: 0.13
+Nodes (15): GET(), GET(), GET(), GET(), metadata, RootLayout(), SiteHeader(), fetchPlayers() (+7 more)
 
 ### Community 6 - "fixtures/page.tsx"
-Cohesion: 0.43
-Nodes (6): FixtureRow, FixturesPage(), fmtKickoff(), grayColor(), probColor(), react
+Cohesion: 0.53
+Nodes (5): FixtureRow, FixturesPage(), fmtKickoff(), grayColor(), probColor()
 
 ### Community 7 - "connect_database.py"
 Cohesion: 0.20
@@ -99,40 +98,25 @@ Nodes (6): API routes, Deploy to Vercel, Env vars, offside — Vercel Frontend, 
 Cohesion: 0.14
 Nodes (4): build_team_rows(), choose_gameweek(), fetch_fpl_json(), find_replacements()
 
-### Community 11 - "_dbtest.js"
-Cohesion: 0.40
-Nodes (3): fs, { Pool }, pg
-
 ## Knowledge Gaps
 - **8 isolated node(s):** `react-dom`, `@types/node`, `@types/pg`, `@types/react`, `autoprefixer` (+3 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 105 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 106 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `fixtures/page.tsx` to `app/page.tsx`, `package.json`, `db.ts`, `suggestions.ts`?**
-  _High betweenness centrality (0.101) - this node is a cross-community bridge._
+- **Why does `react` connect `db.ts` to `app/page.tsx`, `package.json`, `fixtures/page.tsx`?**
+  _High betweenness centrality (0.102) - this node is a cross-community bridge._
 - **What connects `react-dom`, `@types/node`, `@types/pg` to the rest of the system?**
   _8 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
+- **Should `app/page.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.08292682926829269 - nodes in this community are weakly interconnected._
 - **Why does `next` connect `fpl.ts` to `package.json`, `db.ts`?**
   _High betweenness centrality (0.089) - this node is a cross-community bridge._
+- **Should `package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
+- **Why does `devDependencies` connect `devDependencies` to `package.json`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `db.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.13 - nodes in this community are weakly interconnected._
-- **Should `suggestions.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.11965811965811966 - nodes in this community are weakly interconnected._
-
-## Objective
-Keep the architecture graph current and record manager player-card indicator decisions.
-
-## Changelog
-| # | date       | details | reasoning | reference |
-|---|------------|---------|-----------|-----------|
-| 1 | 2026-10-09 | Refreshed the graph and documented the manager player-card key. | Make the current manager-page UI and its visual indicators understandable. | User request |
-
-## Results/Takeaways
-The manager pitch remains a UI concern in `app/page.tsx`; no new dependencies or architecture layers were needed. Its legend maps position badges, availability backgrounds, captain/vice-captain markers, optimizer and pin highlights, and the bench marker.
