@@ -374,13 +374,24 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Objective
+          Align both field inputs on one row and center the submit control against them.
+
+          Changelog
+          | # | date       | details                                    | reasoning                               | reference    |
+          |---|------------|--------------------------------------------|-----------------------------------------|--------------|
+          | 1 | 2026-10-09 | Aligned field inputs independently of the recent-ID row. | The recent-ID row makes the first field taller. | User request |
+
+          Results/Takeaways
+          Team ID and gameweek inputs share a top-aligned row; the submit control aligns with the inputs.
+      */}
       {/* Input form */}
       <section className="card mb-8 p-5 sm:p-6">
         <div className="mb-4 flex items-center gap-3">
           <span className="flex size-8 items-center justify-center rounded-lg bg-[var(--accent)]/10 text-sm font-bold text-[var(--accent)]">01</span>
           <div><h2 className="font-semibold">Connect your team</h2><p className="text-xs text-[var(--muted)]">Enter your FPL details to unlock your workspace.</p></div>
         </div>
-        <div className="flex flex-wrap items-end gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(220px,1fr)_10rem_auto] sm:items-start">
           <div className="flex-1 min-w-[220px]">
             <label className="block text-xs uppercase tracking-wide text-[var(--muted)] mb-1">FPL Team ID</label>
             <input
@@ -424,7 +435,7 @@ export default function Home() {
           <button
             onClick={load}
             disabled={loading}
-            className="rounded-xl bg-[var(--accent)] px-6 py-2.5 font-bold text-[#08111f] shadow-[0_8px_24px_rgba(184,243,74,0.16)] hover:brightness-105 disabled:opacity-50"
+            className="rounded-xl bg-[var(--accent)] px-6 py-2.5 font-bold text-[#08111f] shadow-[0_8px_24px_rgba(184,243,74,0.16)] hover:brightness-105 disabled:opacity-50 sm:mt-6"
           >
             {loading ? "Loading…" : "Fetch Team"}
           </button>
