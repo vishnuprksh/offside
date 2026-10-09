@@ -287,7 +287,7 @@ export default function Home() {
         pos: r.position,
         nowPrice: r.price,
         sellPrice: sell[r.player_name] ?? r.price,
-        pred: predById[r.player_id]?.avg_prob_gt_5 ?? null,
+        pred: predById[r.player_id]?.avg_pred_points ?? null,
         starter: r.is_starter,
         club: r.club,
         photo: (r as any).photo,
