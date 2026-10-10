@@ -138,7 +138,7 @@ export default function PlayersPage() {
             <table className="data">
               <thead>
                 <tr>
-                  <th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Details</th><th>risk</th>
+                  <th>#</th><th>Player</th><th>Pos</th><th>Club</th><th>Status</th><th>Details</th><th>risk</th>
                   <th><button onClick={() => changeSort("price")} className="hover:text-[var(--accent)]">Price</button></th>
                   <th><button onClick={() => changeSort("total_points")} className="hover:text-[var(--accent)]">Total</button></th>
                   <th><button onClick={() => changeSort("form")} className="hover:text-[var(--accent)]">Form</button></th>
@@ -148,10 +148,11 @@ export default function PlayersPage() {
                 </tr>
               </thead>
               <tbody>
-                {visiblePlayers.map((player) => {
+                {visiblePlayers.map((player, index) => {
                   const prediction = predictionById.get(player.player_id);
                   return (
                     <tr key={player.player_id}>
+                      <td className="text-[var(--muted)]">{index + 1}</td>
                       <td>
                         <div className="font-semibold">{player.web_name}</div>
                         <div className="text-xs text-[var(--muted)]">{player.first_name} {player.second_name}</div>
