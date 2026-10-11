@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { PlayerRow, PredictionRow } from "@/lib/db";
 import { optimizeDream15, type Dream15Result, type SquadPlayer } from "@/lib/suggestions";
 
@@ -20,6 +20,7 @@ const ROW_BG: Record<string, string> = {
 
 export default function Dream15Page() {
   const [result, setResult] = useState<Dream15Result | null>(null);
+  const [sourceData, setSourceData] = useState<{ players: PlayerRow[]; predictions: PredictionRow[] } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,13 +29,30 @@ export default function Dream15Page() {
       .then(async (response) => {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error ?? "Unable to load player predictions");
-        const optimized = optimizeDream15(data.players as PlayerRow[], data.predictions as PredictionRow[]);
+        const players = data.players as PlayerRow[];
+        const predictions = data.predictions as PredictionRow[];
+        const optimized = optimizeDream15(players, predictions);
         if (!optimized) throw new Error("No valid 15-player squad was found under the FPL constraints.");
+        setSourceData({ players, predictions });
         setResult(optimized);
       })
       .catch((reason: Error) => setError(reason.message))
       .finally(() => setLoading(false));
   }, []);
+
+  const weeklyResults = useMemo(() => {
+    if (!sourceData) return [];
+    const weeks = [...new Set(sourceData.predictions.flatMap((prediction) => prediction.gw_predictions.map((forecast) => forecast.gw)))].sort((a, b) => a - b);
+    return weeks.map((gw) => {
+      const predictions = sourceData.predictions
+        .map((prediction) => {
+          const forecast = prediction.gw_predictions.find((item) => item.gw === gw);
+          return forecast?.pred_points == null ? null : { ...prediction, avg_pred_points: forecast.pred_points };
+        })
+        .filter((prediction): prediction is PredictionRow => prediction !== null);
+      return { gw, result: optimizeDream15(sourceData.players, predictions) };
+    }).filter((entry): entry is { gw: number; result: Dream15Result } => entry.result !== null);
+  }, [sourceData]);
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-10">
@@ -47,12 +65,54 @@ export default function Dream15Page() {
 
       {loading && <p className="text-[var(--muted)]">Finding the best 15...</p>}
       {error && <p className="text-rose-400">{error}</p>}
-      {result && <DreamView result={result} />}
+      {result && weeklyResults.length > 0 && <WeeklyDreams weeks={weeklyResults} />}
+      {result && weeklyResults.length === 0 && <DreamView result={result} />}
 
       <footer className="text-center text-xs text-[var(--muted)] py-6">
         Current predictions · £100.0m budget · 2 GKP, 5 DEF, 5 MID, 3 FWD · max 3 per club
       </footer>
     </main>
+  );
+}
+
+function WeeklyDreams({ weeks }: { weeks: { gw: number; result: Dream15Result }[] }) {
+  return (
+    <section>
+      <div className="flex items-end justify-between gap-4 flex-wrap mb-5">
+        <div>
+          <p className="text-xs uppercase tracking-[0.22em] text-[var(--accent)] font-semibold">Forward plan</p>
+          <h2 className="text-2xl font-extrabold tracking-tight mt-1">Best team, every week</h2>
+          <p className="text-sm text-[var(--muted)] mt-1">Each squad is optimized against that gameweek&apos;s own player forecasts.</p>
+        </div>
+        <span className="badge bg-emerald-500/15 text-emerald-300">{weeks.length} upcoming gameweeks</span>
+      </div>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {weeks.map(({ gw, result }, index) => (
+          <article key={gw} className={`card overflow-hidden ${index === 0 ? "ring-1 ring-[var(--accent)]/60" : ""}`}>
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--border)] px-5 py-4">
+              <div className="flex items-center gap-3">
+                <div className="flex size-11 items-center justify-center rounded-xl bg-[var(--accent)] text-xl font-black text-[#07130d]">{gw}</div>
+                <div>
+                  <h3 className="font-bold">Gameweek {gw}</h3>
+                  <p className="text-xs text-[var(--muted)]">{index === 0 ? "Next up" : "Upcoming pick"} · {result.formation}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-lg font-extrabold text-[var(--accent)]">{result.totalPred.toFixed(2)}</div>
+                <div className="text-[10px] uppercase tracking-wide text-[var(--muted)]">XI prediction</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <DreamPitch result={result} compact />
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted)]">
+                <span>Captain <strong className="text-foreground">{result.captain}</strong> · Vice <strong className="text-foreground">{result.viceCaptain}</strong></span>
+                <span>£{result.spent.toFixed(1)}m · {result.benchPred.toFixed(2)} bench</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -96,10 +156,10 @@ function DreamView({ result }: { result: Dream15Result }) {
   );
 }
 
-function DreamPitch({ result }: { result: Dream15Result }) {
+function DreamPitch({ result, compact = false }: { result: Dream15Result; compact?: boolean }) {
   return (
     <div className="rounded-xl overflow-hidden border border-[var(--border)]" style={{ background: "repeating-linear-gradient(0deg, #0c2a18 0px, #0c2a18 44px, #0e3120 44px, #0e3120 88px)" }}>
-      <div className="px-4 py-3 text-center text-[10px] uppercase tracking-widest text-emerald-200/60">Dream15 · {result.formation}</div>
+      {!compact && <div className="px-4 py-3 text-center text-[10px] uppercase tracking-widest text-emerald-200/60">Dream15 · {result.formation}</div>}
       <div className="flex flex-col gap-2 px-3 pb-3">
         {ROW_ORDER.map((position) => {
           const players = result.xi.filter((player) => player.pos === position);
