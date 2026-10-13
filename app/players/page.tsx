@@ -19,6 +19,50 @@ The existing /api/data response supplies net event transfers without another dat
 
 type SortKey = "web_name" | "total_points" | "form" | "price" | "net_transfers_event" | "avg_pred_points";
 
+type MatchRow = {
+  fixture_id: number;
+  gameweek: number | null;
+  kickoff_time: string | null;
+  opponent_team: number | null;
+  opponent_name: string | null;
+  was_home: boolean;
+  fixture_difficulty: number | null;
+  total_points: number | null;
+  minutes: number | null;
+  goals_scored: number | null;
+  assists: number | null;
+  bonus: number | null;
+  clean_sheets: number | null;
+  prob_win?: number | null;
+};
+
+type PlayerHistory = { last4: MatchRow[]; next4: MatchRow[] };
+
+function formatMatchDate(value: string | null) {
+  if (!value) return "Date TBC";
+  return new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+}
+
+function MatchTable({ rows, upcoming }: { rows: MatchRow[]; upcoming?: boolean }) {
+  if (!rows.length) return <p className="text-sm text-[var(--muted)] py-6 text-center">No {upcoming ? "upcoming" : "historic"} matches found.</p>;
+  return (
+    <div className="overflow-x-auto">
+      <table className="data min-w-[560px]">
+        <thead><tr><th>GW</th><th>Fixture</th><th>Date</th><th>Min</th><th>G</th><th>A</th><th>Pts</th></tr></thead>
+        <tbody>{rows.map((match) => (
+          <tr key={match.fixture_id}>
+            <td className="text-[var(--muted)]">{match.gameweek ?? "—"}</td>
+            <td className="font-semibold">{match.was_home ? "vs" : "@"} {match.opponent_name ?? `Team ${match.opponent_team ?? "—"}`}</td>
+            <td className="text-[var(--muted)]">{formatMatchDate(match.kickoff_time)}</td>
+            <td>{match.minutes ?? "—"}</td><td>{match.goals_scored ?? 0}</td><td>{match.assists ?? 0}</td>
+            <td className={`font-bold ${upcoming ? "text-[var(--accent)]" : ""}`}>{upcoming ? (match.prob_win == null ? "—" : `${Math.round(match.prob_win * 100)}%`) : match.total_points ?? 0}</td>
+          </tr>
+        ))}</tbody>
+      </table>
+    </div>
+  );
+}
+
 const POS_COLORS: Record<string, string> = {
   GKP: "bg-amber-500/20 text-amber-300",
   DEF: "bg-sky-500/20 text-sky-300",
@@ -30,6 +74,51 @@ function PosBadge({ pos }: { pos: string }) {
   return <span className={`badge ${POS_COLORS[pos] ?? "bg-slate-500/20 text-slate-300"}`}>{pos}</span>;
 }
 
+function PlayerHistoryModal({ player, onClose }: { player: PlayerRow; onClose: () => void }) {
+  const [history, setHistory] = useState<PlayerHistory | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/fixtures?playerId=${player.player_id}`)
+      .then(async (response) => {
+        const body = await response.json();
+        if (!response.ok) throw new Error(body.error ?? "Unable to load historic data");
+        return body;
+      })
+      .then((body) => { if (!cancelled) setHistory({ last4: body.last4 ?? [], next4: body.next4 ?? [] }); })
+      .catch((reason: Error) => { if (!cancelled) setLoadError(reason.message); });
+    return () => { cancelled = true; };
+  }, [player.player_id]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="player-history-title" onClick={onClose}>
+      <section className="card w-full max-w-5xl max-h-[90vh] overflow-y-auto p-5 sm:p-6" onClick={(event) => event.stopPropagation()}>
+        <div className="mb-5 flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Player history</p>
+            <h2 id="player-history-title" className="mt-1 text-2xl font-extrabold">{player.web_name}</h2>
+            <p className="mt-1 text-sm text-[var(--muted)]">{player.first_name} {player.second_name} · {player.team_name} · {player.position}</p>
+          </div>
+          <button type="button" onClick={onClose} className="rounded-lg border border-[var(--border)] px-3 py-2 text-sm text-[var(--muted)] hover:text-[var(--text)]" aria-label="Close historic data">Close</button>
+        </div>
+        {loadError && <p className="rounded-lg border border-rose-500/30 bg-rose-500/10 p-3 text-sm text-rose-300">{loadError}</p>}
+        {!history && !loadError && <p className="py-10 text-center text-sm text-[var(--muted)]">Loading historic data…</p>}
+        {history && <div className="grid gap-5 lg:grid-cols-2">
+          <section className="rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-2 flex items-center justify-between"><h3 className="font-bold">Last 4 matches</h3><span className="text-xs text-[var(--muted)]">points scored</span></div><MatchTable rows={history.last4} /></section>
+          <section className="rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-2 flex items-center justify-between"><h3 className="font-bold">Next 4 fixtures</h3><span className="text-xs text-[var(--muted)]">win probability</span></div><MatchTable rows={history.next4} upcoming /></section>
+        </div>}
+      </section>
+    </div>
+  );
+}
+
 export default function PlayersPage() {
   const [players, setPlayers] = useState<PlayerRow[]>([]);
   const [predictions, setPredictions] = useState<PredictionRow[]>([]);
@@ -39,6 +128,7 @@ export default function PlayersPage() {
   const [descending, setDescending] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [historyPlayer, setHistoryPlayer] = useState<PlayerRow | null>(null);
 
   useEffect(() => {
     fetch("/api/data")
@@ -154,7 +244,12 @@ export default function PlayersPage() {
                     <tr key={player.player_id}>
                       <td className="text-[var(--muted)]">{index + 1}</td>
                       <td>
-                        <div className="font-semibold">{player.web_name}</div>
+                        <button
+                          type="button"
+                          onClick={() => setHistoryPlayer(player)}
+                          className="text-left font-semibold hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
+                          aria-label={`View historic data for ${player.web_name}`}
+                        >{player.web_name}</button>
                         <div className="text-xs text-[var(--muted)]">{player.first_name} {player.second_name}</div>
                       </td>
                       <td><PosBadge pos={player.position} /></td>
@@ -187,6 +282,8 @@ export default function PlayersPage() {
           </div>
         </section>
       )}
+
+      {historyPlayer && <PlayerHistoryModal player={historyPlayer} onClose={() => setHistoryPlayer(null)} />}
 
       <footer className="text-center text-xs text-[var(--muted)] py-6">
         Data: official FPL API + fpl schema (players, predictions, teams)
