@@ -63,7 +63,7 @@ export type PredictionRow = {
   price: number;
   team_name: string;
   gw_predictions: GwPrediction[];
-  avg_prob_gt_5: number;
+  avg_prob_gt_5: number | null;
   avg_pred_points: number;
   unofficial_injury_status: string | null;
   unofficial_injury_type: string | null;
@@ -234,7 +234,7 @@ function numOrNull(v: unknown): number | null {
 
 export async function fetchPredictions(): Promise<PredictionRow[]> {
   const { rows } = await getPool().query(
-    "SELECT player_id, player_name, position, price, team_name, gw_predictions, avg_prob_gt_5, avg_pred_points, unofficial_injury_status, unofficial_injury_type FROM fpl.predictions"
+    "SELECT player_id, player_name, position, price, team_name, gw_predictions, avg_pred_points, unofficial_injury_status, unofficial_injury_type FROM fpl.predictions"
   );
   return rows.map((r) => ({
     player_id: Number(r.player_id),
@@ -249,7 +249,7 @@ export async function fetchPredictions(): Promise<PredictionRow[]> {
         pred_points: typeof forecast.pred_points === "number" && Number.isFinite(forecast.pred_points) ? forecast.pred_points : null,
       })
     ),
-    avg_prob_gt_5: Number(r.avg_prob_gt_5),
+    avg_prob_gt_5: r.avg_prob_gt_5 == null ? null : Number(r.avg_prob_gt_5),
     avg_pred_points: Number(r.avg_pred_points),
     unofficial_injury_status: r.unofficial_injury_status == null ? null : String(r.unofficial_injury_status),
     unofficial_injury_type: r.unofficial_injury_type == null ? null : String(r.unofficial_injury_type),
