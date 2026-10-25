@@ -20,8 +20,8 @@ export default function SiteHeader() {
         <Link href="/fixtures" title="Fixtures" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           Fixtures
         </Link>
-        <Link href="/dream15" title="Dream15" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
-          Dream15
+        <Link href="/dream15" title="Best 11" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
+          Best 11
         </Link>
         <Link href="/about" title="About" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           About

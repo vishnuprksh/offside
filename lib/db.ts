@@ -232,6 +232,11 @@ function numOrNull(v: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+export async function fetchBestEleven(): Promise<Record<string, unknown>[]> {
+  const { rows } = await getPool().query("SELECT * FROM fpl.best_eleven");
+  return rows as Record<string, unknown>[];
+}
+
 export async function fetchPredictions(): Promise<PredictionRow[]> {
   const { rows } = await getPool().query(
     "SELECT player_id, player_name, position, price, team_name, gw_predictions, avg_pred_points, unofficial_injury_status, unofficial_injury_type FROM fpl.predictions"

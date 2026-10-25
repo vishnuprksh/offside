@@ -1,200 +1,82 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { PlayerRow, PredictionRow } from "@/lib/db";
-import { optimizeDream15, type Dream15Result, type SquadPlayer } from "@/lib/suggestions";
 
-const POS_COLORS: Record<string, string> = {
-  GKP: "bg-amber-500/20 text-amber-300",
-  DEF: "bg-sky-500/20 text-sky-300",
-  MID: "bg-emerald-500/20 text-emerald-300",
-  FWD: "bg-rose-500/20 text-rose-300",
-};
-const ROW_ORDER = ["GKP", "DEF", "MID", "FWD"];
-const ROW_BG: Record<string, string> = {
-  GKP: "bg-[#0a1f14]/70 border-emerald-900/40",
-  DEF: "bg-[#0a1524]/70 border-sky-900/40",
-  MID: "bg-[#0a1f14]/70 border-emerald-900/40",
-  FWD: "bg-[#1f0a14]/70 border-rose-900/40",
-};
+type BestElevenRow = Record<string, unknown>;
 
-export default function Dream15Page() {
-  const [result, setResult] = useState<Dream15Result | null>(null);
-  const [sourceData, setSourceData] = useState<{ players: PlayerRow[]; predictions: PredictionRow[] } | null>(null);
+const PRIORITY_FIELDS = ["player_name", "web_name", "name", "position", "club", "team_name", "prediction", "pred_points", "points", "price", "cost", "gameweek", "gw"];
+const HIDDEN_FIELDS = new Set(["id", "created_at", "updated_at"]);
+
+function labelFor(key: string) {
+  return key.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function displayValue(value: unknown) {
+  if (value === null || value === undefined || value === "") return "—";
+  if (typeof value === "object") return JSON.stringify(value);
+  return String(value);
+}
+
+export default function BestElevenPage() {
+  const [rows, setRows] = useState<BestElevenRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/data")
+    fetch("/api/best-eleven")
       .then(async (response) => {
         const data = await response.json();
-        if (!response.ok) throw new Error(data.error ?? "Unable to load player predictions");
-        const players = data.players as PlayerRow[];
-        const predictions = data.predictions as PredictionRow[];
-        const optimized = optimizeDream15(players, predictions);
-        if (!optimized) throw new Error("No valid 15-player squad was found under the FPL constraints.");
-        setSourceData({ players, predictions });
-        setResult(optimized);
+        if (!response.ok) throw new Error(data.error ?? "Unable to load Best 11");
+        setRows(data.rows ?? []);
       })
       .catch((reason: Error) => setError(reason.message))
       .finally(() => setLoading(false));
   }, []);
 
-  const weeklyResults = useMemo(() => {
-    if (!sourceData) return [];
-    const weeks = [...new Set(sourceData.predictions.flatMap((prediction) => prediction.gw_predictions.map((forecast) => forecast.gw)))].sort((a, b) => a - b);
-    return weeks.map((gw) => {
-      const predictions = sourceData.predictions
-        .map((prediction) => {
-          const forecast = prediction.gw_predictions.find((item) => item.gw === gw);
-          return forecast?.pred_points == null ? null : { ...prediction, avg_pred_points: forecast.pred_points };
-        })
-        .filter((prediction): prediction is PredictionRow => prediction !== null);
-      return { gw, result: optimizeDream15(sourceData.players, predictions) };
-    }).filter((entry): entry is { gw: number; result: Dream15Result } => entry.result !== null);
-  }, [sourceData]);
+  const fields = useMemo(() => {
+    const available = [...new Set(rows.flatMap((row) => Object.keys(row)))].filter((field) => !HIDDEN_FIELDS.has(field));
+    return [...PRIORITY_FIELDS.filter((field) => available.includes(field)), ...available.filter((field) => !PRIORITY_FIELDS.includes(field))];
+  }, [rows]);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-10">
-      <header className="mb-8">
-        <h1 className="text-3xl font-extrabold tracking-tight">
-          Dream <span className="text-[var(--accent)]">15</span>
-        </h1>
-        <p className="text-[var(--muted)] mt-1">The strongest predicted squad from the current player pool</p>
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
+      <header className="relative mb-8 overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[#172b22] via-[#10233a] to-[#0b1425] p-6 shadow-2xl sm:p-10">
+        <div className="absolute -right-12 -top-20 size-56 rounded-full bg-[var(--accent)]/10 blur-3xl" />
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[var(--accent)]">Offside picks</p>
+        <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-4xl font-black tracking-tight sm:text-6xl">Best <span className="text-[var(--accent)]">11</span></h1>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--muted)] sm:text-base">The strongest predicted starting XI, pulled directly from the latest model output.</p>
+          </div>
+          <div className="flex gap-2 text-center">
+            <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3"><div className="text-2xl font-black text-[var(--accent)]">{rows.length}</div><div className="text-[10px] uppercase tracking-wider text-[var(--muted)]">Players</div></div>
+            <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3"><div className="text-2xl font-black text-[var(--accent2)]">{fields.length}</div><div className="text-[10px] uppercase tracking-wider text-[var(--muted)]">Details</div></div>
+          </div>
+        </div>
       </header>
 
-      {loading && <p className="text-[var(--muted)]">Finding the best 15...</p>}
-      {error && <p className="text-rose-400">{error}</p>}
-      {result && weeklyResults.length > 0 && <WeeklyDreams weeks={weeklyResults} />}
-      {result && weeklyResults.length === 0 && <DreamView result={result} />}
+      {loading && <div className="card p-8 text-center text-[var(--muted)]">Loading the latest Best 11…</div>}
+      {error && <div className="rounded-2xl border border-rose-400/30 bg-rose-500/10 p-5 text-rose-300">{error}</div>}
+      {!loading && !error && rows.length === 0 && <div className="card p-8 text-center text-[var(--muted)]">No Best 11 data is available yet.</div>}
 
-      <footer className="text-center text-xs text-[var(--muted)] py-6">
-        Current predictions · £100.0m budget · 2 GKP, 5 DEF, 5 MID, 3 FWD · max 3 per club
-      </footer>
+      {!loading && !error && rows.length > 0 && (
+        <section aria-label="Best 11 player details" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {rows.map((row, index) => {
+            const titleField = PRIORITY_FIELDS.find((field) => row[field] != null) ?? fields[0];
+            const title = displayValue(row[titleField]);
+            const detailFields = fields.filter((field) => field !== titleField);
+            return <article key={`${title}-${index}`} className="card overflow-hidden p-5 transition hover:-translate-y-1 hover:border-[var(--accent)]/60">
+              <div className="mb-4 flex items-start justify-between gap-3 border-b border-[var(--border)] pb-4">
+                <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Pick {index + 1}</p><h2 className="mt-1 text-xl font-extrabold">{title}</h2></div>
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--accent)]/15 text-sm font-black text-[var(--accent)]">{index + 1}</span>
+              </div>
+              <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
+                {detailFields.map((field) => <div key={field} className="min-w-0"><dt className="truncate text-[10px] font-semibold uppercase tracking-wide text-[var(--muted)]">{labelFor(field)}</dt><dd className="mt-0.5 truncate text-sm font-semibold">{displayValue(row[field])}</dd></div>)}
+              </dl>
+            </article>;
+          })}
+        </section>
+      )}
     </main>
   );
-}
-
-function WeeklyDreams({ weeks }: { weeks: { gw: number; result: Dream15Result }[] }) {
-  return (
-    <section>
-      <div className="flex items-end justify-between gap-4 flex-wrap mb-5">
-        <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--accent)] font-semibold">Forward plan</p>
-          <h2 className="text-2xl font-extrabold tracking-tight mt-1">Best team, every week</h2>
-          <p className="text-sm text-[var(--muted)] mt-1">Each squad is optimized against that gameweek&apos;s own player forecasts.</p>
-        </div>
-        <span className="badge bg-emerald-500/15 text-emerald-300">{weeks.length} upcoming gameweeks</span>
-      </div>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {weeks.map(({ gw, result }, index) => (
-          <article key={gw} className={`card overflow-hidden ${index === 0 ? "ring-1 ring-[var(--accent)]/60" : ""}`}>
-            <div className="flex items-center justify-between gap-3 border-b border-[var(--border)] px-5 py-4">
-              <div className="flex items-center gap-3">
-                <div className="flex size-11 items-center justify-center rounded-xl bg-[var(--accent)] text-xl font-black text-[#07130d]">{gw}</div>
-                <div>
-                  <h3 className="font-bold">Gameweek {gw}</h3>
-                  <p className="text-xs text-[var(--muted)]">{index === 0 ? "Next up" : "Upcoming pick"} · {result.formation}</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-extrabold text-[var(--accent)]">{result.totalPred.toFixed(2)}</div>
-                <div className="text-[10px] uppercase tracking-wide text-[var(--muted)]">XI prediction</div>
-              </div>
-            </div>
-            <div className="p-4">
-              <DreamPitch result={result} compact />
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted)]">
-                <span>Captain <strong className="text-foreground">{result.captain}</strong> · Vice <strong className="text-foreground">{result.viceCaptain}</strong></span>
-                <span>£{result.spent.toFixed(1)}m · {result.benchPred.toFixed(2)} bench</span>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function DreamView({ result }: { result: Dream15Result }) {
-  return (
-    <>
-      <section className="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
-        <Stat label="Starting XI" value={result.totalPred.toFixed(3)} accent />
-        <Stat label="Bench" value={result.benchPred.toFixed(3)} />
-        <Stat label="Squad total" value={result.squadPred.toFixed(3)} />
-        <Stat label="Squad cost" value={`£${result.spent.toFixed(1)}m`} />
-        <Stat label="Budget left" value={`£${result.remainingBudget.toFixed(1)}m`} />
-      </section>
-
-      <section className="card p-5 mb-8">
-        <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
-          <div>
-            <h2 className="text-lg font-bold">Best starting XI</h2>
-            <p className="text-xs text-[var(--muted)] mt-1">
-              Optimized for the highest starting XI prediction first · Formation <strong>{result.formation}</strong> · C: <strong>{result.captain}</strong> · VC: <strong>{result.viceCaptain}</strong>
-            </p>
-          </div>
-          <span className="badge bg-emerald-500/15 text-emerald-300">11 starters</span>
-        </div>
-        <DreamPitch result={result} />
-      </section>
-
-      <section className="card p-5">
-        <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
-          <div>
-            <h2 className="text-lg font-bold">Next four on the bench</h2>
-            <p className="text-xs text-[var(--muted)] mt-1">The bench is selected after the best XI, then ranked by prediction.</p>
-          </div>
-          <span className="badge bg-sky-500/15 text-sky-300">4 bench players · {result.benchPred.toFixed(3)} predicted</span>
-        </div>
-        <div className="flex justify-center gap-2 flex-wrap rounded-xl border border-[var(--border)] bg-black/30 px-3 py-4">
-          {result.bench.map((player) => <DreamPlayerCard key={player.name} player={player} onBench />)}
-        </div>
-      </section>
-    </>
-  );
-}
-
-function DreamPitch({ result, compact = false }: { result: Dream15Result; compact?: boolean }) {
-  return (
-    <div className="rounded-xl overflow-hidden border border-[var(--border)]" style={{ background: "repeating-linear-gradient(0deg, #0c2a18 0px, #0c2a18 44px, #0e3120 44px, #0e3120 88px)" }}>
-      {!compact && <div className="px-4 py-3 text-center text-[10px] uppercase tracking-widest text-emerald-200/60">Dream15 · {result.formation}</div>}
-      <div className="flex flex-col gap-2 px-3 pb-3">
-        {ROW_ORDER.map((position) => {
-          const players = result.xi.filter((player) => player.pos === position);
-          return (
-            <div key={position} className={`rounded-lg border ${ROW_BG[position]} px-2 py-3`}>
-              <div className="flex justify-center gap-2 flex-wrap">
-                {players.map((player) => (
-                  <DreamPlayerCard key={player.name} player={player} isCaptain={player.name === result.captain} isVice={player.name === result.viceCaptain} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function DreamPlayerCard({ player, onBench, isCaptain, isVice }: { player: SquadPlayer; onBench?: boolean; isCaptain?: boolean; isVice?: boolean }) {
-  return (
-    <div className={`relative flex flex-col items-center w-[110px] rounded-lg p-2 ${onBench ? "bg-black/40 ring-1 ring-white/10" : "bg-emerald-500/20 ring-2 ring-emerald-400"}`}>
-      {isCaptain && <span className="absolute -top-2 -left-1 z-10 w-5 h-5 rounded-full bg-amber-400 text-[#04140b] text-[10px] font-extrabold flex items-center justify-center shadow">C</span>}
-      {isVice && <span className="absolute -top-2 -left-1 z-10 w-5 h-5 rounded-full bg-slate-300 text-[#04140b] text-[10px] font-extrabold flex items-center justify-center shadow">V</span>}
-      <div className="w-14 h-[58px] flex items-center justify-center text-2xl">👕</div>
-      <div className="text-[11px] font-bold leading-tight text-center truncate w-full">{player.name}</div>
-      <div className="text-[9px] text-[var(--muted)] text-center truncate w-full">{player.club}</div>
-      <div className="flex items-center gap-1 mt-0.5">
-        <span className={`badge ${POS_COLORS[player.pos]} !text-[8px] !px-1 !py-0`}>{player.pos}</span>
-        <span className="text-[9px] font-semibold">£{player.nowPrice.toFixed(1)}m</span>
-      </div>
-      <div className="text-[9px] text-[var(--muted)]">Prediction <span className="text-[var(--accent)]">{player.pred?.toFixed(3) ?? "N/A"}</span>{onBench && <span className="ml-1">🪑</span>}</div>
-    </div>
-  );
-}
-
-function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
-  return <div className="bg-[#0d1526] border border-[var(--border)] rounded-lg px-3 py-2"><div className="text-[10px] uppercase tracking-wide text-[var(--muted)]">{label}</div><div className={`font-bold ${accent ? "text-[var(--accent)] text-lg" : ""}`}>{value}</div></div>;
 }
