@@ -9,9 +9,10 @@ Explain how to connect to the Vercel-hosted MCP endpoint and the optional local 
 | 2 | 2026-10-31 | Reframed the guide around the intended Vercel-hosted deployment while distinguishing the working local transport from the endpoint still to be implemented. | Avoid giving users a nonfunctional hosted URL or asking them to place database credentials in their client. | Vercel hosting plan |
 | 3 | 2026-10-31 | Added hosted Streamable HTTP endpoint setup and bearer-token guidance. | Provide an actionable ChatGPT connection path while retaining server-side database credentials. | Vercel MCP endpoint |
 | 4 | 2026-10-31 | Clarified ChatGPT custom MCP availability and read-only tool permissions. | Set expectations for account/workspace access and the capabilities exposed by this server. | OpenAI Help Center |
+| 5 | 2026-10-31 | Updated hosted setup for public, unauthenticated MCP access. | Remove obsolete token setup instructions and warn that anyone with the URL can invoke tools. | User request |
 
 ## Results/Takeaways
-The hosted endpoint is `/api/mcp`; it requires a Bearer token configured as `MCP_AUTH_TOKEN` in Vercel. The database URL remains server-side.
+The hosted endpoint is public at `/api/mcp` and requires no token. The database URL remains server-side.
 */
 
 const tools = [
@@ -52,18 +53,17 @@ export default function McpPage() {
         <div>
           <h2 className="text-2xl font-bold">Connect ChatGPT</h2>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-            After deploying this branch to Vercel and setting the required environment variables, add <code className="text-[var(--text)]">https://YOUR-DOMAIN/api/mcp</code> as a custom MCP server in ChatGPT. Replace <code className="text-[var(--text)]">YOUR-DOMAIN</code> with the production domain assigned to this Offside deployment. A hosted connection does not require cloning this repository or running a local process. Custom MCP availability depends on your ChatGPT plan and workspace permissions; check OpenAI&apos;s current help guidance or ask your workspace admin if you do not see the option.
+            After deploying this branch to Vercel and setting DATABASE_URL if you want database-backed tools, add <code className="text-[var(--text)]">https://YOUR-DOMAIN/api/mcp</code> as a custom MCP server in ChatGPT. Replace <code className="text-[var(--text)]">YOUR-DOMAIN</code> with the production domain assigned to this Offside deployment. A hosted connection does not require cloning this repository or running a local process. Custom MCP availability depends on your ChatGPT plan and workspace permissions; check OpenAI&apos;s current help guidance or ask your workspace admin if you do not see the option.
           </p>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-            Set <code className="text-[var(--text)]">MCP_AUTH_TOKEN</code> and <code className="text-[var(--text)]">DATABASE_URL</code> in Vercel Project Settings → Environment Variables, then redeploy. In ChatGPT&apos;s authentication settings, configure a Bearer token whose value matches <code className="text-[var(--text)]">MCP_AUTH_TOKEN</code>. Never put <code className="text-[var(--text)]">DATABASE_URL</code> in ChatGPT.
+            Set <code className="text-[var(--text)]">DATABASE_URL</code> in Vercel Project Settings → Environment Variables if you want database-backed tools, then redeploy. No MCP token or client authentication is required. Never put <code className="text-[var(--text)]">DATABASE_URL</code> in ChatGPT; it stays in Vercel.
           </p>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-            Generate a strong token locally, for example with <code className="text-[var(--text)]">openssl rand -hex 32</code>. Add the result as a Vercel secret; do not paste it into source code or terminal commands that are saved in shell history.
           </p>
           <ol className="mt-5 list-inside list-decimal space-y-2 text-sm leading-6 text-[var(--muted)]">
-            <li>Deploy the branch to a Vercel Preview or Production environment after setting both environment variables for that environment.</li>
+            <li>Deploy the branch to a Vercel Preview or Production environment. Configure <code className="text-[var(--text)]">DATABASE_URL</code> in Vercel if you want database-backed tools.</li>
             <li>In ChatGPT on the web, go to Plugins → Add custom MCP server (if this option is available for your plan and workspace).</li>
-            <li>Enter a name such as Offside, the HTTPS endpoint above, and configure the matching Bearer token.</li>
+            <li>Enter a name such as Offside and the HTTPS endpoint above. No authentication is required.</li>
             <li>Review the connection warning, create the plugin, and inspect the available read-only tools.</li>
             <li>Start a new chat, select Offside, and try: <span className="text-[var(--text)]">&quot;Look up FPL manager team 123456 and summarize their current team.&quot;</span></li>
           </ol>
@@ -89,10 +89,10 @@ export default function McpPage() {
         <aside className="self-start border-l-2 border-[var(--accent2)] pl-5">
           <h2 className="text-lg font-bold">Server configuration</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-            The endpoint is stateless Streamable HTTP at <code className="text-[var(--text)]">/api/mcp</code>. Every request must include <code className="text-[var(--text)]">Authorization: Bearer YOUR_MCP_AUTH_TOKEN</code>. Requests return 503 until <code className="text-[var(--text)]">MCP_AUTH_TOKEN</code> is configured.
+            The endpoint is public, unauthenticated, and uses stateless Streamable HTTP at <code className="text-[var(--text)]">/api/mcp</code>. Anyone who knows the URL can call its tools.
           </p>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-            Keep the token private and rotate it if exposed. Team IDs are supplied by the client; only use IDs whose information you are authorized to access. Set both secrets for the Vercel environments where you intend to test (Preview and/or Production).
+            Because there is no authentication, anyone who discovers the endpoint can invoke its read-only tools and trigger upstream FPL/database requests. Keep <code className="text-[var(--text)]">DATABASE_URL</code> configured only as a Vercel secret. Team IDs are supplied by the client; only use IDs whose information you are authorized to access.
           </p>
         </aside>
       </section>
@@ -100,7 +100,7 @@ export default function McpPage() {
       <section className="border-b border-[var(--border)] py-8">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-2xl font-bold">Available tools</h2>
-          <p className="text-sm text-[var(--muted)]">Read-only · bearer authenticated</p>
+          <p className="text-sm text-[var(--muted)]">Read-only · public endpoint</p>
         </div>
         <dl className="mt-5 divide-y divide-[var(--border)]">
           {tools.map((tool) => (
