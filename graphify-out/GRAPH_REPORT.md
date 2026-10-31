@@ -7,9 +7,10 @@ Track the repository architecture and its important implementation flows.
 | # | date | details | reasoning | reference |
 |---|---|---|---|---|
 | 1 | 2026-10-31 | Recorded the local MCP stdio server and its calls into `lib/fpl.ts` and `lib/db.ts`. | The MCP exposes existing capabilities without duplicating FPL or database logic; Graphify CLI was unavailable to regenerate extracted graph data. | MCP MVP |
+| 2 | 2026-10-31 | Recorded shared MCP tool registration and the authenticated stateless HTTP route at `app/api/mcp/route.ts`. | Both local and Vercel transports reuse `mcp/tools.ts`; Vercel requests are Bearer-authenticated and sessionless. | Hosted MCP endpoint |
 
 ## Results/Takeaways
-`mcp/server.ts` registers read-only manager, team-picks, player-market, and player-fixture tools. `get_manager` and `get_team_picks` reuse `lib/fpl.ts`; market and fixture tools reuse `lib/db.ts`. The generated node/edge counts below still describe the 2026-10-09 graph and need regeneration with Graphify.
+`mcp/tools.ts` registers read-only manager, team-picks, player-market, and player-fixture tools. `mcp/server.ts` exposes them over local stdio, while `app/api/mcp/route.ts` exposes stateless Streamable HTTP guarded by `MCP_AUTH_TOKEN`. `get_manager` and `get_team_picks` reuse `lib/fpl.ts`; market and fixture tools reuse `lib/db.ts`. The generated node/edge counts below still describe the 2026-10-09 graph and need regeneration with Graphify.
 
 ## Corpus Check
 - 30 files · ~15,875 words
