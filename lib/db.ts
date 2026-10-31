@@ -69,6 +69,15 @@ export type PredictionRow = {
   unofficial_injury_type: string | null;
 };
 
+export type ResidualRow = {
+  player_id: number;
+  player_name: string;
+  gameweek: number;
+  actual_points: number;
+  predicted_points: number;
+  residual: number;
+};
+
 export type FixtureDifficultyRow = {
   fixture_id: number;
   event: number | null;
@@ -235,6 +244,59 @@ function numOrNull(v: unknown): number | null {
 export async function fetchBestEleven(): Promise<Record<string, unknown>[]> {
   const { rows } = await getPool().query("SELECT * FROM fpl.best_eleven");
   return rows as Record<string, unknown>[];
+}
+
+export async function fetchResiduals(): Promise<ResidualRow[]> {
+  const [historyResult, predictions, selectionRows] = await Promise.all([
+    getPool().query(`
+      SELECT player_id, gameweek, total_points
+      FROM fpl.player_history
+      WHERE season = (SELECT max(season) FROM fpl.player_history)
+        AND gameweek IS NOT NULL
+        AND total_points IS NOT NULL
+    `),
+    fetchPredictions(),
+    fetchBestEleven(),
+  ]);
+  const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
+  const rows: ResidualRow[] = [];
+  for (const history of historyResult.rows) {
+    const playerId = Number(history.player_id);
+    const gameweek = Number(history.gameweek);
+    const actualPoints = Number(history.total_points);
+    const forecast = predictionById.get(playerId)?.gw_predictions.find((item) => item.gw === gameweek);
+    const predictedPoints = forecast?.pred_points == null ? null : Number(forecast.pred_points);
+    if (!Number.isFinite(playerId) || !Number.isFinite(gameweek) || !Number.isFinite(actualPoints) || predictedPoints == null || !Number.isFinite(predictedPoints)) continue;
+    rows.push({
+      player_id: playerId,
+      player_name: predictionById.get(playerId)?.player_name ?? `Player ${playerId}`,
+      gameweek,
+      actual_points: actualPoints,
+      predicted_points: predictedPoints,
+      residual: actualPoints - predictedPoints,
+    });
+  }
+  if (rows.length) return rows;
+
+  for (const selection of selectionRows) {
+    const gameweek = Number(selection.gameweek);
+    const squad = typeof selection.squad === "string" ? JSON.parse(selection.squad) : selection.squad;
+    if (!Array.isArray(squad) || !Number.isFinite(gameweek)) continue;
+    for (const player of squad) {
+      const actualPoints = Number(player.actual_points);
+      const predictedPoints = Number(player.pred_points);
+      if (!Number.isFinite(player.player_id) || !Number.isFinite(actualPoints) || !Number.isFinite(predictedPoints)) continue;
+      rows.push({
+        player_id: Number(player.player_id),
+        player_name: String(player.player_name ?? `Player ${player.player_id}`),
+        gameweek,
+        actual_points: actualPoints,
+        predicted_points: predictedPoints,
+        residual: actualPoints - predictedPoints,
+      });
+    }
+  }
+  return rows;
 }
 
 export async function fetchPredictions(): Promise<PredictionRow[]> {
