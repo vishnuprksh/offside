@@ -2,6 +2,19 @@
 
 import Link from "next/link";
 
+/*
+## Objective
+Provide consistent primary navigation to the Offside feature and help pages.
+
+## Changelog
+| # | date | details | reasoning | reference |
+|---|---|---|---|---|
+| 1 | 2026-10-31 | Added navigation to the MCP usage guide. | Make setup guidance discoverable from every page. | MCP guide |
+
+## Results/Takeaways
+The MCP guide is available from the main site navigation at `/mcp`.
+*/
+
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[#08111f]/85 px-4 backdrop-blur-xl">
@@ -25,6 +38,9 @@ export default function SiteHeader() {
         </Link>
         <Link href="/about" title="About" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
           About
+        </Link>
+        <Link href="/mcp" title="MCP guide" className="rounded-md px-3 py-1.5 text-sm hover:bg-white/5 hover:text-[var(--accent)]">
+          MCP
         </Link>
         </nav>
       </div>
