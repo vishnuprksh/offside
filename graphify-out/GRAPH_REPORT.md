@@ -1,5 +1,16 @@
 # Graph Report - offside  (2026-10-09)
 
+## Objective
+Track the repository architecture and its important implementation flows.
+
+## Changelog
+| # | date | details | reasoning | reference |
+|---|---|---|---|---|
+| 1 | 2026-10-31 | Recorded the local MCP stdio server and its calls into `lib/fpl.ts` and `lib/db.ts`. | The MCP exposes existing capabilities without duplicating FPL or database logic; Graphify CLI was unavailable to regenerate extracted graph data. | MCP MVP |
+
+## Results/Takeaways
+`mcp/server.ts` registers read-only manager, team-picks, player-market, and player-fixture tools. `get_manager` and `get_team_picks` reuse `lib/fpl.ts`; market and fixture tools reuse `lib/db.ts`. The generated node/edge counts below still describe the 2026-10-09 graph and need regeneration with Graphify.
+
 ## Corpus Check
 - 30 files · ~15,875 words
 - Verdict: corpus is large enough that graph structure adds value.
