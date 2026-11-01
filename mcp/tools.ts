@@ -25,6 +25,7 @@ export function createOffsideMcpServer() {
     {
       title: "Get FPL manager",
       description: "Fetch public Fantasy Premier League manager and team summary by team ID.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: { teamId: positiveId },
     },
     async ({ teamId }) => {
@@ -38,6 +39,7 @@ export function createOffsideMcpServer() {
     {
       title: "Get team picks",
       description: "Fetch a manager's squad, captaincy, and transfers for a gameweek. Defaults to the current gameweek.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: { teamId: positiveId, gameweek: positiveId.optional() },
     },
     async ({ teamId, gameweek }) => {
@@ -64,6 +66,7 @@ export function createOffsideMcpServer() {
     {
       title: "Search player market",
       description: "Search available players by name and optional position, returning current stats and model predictions.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: {
         query: z.string().trim().max(100).optional(),
         position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional(),
@@ -89,6 +92,7 @@ export function createOffsideMcpServer() {
     {
       title: "Get player fixtures",
       description: "Fetch the last four played matches and next four scheduled fixtures for an FPL player.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: { playerId: positiveId },
     },
     async ({ playerId }) => {
