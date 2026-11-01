@@ -11,6 +11,13 @@ export default function AboutPage() {
           offside brings your Fantasy Premier League squad, gameweek performance,
           player data and transfer suggestions together in one focused workspace.
         </p>
+        <div className="mt-6 border-t border-[var(--border)] pt-5 text-sm">
+          <h2 className="font-bold">Publisher</h2>
+          <p className="mt-1 text-[var(--muted)]">Offside is published by Vishnu Prakash.</p>
+          <p className="mt-1 text-[var(--muted)]">
+            Contact: <a href="mailto:vishnucheppanam@gmail.com" className="text-[var(--accent)] hover:underline">vishnucheppanam@gmail.com</a>
+          </p>
+        </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-3 text-sm">
           <div>
             <h2 className="font-bold">Squad overview</h2>

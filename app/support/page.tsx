@@ -38,7 +38,7 @@ export default function SupportPage() {
       <aside className="card mt-4 p-6 md:p-8">
         <h2 className="text-xl font-bold">Need more help?</h2>
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-          This site does not currently publish a dedicated support email or contact form. For site issues, include the page you were using, what you expected to happen, and any error message when contacting the project maintainer through the channel where you found Offside.
+          Contact publisher Vishnu Prakash directly at <a href="mailto:vishnucheppanam@gmail.com" className="text-[var(--accent)] hover:underline">vishnucheppanam@gmail.com</a>. Include the page you were using, what you expected to happen, and any error message. Please do not email passwords or other sensitive information.
         </p>
         <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
           You can also review the <Link href="/mcp" className="text-[var(--accent)] hover:underline">MCP setup guide</Link>, <Link href="/privacy" className="text-[var(--accent)] hover:underline">Privacy Policy</Link>, and <Link href="/terms" className="text-[var(--accent)] hover:underline">Terms</Link>.

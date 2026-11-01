@@ -7,9 +7,10 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "Information processed",
+    title: "Publisher and information processed",
     paragraphs: [
-      "Offside does not ask you to create an account. When you enter an FPL team ID or player ID, the app uses that identifier to request the related public Fantasy Premier League information or player data you selected.",
+      "Offside is published by Vishnu Prakash. For privacy questions, contact vishnucheppanam@gmail.com.",
+      "Offside has no accounts or authentication. When you enter an FPL team ID or select a player, the app uses the ID you provide only to fetch the data needed to deliver the requested service, such as public manager, team-picks, player, or fixture information. The ID is sent to Offside’s API routes and, as needed, used for requests to the public Fantasy Premier League API or Offside’s player database.",
       "The website makes requests to its own API routes. Depending on the feature, those routes retrieve data from the public Fantasy Premier League API and/or the Offside PostgreSQL database, which contains player and prediction data. The MCP tools provide similar read-only lookups.",
     ],
   },
@@ -21,10 +22,11 @@ const sections = [
     ],
   },
   {
-    title: "Storage, cookies, and analytics",
+    title: "Retention, deletion, and browser storage",
     paragraphs: [
-      "Offside has no account system. The app may keep recently used team IDs in your browser’s local storage to provide a convenience feature; this information remains in that browser unless you clear its site data. The site does not intentionally use that feature to identify you.",
-      "This policy does not make claims about infrastructure or hosting-provider logs, which may be governed by the relevant providers’ own policies. No separate analytics or advertising service is described by this application.",
+      "Offside does not retain personal data or the team/player IDs you submit in an Offside user account or application database. IDs are used to fetch the requested service data and are not used to build user profiles. The service has no account-based data to delete; you can stop using the service at any time.",
+      "For convenience, the Manager page stores up to five recently used team IDs in your browser’s local storage. This browser-local data is not stored in Offside’s application database. Delete it by clearing this site’s local storage/site data in your browser. In-memory page data is cleared when you leave or reload the page.",
+      "Requests necessarily pass through the website’s hosting and network infrastructure. This application does not control or specify the retention period for infrastructure/security logs; consult the hosting provider’s policies for those logs. The app has no account system, and no separate analytics or advertising service is configured in the application.",
     ],
   },
   {
@@ -36,7 +38,7 @@ const sections = [
   {
     title: "Changes and questions",
     paragraphs: [
-      "This draft may be updated as the service changes. Offside does not currently publish a dedicated privacy contact address; see the Support page for the available support guidance.",
+      "This policy applies to the Offside website and its FPL and MCP features and may be updated when those services or their data practices change. For questions or privacy requests, contact Vishnu Prakash at vishnucheppanam@gmail.com.",
     ],
   },
 ];
@@ -45,10 +47,10 @@ export default function PrivacyPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 md:py-14">
       <header className="max-w-3xl border-b border-[var(--border)] pb-8">
-        <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">Privacy · Informational draft</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">Privacy</p>
         <h1 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">Privacy Policy</h1>
         <p className="mt-4 text-lg leading-7 text-[var(--muted)]">
-          This page describes the application’s apparent data flows. It is not legal advice or a substitute for a policy reviewed for your organization and deployment.
+          This policy explains how Offside handles information when you use the website, FPL tools, or MCP endpoint.
         </p>
         <p className="mt-3 text-sm text-[var(--muted)]">Last updated: November 1, 2026</p>
       </header>

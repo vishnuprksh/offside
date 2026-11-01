@@ -33,9 +33,9 @@ const sections = [
     ],
   },
   {
-    title: "Informational draft",
+    title: "Publisher and contact",
     paragraphs: [
-      "This page is a practical starting point, not a legal agreement reviewed for a specific operator or jurisdiction. No governing law, warranty disclaimer, or liability allocation is asserted here. The site does not currently publish a dedicated terms contact; see the Support page for available guidance.",
+      "Offside is published by Vishnu Prakash. Questions about these Terms or the service can be sent to vishnucheppanam@gmail.com.",
     ],
   },
 ];
@@ -44,10 +44,10 @@ export default function TermsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 md:py-14">
       <header className="max-w-3xl border-b border-[var(--border)] pb-8">
-        <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">Terms · Informational draft</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">Terms of service</p>
         <h1 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">Terms of Use</h1>
         <p className="mt-4 text-lg leading-7 text-[var(--muted)]">
-          A plain-language overview of the expectations for using Offside. This draft is not legal advice or a reviewed legal agreement.
+          These Terms apply when you access or use the Offside website, FPL tools, or MCP endpoint. By using the service, you agree to follow them.
         </p>
         <p className="mt-3 text-sm text-[var(--muted)]">Last updated: November 1, 2026</p>
       </header>
