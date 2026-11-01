@@ -32,6 +32,21 @@ const tools = [
     source: "Offside PostgreSQL database",
   },
   {
+    name: "get_haul_candidates",
+    detail: "Rank players by average or gameweek predicted points, with optional position, price, and probability filters. The probability threshold refers to scoring more than 5 points.",
+    source: "Offside PostgreSQL database",
+  },
+  {
+    name: "get_player_profile",
+    detail: "Look up a player by FPL player ID or name, including current stats, availability/news, and model predictions.",
+    source: "Offside PostgreSQL database",
+  },
+  {
+    name: "compare_players",
+    detail: "Compare two to five players by ID across current stats and model predictions.",
+    source: "Offside PostgreSQL database",
+  },
+  {
     name: "get_player_fixtures",
     detail: "Review the last four played matches and next four scheduled fixtures for a player ID.",
     source: "Offside PostgreSQL database",

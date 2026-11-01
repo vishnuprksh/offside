@@ -22,6 +22,9 @@ Offside provides a read-only MCP server over stdio. It reuses the existing FPL A
 - `get_manager`: public manager details for a team ID.
 - `get_team_picks`: squad and transfers for a gameweek (current gameweek by default).
 - `search_player_market`: filter available players by name or position, including model predictions.
+- `get_haul_candidates`: rank players by gameweek or average predicted points, with optional position, price, and `prob_gt_5` filters.
+- `get_player_profile`: look up a player by ID or name with current stats and model predictions.
+- `compare_players`: compare two to five players by ID using current stats and model predictions.
 - `get_player_fixtures`: the last four played and next four scheduled matches for a player.
 
 For local development, run `npm run mcp` and configure the client to launch it from the repository root. The local process needs `DATABASE_URL` for database-backed tools.

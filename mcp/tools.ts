@@ -88,6 +88,93 @@ export function createOffsideMcpServer() {
   );
 
   server.registerTool(
+    "get_haul_candidates",
+    {
+      title: "Get haul candidates",
+      description: "Rank players by predicted points for a gameweek, optionally filtered by position, maximum price, and minimum probability of scoring more than 5 points. If gameweek is omitted, ranks by average predicted points.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
+      inputSchema: {
+        gameweek: positiveId.optional(),
+        position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional(),
+        maxPrice: z.number().positive().optional(),
+        minProbGt5: z.number().min(0).max(1).optional(),
+        limit: z.number().int().min(1).max(30).default(10),
+      },
+    },
+    async ({ gameweek, position, maxPrice, minProbGt5, limit }) => {
+      if (minProbGt5 != null && gameweek == null) {
+        throw new Error("gameweek is required when filtering by minProbGt5.");
+      }
+      const [players, predictions] = await Promise.all([fetchPlayers(), fetchPredictions()]);
+      const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
+      const candidates = players
+        .filter((player) => player.status === "a" || player.status === "d")
+        .filter((player) => !position || player.position === position)
+        .filter((player) => maxPrice == null || player.price <= maxPrice)
+        .map((player) => {
+          const prediction = predictionById.get(player.player_id) ?? null;
+          const forecast = gameweek == null ? null : prediction?.gw_predictions.find((item) => item.gw === gameweek) ?? null;
+          return {
+            player,
+            prediction,
+            forecast,
+            predictedPoints: gameweek == null ? prediction?.avg_pred_points ?? null : forecast?.pred_points ?? null,
+            probabilityGt5: forecast?.prob_gt_5 ?? null,
+          };
+        })
+        .filter((candidate) => candidate.predictedPoints != null)
+        .filter((candidate) => minProbGt5 == null || (candidate.probabilityGt5 != null && candidate.probabilityGt5 >= minProbGt5))
+        .sort((a, b) => (b.predictedPoints ?? -1) - (a.predictedPoints ?? -1))
+        .slice(0, limit);
+      return { content: [{ type: "text", text: JSON.stringify({ gameweek: gameweek ?? null, ranking: gameweek == null ? "average_predicted_points" : "gameweek_predicted_points", candidates }) }] };
+    }
+  );
+
+  server.registerTool(
+    "get_player_profile",
+    {
+      title: "Get player profile",
+      description: "Look up a player by FPL player ID or name and return current stats, availability/news, and model predictions.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
+      inputSchema: { playerId: positiveId.optional(), query: z.string().trim().min(1).max(100).optional() },
+    },
+    async ({ playerId, query }) => {
+      if (playerId == null && !query) throw new Error("Provide playerId or query.");
+      const [players, predictions] = await Promise.all([fetchPlayers(), fetchPredictions()]);
+      const normalizedQuery = query?.toLocaleLowerCase();
+      const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
+      const results = players
+        .filter((player) => playerId == null || player.player_id === playerId)
+        .filter((player) => !normalizedQuery || `${player.web_name} ${player.first_name} ${player.second_name} ${player.team_name}`.toLocaleLowerCase().includes(normalizedQuery))
+        .slice(0, 10)
+        .map((player) => ({ ...player, prediction: predictionById.get(player.player_id) ?? null }));
+      return { content: [{ type: "text", text: JSON.stringify({ players: results }) }] };
+    }
+  );
+
+  server.registerTool(
+    "compare_players",
+    {
+      title: "Compare players",
+      description: "Compare two to five FPL players by ID across current stats and model predictions.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
+      inputSchema: { playerIds: z.array(positiveId).min(2).max(5) },
+    },
+    async ({ playerIds }) => {
+      const uniquePlayerIds = [...new Set(playerIds)];
+      if (uniquePlayerIds.length < 2) throw new Error("Provide at least two distinct player IDs.");
+      const [players, predictions] = await Promise.all([fetchPlayers(), fetchPredictions()]);
+      const playerById = new Map(players.map((player) => [player.player_id, player]));
+      const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
+      const results = uniquePlayerIds.map((playerId) => {
+        const player = playerById.get(playerId);
+        return player ? { ...player, prediction: predictionById.get(playerId) ?? null } : { playerId, error: "Player not found" };
+      });
+      return { content: [{ type: "text", text: JSON.stringify({ players: results }) }] };
+    }
+  );
+
+  server.registerTool(
     "get_player_fixtures",
     {
       title: "Get player fixtures",
