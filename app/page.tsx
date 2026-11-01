@@ -393,6 +393,7 @@ export default function Home() {
           <p className="mt-3 max-w-xl text-base leading-7 text-[var(--muted)]">
             Build a stronger gameweek with data-led squad analysis, lineup optimization and confident transfer decisions.
           </p>
+          <p className="mt-3 text-sm text-[var(--muted)]">Published by Vishnu Prakash</p>
         </div>
         <div className="hidden rounded-xl border border-[var(--border)] bg-white/[0.03] px-4 py-3 text-right text-xs text-[var(--muted)] sm:block">
           <div className="mb-1 font-semibold uppercase tracking-wider text-white/70">Live workspace</div>
