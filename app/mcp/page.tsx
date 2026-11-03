@@ -18,12 +18,7 @@ The hosted endpoint is public at `/api/mcp` and requires no token. The database 
 const tools = [
   {
     name: "get_manager",
-    detail: "Look up public manager and team summary information using an FPL team ID.",
-    source: "Fantasy Premier League API",
-  },
-  {
-    name: "get_team_picks",
-    detail: "Retrieve a squad, captaincy choices, and transfer history for a gameweek. If omitted, Offside resolves the current gameweek.",
+    detail: "Get public manager details, gameweek squad, captaincy, bank, team value, transfer history, and chips already played. Defaults to the current gameweek. Remaining chips and free transfers are unavailable from public endpoints.",
     source: "Fantasy Premier League API",
   },
   {

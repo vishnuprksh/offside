@@ -19,8 +19,7 @@ The MCP tools can run locally over stdio or remotely through the public `/api/mc
 
 Offside provides a read-only MCP server over stdio. It reuses the existing FPL API and database helpers and exposes:
 
-- `get_manager`: public manager details for a team ID.
-- `get_team_picks`: squad and transfers for a gameweek (current gameweek by default).
+- `get_manager`: combined public manager details, gameweek squad, captaincy, bank, team value, transfer history, and chips already played. The current gameweek is the default. Remaining chips and free transfers are reported as unavailable because the public endpoints do not provide authoritative values.
 - `search_player_market`: filter available players by name or position, including model predictions.
 - `get_haul_candidates`: rank players by gameweek or average predicted points, with optional position, price, and `prob_gt_5` filters.
 - `get_player_profile`: look up a player by ID or name with current stats and model predictions.
@@ -29,7 +28,7 @@ Offside provides a read-only MCP server over stdio. It reuses the existing FPL A
 
 For local development, run `npm run mcp` and configure the client to launch it from the repository root. The local process needs `DATABASE_URL` for database-backed tools.
 
-For Vercel hosting, configure `DATABASE_URL` in the Vercel project's environment variables if you want database-backed tools, then deploy. ChatGPT custom MCP access depends on plan and workspace permissions; check the current OpenAI Help Center guidance and ask your workspace admin if the option is unavailable. When permitted, open ChatGPT on the web, go to **Plugins → Add custom MCP server**, enter `https://<deployment-domain>/api/mcp`. No authentication is required. Review the risk warning, create the plugin, and review the discovered tools. Then select the Offside plugin in a new chat and test a manager lookup or market search. These Offside tools are read-only. Do not expose or commit `DATABASE_URL`. The endpoint is public and stateless Streamable HTTP; anyone who knows its URL can call the read-only tools and trigger FPL/database requests. `get_manager` and `get_team_picks` use the public FPL API; market and fixture tools require `DATABASE_URL`.
+For Vercel hosting, configure `DATABASE_URL` in the Vercel project's environment variables if you want database-backed tools, then deploy. ChatGPT custom MCP access depends on plan and workspace permissions; check the current OpenAI Help Center guidance and ask your workspace admin if the option is unavailable. When permitted, open ChatGPT on the web, go to **Plugins → Add custom MCP server**, enter `https://<deployment-domain>/api/mcp`. No authentication is required. Review the risk warning, create the plugin, and review the discovered tools. Then select the Offside plugin in a new chat and test a manager lookup or market search. These Offside tools are read-only. Do not expose or commit `DATABASE_URL`. The endpoint is public and stateless Streamable HTTP; anyone who knows its URL can call the read-only tools and trigger FPL/database requests. `get_manager` uses public FPL endpoints; market and fixture tools require `DATABASE_URL`.
 
 The remote MCP route can also be tested with MCP Inspector against `https://<deployment-domain>/api/mcp`, without configuring authentication. The local stdio client configuration remains:
 

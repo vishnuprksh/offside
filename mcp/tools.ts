@@ -23,37 +23,40 @@ export function createOffsideMcpServer() {
   server.registerTool(
     "get_manager",
     {
-      title: "Get FPL manager",
-      description: "Fetch public Fantasy Premier League manager and team summary by team ID.",
-      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: { teamId: positiveId },
-    },
-    async ({ teamId }) => {
-      const manager = await fetchFplJson(`entry/${teamId}/`);
-      return { content: [{ type: "text", text: JSON.stringify(manager) }] };
-    }
-  );
-
-  server.registerTool(
-    "get_team_picks",
-    {
-      title: "Get team picks",
-      description: "Fetch a manager's squad, captaincy, and transfers for a gameweek. Defaults to the current gameweek.",
+      title: "Get complete FPL manager details",
+      description: "Fetch public manager details, the gameweek squad, captaincy, transfer history, bank and team value from public FPL endpoints. Chip usage and remaining free transfers are not exposed by these public endpoints.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: { teamId: positiveId, gameweek: positiveId.optional() },
     },
     async ({ teamId, gameweek }) => {
       const bootstrap = await fetchFplJson("bootstrap-static/");
       const selectedGameweek = chooseGameweek(bootstrap.events, gameweek?.toString() ?? null);
-      const [picksResponse, transfersResponse] = await Promise.all([
+      const [manager, picksResponse, transfersResponse, history] = await Promise.all([
+        fetchFplJson(`entry/${teamId}/`),
         fetchFplJson(`entry/${teamId}/event/${selectedGameweek}/picks/`),
         fetchFplJson(`entry/${teamId}/transfers/`),
+        fetchFplJson(`entry/${teamId}/history/`),
       ]);
       const picks = buildTeamRows(picksResponse.picks, bootstrap.elements, bootstrap.teams, bootstrap.element_types);
+      const entryHistory = picksResponse.entry_history ?? null;
       return {
         content: [{ type: "text", text: JSON.stringify({
           teamId,
+          manager,
           gameweek: selectedGameweek,
+          account: entryHistory ? {
+            bank: entryHistory.bank / 10,
+            teamValue: entryHistory.value / 10,
+            transfersMadeThisGameweek: entryHistory.event_transfers,
+            transferCostThisGameweek: entryHistory.event_transfers_cost,
+          } : null,
+          freeTransfersLeft: null,
+          freeTransfersNote: "Not available from the public FPL endpoints used here; no estimate is provided.",
+          chips: {
+            played: history.chips ?? [],
+            remaining: null,
+            remainingNote: "The public entry history lists chips already played, but does not provide an authoritative remaining-chip inventory.",
+          },
           picks,
           transfers: transfersResponse.transfers ?? [],
         }) }],
