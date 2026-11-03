@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Offside">
+  <rect width="128" height="128" rx="28" fill="#08111f"/>
+  <path d="M27 91 47 37h16L43 91H27Zm31 0 20-54h16L74 91H58Z" fill="#b6f36b"/>
+  <path d="M83 91 103 37h-9L74 91h9Z" fill="#65d6ad"/>
+</svg>

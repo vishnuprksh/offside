@@ -16,8 +16,19 @@ import { z } from "zod";
 import { fetchPlayers, fetchPlayerMatchDetails, fetchPredictions } from "../lib/db";
 import { buildTeamRows, chooseGameweek, fetchFplJson } from "../lib/fpl";
 
+const mcpWebsiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+
 export function createOffsideMcpServer() {
-  const server = new McpServer({ name: "offside", version: "1.0.0" });
+  const server = new McpServer({
+    name: "offside",
+    title: "Offside",
+    version: "1.0.0",
+    description: "Fantasy Premier League insights, player predictions, and fixture data.",
+    ...(mcpWebsiteUrl ? {
+      websiteUrl: mcpWebsiteUrl,
+      icons: [{ src: `${mcpWebsiteUrl}/offside-mcp-icon.svg`, mimeType: "image/svg+xml", sizes: ["any"] }],
+    } : {}),
+  });
   const positiveId = z.number().int().positive();
 
   server.registerTool(
