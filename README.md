@@ -23,7 +23,7 @@ Offside provides a read-only MCP server over stdio. It reuses the existing FPL A
 - `search_player_market`: search available or doubtful players by name, position, or maximum price, and rank by average or gameweek predicted points. Optionally filter by minimum probability of scoring more than 5 points (requires a gameweek).
 - `get_player_profile`: look up a player by ID or name with current stats and model predictions.
 - `compare_players`: compare two to five players by ID using current stats and model predictions.
-- `get_player_fixtures`: the last four played and next four scheduled matches for a player.
+- `get_player_fixtures`: all played matches and all remaining scheduled fixtures for a player, including fixture details and win probabilities.
 
 For local development, run `npm run mcp` and configure the client to launch it from the repository root. The local process needs `DATABASE_URL` for database-backed tools.
 

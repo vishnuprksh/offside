@@ -168,13 +168,18 @@ export function createOffsideMcpServer() {
     "get_player_fixtures",
     {
       title: "Get player fixtures",
-      description: "Fetch the last four played matches and next four scheduled fixtures for an FPL player.",
+      description: "Fetch all played matches and all remaining scheduled fixtures for an FPL player in the latest season, with fixture details and win probabilities.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: { playerId: positiveId },
     },
     async ({ playerId }) => {
-      const fixtures = await fetchPlayerMatchDetails(playerId);
-      return { content: [{ type: "text", text: JSON.stringify({ playerId, ...fixtures }) }] };
+      const { last4, next4 } = await fetchPlayerMatchDetails(playerId);
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ playerId, playedMatches: last4, scheduledFixtures: next4 }),
+        }],
+      };
     }
   );
 

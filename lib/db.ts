@@ -113,12 +113,23 @@ export type PlayerMatchRow = {
   ict_index: number | null;
   expected_goals: number | null;
   expected_assists: number | null;
-  prob_win: number | null; // player's team win prob (next fixtures, from fixture_difficulties)
-  opponent: string | null; // opponent club short-ish name for next fixtures
+  prob_win: number | null; // player's team win probability
+  opponent: string | null;
+  home_team_name: string | null;
+  away_team_name: string | null;
+  prob_home_win: number | null;
+  prob_draw: number | null;
+  prob_away_win: number | null;
+  prob_home_clean: number | null;
+  prob_away_clean: number | null;
+  lambda_home: number | null;
+  lambda_away: number | null;
+  home_score: number | null;
+  away_score: number | null;
   finished: boolean;
 };
 
-/** Last 4 played + next 4 upcoming matches for a player, merged with fixture difficulty/win probs. */
+/** All played and remaining scheduled matches for a player in the latest season, with fixture difficulty/win probabilities. */
 export async function fetchPlayerMatchDetails(playerId: number): Promise<{
   last4: PlayerMatchRow[];
   next4: PlayerMatchRow[];
@@ -141,7 +152,6 @@ export async function fetchPlayerMatchDetails(playerId: number): Promise<{
              fixture_difficulty, total_points, minutes, goals_scored, assists, bonus,
              clean_sheets, ict_index, expected_goals, expected_assists
       FROM ph WHERE minutes IS NOT NULL AND minutes > 0
-      ORDER BY kickoff_time DESC NULLS LAST, fixture_id DESC LIMIT 4
     ),
     next4 AS (
       SELECT fd.fixture_id, fd.event AS gameweek, fd.kickoff_time::text AS kickoff_time,
@@ -154,7 +164,6 @@ export async function fetchPlayerMatchDetails(playerId: number): Promise<{
              NULL::double precision AS expected_assists
       FROM fpl.fixture_difficulties fd, team t, seasons s
       WHERE fd.season = s.season AND fd.finished = false AND (fd.team_h = t.team_id OR fd.team_a = t.team_id)
-      ORDER BY fd.kickoff_time ASC NULLS LAST, fd.fixture_id ASC LIMIT 4
     )
     SELECT 'last' AS kind, l.* FROM last4 l
     UNION ALL
@@ -219,6 +228,17 @@ export async function fetchPlayerMatchDetails(playerId: number): Promise<{
       expected_assists: r.expected_assists === null ? null : Number(r.expected_assists),
       prob_win: probWin,
       opponent: opponentName,
+      home_team_name: fd?.team_h_name ?? null,
+      away_team_name: fd?.team_a_name ?? null,
+      prob_home_win: fd?.prob_home_win ?? null,
+      prob_draw: fd?.prob_draw ?? null,
+      prob_away_win: fd?.prob_away_win ?? null,
+      prob_home_clean: fd?.prob_home_clean ?? null,
+      prob_away_clean: fd?.prob_away_clean ?? null,
+      lambda_home: fd?.lambda_home ?? null,
+      lambda_away: fd?.lambda_away ?? null,
+      home_score: fd?.home_score ?? null,
+      away_score: fd?.away_score ?? null,
       finished: kind === "last",
     };
   };
@@ -229,9 +249,9 @@ export async function fetchPlayerMatchDetails(playerId: number): Promise<{
     const kind = r.kind === "last" ? "last" : "next";
     (kind === "last" ? last4 : next4).push(toMatch(kind, r));
   }
-  // The UNION ALL loses ordering; re-sort deterministically
-  last4.sort((a, b) => (a.kickoff_time ?? "").localeCompare(b.kickoff_time ?? ""));
-  next4.sort((a, b) => (a.kickoff_time ?? "").localeCompare(b.kickoff_time ?? ""));
+  // The UNION ALL loses ordering; sort all matches deterministically in chronological order.
+  last4.sort((a, b) => (a.kickoff_time ?? "").localeCompare(b.kickoff_time ?? "") || a.fixture_id - b.fixture_id);
+  next4.sort((a, b) => (a.kickoff_time ?? "").localeCompare(b.kickoff_time ?? "") || a.fixture_id - b.fixture_id);
   return { last4, next4 };
 }
 

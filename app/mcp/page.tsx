@@ -38,7 +38,7 @@ const tools = [
   },
   {
     name: "get_player_fixtures",
-    detail: "Review the last four played matches and next four scheduled fixtures for a player ID.",
+    detail: "Review all played matches and all remaining scheduled fixtures for a player ID, including fixture details and win probabilities.",
     source: "Offside PostgreSQL database",
   },
 ];
