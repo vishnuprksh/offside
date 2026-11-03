@@ -23,12 +23,7 @@ const tools = [
   },
   {
     name: "search_player_market",
-    detail: "Search available players by name and position, with current stats and Offside model predictions.",
-    source: "Offside PostgreSQL database",
-  },
-  {
-    name: "get_haul_candidates",
-    detail: "Rank players by average or gameweek predicted points, with optional position, price, and probability filters. The probability threshold refers to scoring more than 5 points.",
+    detail: "Search available or doubtful players by name, position, or maximum price, then rank by average or gameweek predicted points. Optionally filter by the minimum probability of scoring more than 5 points (requires a gameweek).",
     source: "Offside PostgreSQL database",
   },
   {

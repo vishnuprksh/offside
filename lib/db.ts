@@ -63,7 +63,7 @@ export type PredictionRow = {
   price: number;
   team_name: string;
   gw_predictions: GwPrediction[];
-  avg_prob_gt_5: number | null;
+  avg_prob_gt_6: number | null;
   avg_pred_points: number;
   unofficial_injury_status: string | null;
   unofficial_injury_type: string | null;
@@ -316,7 +316,7 @@ export async function fetchPredictions(): Promise<PredictionRow[]> {
         pred_points: typeof forecast.pred_points === "number" && Number.isFinite(forecast.pred_points) ? forecast.pred_points : null,
       })
     ),
-    avg_prob_gt_5: r.avg_prob_gt_5 == null ? null : Number(r.avg_prob_gt_5),
+    avg_prob_gt_6: r.avg_prob_gt_6 == null ? null : Number(r.avg_prob_gt_6),
     avg_pred_points: Number(r.avg_pred_points),
     unofficial_injury_status: r.unofficial_injury_status == null ? null : String(r.unofficial_injury_status),
     unofficial_injury_type: r.unofficial_injury_type == null ? null : String(r.unofficial_injury_type),

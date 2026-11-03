@@ -78,36 +78,11 @@ export function createOffsideMcpServer() {
   server.registerTool(
     "search_player_market",
     {
-      title: "Search player market",
-      description: "Search available players by name and optional position, returning current stats and model predictions.",
+      title: "Search and rank player market",
+      description: "Search available or doubtful players by name, position, and maximum price, then rank by average predicted points or a specified gameweek's predicted points. Optionally require a minimum probability of scoring more than 5 points (gameweek required).",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: {
         query: z.string().trim().max(100).optional(),
-        position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional(),
-        limit: z.number().int().min(1).max(30).default(10),
-      },
-    },
-    async ({ query, position, limit }) => {
-      const [players, predictions] = await Promise.all([fetchPlayers(), fetchPredictions()]);
-      const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
-      const normalizedQuery = query?.toLocaleLowerCase();
-      const results = players
-        .filter((player) => (player.status === "a" || player.status === "d") && (!position || player.position === position))
-        .filter((player) => !normalizedQuery || `${player.web_name} ${player.first_name} ${player.second_name} ${player.team_name}`.toLocaleLowerCase().includes(normalizedQuery))
-        .map((player) => ({ ...player, prediction: predictionById.get(player.player_id) ?? null }))
-        .sort((a, b) => (b.prediction?.avg_pred_points ?? -1) - (a.prediction?.avg_pred_points ?? -1))
-        .slice(0, limit);
-      return { content: [{ type: "text", text: JSON.stringify({ players: results }) }] };
-    }
-  );
-
-  server.registerTool(
-    "get_haul_candidates",
-    {
-      title: "Get haul candidates",
-      description: "Rank players by predicted points for a gameweek, optionally filtered by position, maximum price, and minimum probability of scoring more than 5 points. If gameweek is omitted, ranks by average predicted points.",
-      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: {
         gameweek: positiveId.optional(),
         position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional(),
         maxPrice: z.number().positive().optional(),
@@ -115,16 +90,17 @@ export function createOffsideMcpServer() {
         limit: z.number().int().min(1).max(30).default(10),
       },
     },
-    async ({ gameweek, position, maxPrice, minProbGt5, limit }) => {
+    async ({ query, gameweek, position, maxPrice, minProbGt5, limit }) => {
       if (minProbGt5 != null && gameweek == null) {
         throw new Error("gameweek is required when filtering by minProbGt5.");
       }
       const [players, predictions] = await Promise.all([fetchPlayers(), fetchPredictions()]);
       const predictionById = new Map(predictions.map((prediction) => [prediction.player_id, prediction]));
-      const candidates = players
-        .filter((player) => player.status === "a" || player.status === "d")
-        .filter((player) => !position || player.position === position)
+      const normalizedQuery = query?.toLocaleLowerCase();
+      const results = players
+        .filter((player) => (player.status === "a" || player.status === "d") && (!position || player.position === position))
         .filter((player) => maxPrice == null || player.price <= maxPrice)
+        .filter((player) => !normalizedQuery || `${player.web_name} ${player.first_name} ${player.second_name} ${player.team_name}`.toLocaleLowerCase().includes(normalizedQuery))
         .map((player) => {
           const prediction = predictionById.get(player.player_id) ?? null;
           const forecast = gameweek == null ? null : prediction?.gw_predictions.find((item) => item.gw === gameweek) ?? null;
@@ -140,7 +116,7 @@ export function createOffsideMcpServer() {
         .filter((candidate) => minProbGt5 == null || (candidate.probabilityGt5 != null && candidate.probabilityGt5 >= minProbGt5))
         .sort((a, b) => (b.predictedPoints ?? -1) - (a.predictedPoints ?? -1))
         .slice(0, limit);
-      return { content: [{ type: "text", text: JSON.stringify({ gameweek: gameweek ?? null, ranking: gameweek == null ? "average_predicted_points" : "gameweek_predicted_points", candidates }) }] };
+      return { content: [{ type: "text", text: JSON.stringify({ gameweek: gameweek ?? null, ranking: gameweek == null ? "average_predicted_points" : "gameweek_predicted_points", candidates: results }) }] };
     }
   );
 

@@ -20,8 +20,7 @@ The MCP tools can run locally over stdio or remotely through the public `/api/mc
 Offside provides a read-only MCP server over stdio. It reuses the existing FPL API and database helpers and exposes:
 
 - `get_manager`: combined public manager details, gameweek squad, captaincy, bank, team value, transfer history, and chips already played. The current gameweek is the default. Remaining chips and free transfers are reported as unavailable because the public endpoints do not provide authoritative values.
-- `search_player_market`: filter available players by name or position, including model predictions.
-- `get_haul_candidates`: rank players by gameweek or average predicted points, with optional position, price, and `prob_gt_5` filters.
+- `search_player_market`: search available or doubtful players by name, position, or maximum price, and rank by average or gameweek predicted points. Optionally filter by minimum probability of scoring more than 5 points (requires a gameweek).
 - `get_player_profile`: look up a player by ID or name with current stats and model predictions.
 - `compare_players`: compare two to five players by ID using current stats and model predictions.
 - `get_player_fixtures`: the last four played and next four scheduled matches for a player.
