@@ -19,11 +19,13 @@ The MCP tools can run locally over stdio or remotely through the public `/api/mc
 
 Offside provides a read-only MCP server over stdio. It reuses the existing FPL API and database helpers and exposes:
 
-- `get_manager`: combined public manager details, gameweek squad, captaincy, bank, team value, transfer history, and chips already played. The current gameweek is the default. Remaining chips and free transfers are reported as unavailable because the public endpoints do not provide authoritative values.
-- `search_player_market`: search available or doubtful players by name, position, or maximum price, and rank by average or gameweek predicted points. Optionally filter by minimum probability of scoring more than 5 points (requires a gameweek).
-- `get_player_profile`: look up a player by ID or name with current stats and model predictions.
-- `compare_players`: compare two to five players by ID using current stats and model predictions.
-- `get_player_fixtures`: all played matches and all remaining scheduled fixtures for a player, including fixture details and win probabilities.
+- `get_manager`: requires numeric `teamId`; optional positive-integer `gameweek` defaults to the current gameweek selected by the server. Returns public manager details, squad/captaincy, bank, team value, transfer history, transfers made/cost for that gameweek, and chips already played. Remaining free transfers and authoritative remaining chips are unavailable from public endpoints.
+- `search_player_market`: optional `query` (case-insensitive player/team-name substring), `gameweek` (uses that game's forecast instead of average prediction), `position` (`GKP`, `DEF`, `MID`, `FWD`), `maxPrice`, `minProbGt5` (0–1; requires gameweek), and `limit` (1–30, default 10). Searches available or doubtful players and ranks by predicted points.
+- `get_player_profile`: provide `playerId` and/or `query` (1–100 character case-insensitive substring); at least one is required, and both filters combine if supplied. Returns up to 10 matching player records with current stats, availability/news, and model predictions.
+- `compare_players`: `playerIds` must contain 2–5 positive player IDs and at least two distinct IDs. Returns current stats and model predictions; unknown IDs receive an error entry.
+- `get_player_fixtures`: requires positive integer `playerId`. Returns that player's played match history and remaining scheduled fixtures for the latest season, including opponent/team details, stats where available, and fixture probabilities.
+- `get_fixture_difficulty`: optional positive-integer `teamId` and `gameweek` filters; both apply together when supplied. Returns latest-season matchups, kickoff, win probabilities, expected goals, scores, and finished status.
+- `get_training_data`: optional `playerId`, `gameweek`, `season` (for example `2026/27`), and `isFuture` filters; filters combine with AND. Returns training features and outcome data from `fpl.training_data` in pages of 100 by default (maximum 500), with non-negative `offset` for pagination. Includes historical/future player-gameweek rows, rolling/all-time averages, expected goals, position flags, and team/kickoff metadata.
 
 For local development, run `npm run mcp` and configure the client to launch it from the repository root. The local process needs `DATABASE_URL` for database-backed tools.
 

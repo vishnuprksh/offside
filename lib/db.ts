@@ -366,3 +366,58 @@ export async function fetchPlayers(): Promise<PlayerRow[]> {
     team_short_name: r.team_short_name,
   }));
 }
+
+
+export async function fetchFixtureDifficultyDetails(filters: { teamId?: number; gameweek?: number } = {}) {
+  const { rows } = await getPool().query(
+    `WITH seasons AS (SELECT max(season) AS season FROM fpl.fixture_difficulties)
+     SELECT fd.fixture_id, fd.event AS gameweek, fd.kickoff_time::text AS kickoff_time,
+            fd.team_h, fd.team_a, fd.team_h_name, fd.team_a_name,
+            fd.prob_home_win, fd.prob_draw, fd.prob_away_win,
+            fd.lambda_home, fd.lambda_away, fd.home_score, fd.away_score, fd.finished
+     FROM fpl.fixture_difficulties fd, seasons s
+     WHERE fd.season = s.season
+       AND ($1::bigint IS NULL OR fd.event = $1::bigint)
+       AND ($2::bigint IS NULL OR fd.team_h = $2::bigint OR fd.team_a = $2::bigint)
+     ORDER BY fd.event ASC NULLS LAST, fd.kickoff_time ASC NULLS LAST, fd.fixture_id ASC`,
+    [filters.gameweek ?? null, filters.teamId ?? null]
+  );
+  return {
+    rows: rows.map((row) => ({
+      fixture_id: Number(row.fixture_id),
+      gameweek: row.gameweek == null ? null : Number(row.gameweek),
+      kickoff_time: row.kickoff_time ?? null,
+      home_team: { id: Number(row.team_h), name: row.team_h_name },
+      away_team: { id: Number(row.team_a), name: row.team_a_name },
+      prob_home_win: numOrNull(row.prob_home_win),
+      prob_draw: numOrNull(row.prob_draw),
+      prob_away_win: numOrNull(row.prob_away_win),
+      expected_goals_home: numOrNull(row.lambda_home),
+      expected_goals_away: numOrNull(row.lambda_away),
+      home_score: numOrNull(row.home_score),
+      away_score: numOrNull(row.away_score),
+      finished: Boolean(row.finished),
+    })),
+  };
+}
+
+export async function fetchTrainingData(filters: {
+  playerId?: number;
+  gameweek?: number;
+  season?: string;
+  isFuture?: boolean;
+  limit: number;
+  offset: number;
+}): Promise<Record<string, unknown>[]> {
+  const { rows } = await getPool().query(
+    `SELECT * FROM fpl.training_data
+     WHERE ($1::integer IS NULL OR player_id = $1)
+       AND ($2::integer IS NULL OR gameweek = $2)
+       AND ($3::text IS NULL OR season = $3)
+       AND ($4::boolean IS NULL OR is_future = $4)
+     ORDER BY season DESC, gameweek ASC NULLS LAST, player_id ASC NULLS LAST
+     LIMIT $5 OFFSET $6`,
+    [filters.playerId ?? null, filters.gameweek ?? null, filters.season ?? null, filters.isFuture ?? null, filters.limit, filters.offset]
+  );
+  return rows;
+}

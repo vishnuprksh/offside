@@ -37,8 +37,18 @@ const tools = [
     source: "Offside PostgreSQL database",
   },
   {
+    name: "get_fixture_difficulty",
+    detail: "Get latest-season fixture matchups with kickoff, win probabilities, expected goals, scores, and completion status. Optionally filter by team ID or gameweek.",
+    source: "Offside PostgreSQL database",
+  },
+  {
+    name: "get_training_data",
+    detail: "Fetch a paginated subset of fpl.training_data. Filter by player ID, gameweek, season (for example 2026/27), and whether rows are future fixtures. Filters combine with AND. Rows contain historical outcomes/statistics, rolling and all-time features, expected goals, position indicators, and player/team/kickoff metadata. Page size defaults to 100 and is capped at 500; use offset to paginate.",
+    source: "Offside PostgreSQL database",
+  },
+  {
     name: "get_player_fixtures",
-    detail: "Review all played matches and all remaining scheduled fixtures for a player ID, including fixture details and win probabilities.",
+    detail: "Review played match history and remaining scheduled fixtures for a positive FPL player ID, including opponent/team details, actual stats where available, win probability, expected goals, scores, and completion status.",
     source: "Offside PostgreSQL database",
   },
 ];

@@ -13,7 +13,7 @@ Call `createOffsideMcpServer()` to create an MCP server with the shared Offside 
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { fetchPlayers, fetchPlayerMatchDetails, fetchPredictions } from "../lib/db";
+import { fetchPlayers, fetchPlayerMatchDetails, fetchPredictions, fetchFixtureDifficultyDetails, fetchTrainingData } from "../lib/db";
 import { buildTeamRows, chooseGameweek, fetchFplJson } from "../lib/fpl";
 
 const mcpWebsiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
@@ -28,6 +28,14 @@ export function createOffsideMcpServer() {
       websiteUrl: mcpWebsiteUrl,
       icons: [{ src: `${mcpWebsiteUrl}/offside-mcp-icon.svg`, mimeType: "image/svg+xml", sizes: ["any"] }],
     } : {}),
+  }, {
+    instructions: `You are an FPL analysis assistant using Offside's read-only data tools. Help users make reasoned decisions about squads, captaincy, transfers, and player choices, but do not claim outcomes are guaranteed.
+
+Use the tools in combination when relevant: get_manager for a team's current squad, captaincy, bank, and transfer history; get_player_profile or search_player_market for player status, statistics, and predictions; compare_players to evaluate named alternatives; get_player_fixtures or get_fixture_difficulty for upcoming opponents and fixture context; and get_training_data for detailed historical/future model features. Ask for missing identifiers or constraints (such as FPL team ID, gameweek, budget, free transfers, or risk preference) rather than inventing them. Public manager data does not authoritatively expose free transfers remaining or remaining chips; state that limitation.
+
+Treat Offside predictions and training features as model estimates, not facts or guarantees. For timely decisions, supplement Offside results with current public information and reputable news—especially injury updates, suspensions, press conferences, likely lineups, and schedule changes. Verify that such information is current and distinguish confirmed facts from reports or uncertainty. If live public information or news cannot be checked, say so and avoid presenting stale data as current.
+
+When recommending a move, explain the relevant evidence, assumptions, trade-offs, and uncertainty. Consider the user's stated squad, budget, transfer/chip constraints, and horizon; do not assert that a transfer is affordable or legal unless the required constraints are known. Prefer concise, actionable reasoning and say when available data is insufficient.`,
   });
   const positiveId = z.number().int().positive();
 
@@ -35,9 +43,12 @@ export function createOffsideMcpServer() {
     "get_manager",
     {
       title: "Get complete FPL manager details",
-      description: "Fetch public manager details, the gameweek squad, captaincy, transfer history, bank and team value from public FPL endpoints. Chip usage and remaining free transfers are not exposed by these public endpoints.",
+      description: "Fetch a public FPL manager entry, squad picks and captaincy for the selected gameweek, all available transfer history, bank, team value, transfers made/cost this gameweek, and chips already played. Input teamId is the numeric FPL entry/team ID (required); gameweek is an optional positive integer and defaults to the current gameweek selected by the server. Free transfers remaining and authoritative remaining-chip inventory are unavailable from the public endpoints and are returned as null with explanatory notes.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: { teamId: positiveId, gameweek: positiveId.optional() },
+      inputSchema: {
+        teamId: positiveId.describe("Required numeric FPL entry/team ID."),
+        gameweek: positiveId.optional().describe("Optional gameweek number; defaults to the current gameweek selected by the server."),
+      },
     },
     async ({ teamId, gameweek }) => {
       const bootstrap = await fetchFplJson("bootstrap-static/");
@@ -79,15 +90,15 @@ export function createOffsideMcpServer() {
     "search_player_market",
     {
       title: "Search and rank player market",
-      description: "Search available or doubtful players by name, position, and maximum price, then rank by average predicted points or a specified gameweek's predicted points. Optionally require a minimum probability of scoring more than 5 points (gameweek required).",
+      description: "Search available or doubtful players and rank matching results by predicted points. Optional query is a case-insensitive substring of player or team name; gameweek (positive integer) switches ranking from average predicted points to that game's forecast; position is GKP, DEF, MID, or FWD; maxPrice is the maximum player price; minProbGt5 is a 0–1 probability threshold and requires gameweek; limit is 1–30 (default 10). Results without a prediction are omitted. Prices use the FPL price units returned by the database.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: {
-        query: z.string().trim().max(100).optional(),
-        gameweek: positiveId.optional(),
-        position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional(),
-        maxPrice: z.number().positive().optional(),
-        minProbGt5: z.number().min(0).max(1).optional(),
-        limit: z.number().int().min(1).max(30).default(10),
+        query: z.string().trim().max(100).optional().describe("Case-insensitive substring to match against player and team names."),
+        gameweek: positiveId.optional().describe("Gameweek to rank by; when omitted, rank by average predicted points."),
+        position: z.enum(["GKP", "DEF", "MID", "FWD"]).optional().describe("Filter by FPL position."),
+        maxPrice: z.number().positive().optional().describe("Maximum FPL player price."),
+        minProbGt5: z.number().min(0).max(1).optional().describe("Minimum predicted probability (0–1) of scoring more than 5 points; requires gameweek."),
+        limit: z.number().int().min(1).max(30).default(10).describe("Maximum candidates to return (1–30, default 10)."),
       },
     },
     async ({ query, gameweek, position, maxPrice, minProbGt5, limit }) => {
@@ -124,9 +135,12 @@ export function createOffsideMcpServer() {
     "get_player_profile",
     {
       title: "Get player profile",
-      description: "Look up a player by FPL player ID or name and return current stats, availability/news, and model predictions.",
+      description: "Look up player records with current stats, availability/news, and model predictions. Provide playerId (positive integer) and/or query (1–100 characters, case-insensitive substring across player and team names); at least one is required. If both are supplied, both filters apply. Returns at most 10 matching players.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: { playerId: positiveId.optional(), query: z.string().trim().min(1).max(100).optional() },
+      inputSchema: {
+        playerId: positiveId.optional().describe("Optional positive FPL player ID."),
+        query: z.string().trim().min(1).max(100).optional().describe("Optional 1–100 character, case-insensitive substring of a player or team name."),
+      },
     },
     async ({ playerId, query }) => {
       if (playerId == null && !query) throw new Error("Provide playerId or query.");
@@ -146,9 +160,9 @@ export function createOffsideMcpServer() {
     "compare_players",
     {
       title: "Compare players",
-      description: "Compare two to five FPL players by ID across current stats and model predictions.",
+      description: "Compare 2–5 FPL players by numeric player ID, returning each player's current stats and model predictions. IDs must be positive integers and at least two must be distinct; duplicate IDs are removed. Unknown IDs are returned with a player-not-found error entry.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: { playerIds: z.array(positiveId).min(2).max(5) },
+      inputSchema: { playerIds: z.array(positiveId).min(2).max(5).describe("Array of 2–5 positive FPL player IDs; at least two must be distinct.") },
     },
     async ({ playerIds }) => {
       const uniquePlayerIds = [...new Set(playerIds)];
@@ -165,12 +179,55 @@ export function createOffsideMcpServer() {
   );
 
   server.registerTool(
+    "get_fixture_difficulty",
+    {
+      title: "Get fixture difficulty details",
+      description: "Fetch latest-season fixture matchups with kickoff, home/draw/away win probabilities, expected goals, scores, and finished status. Optional teamId and gameweek are positive integers; when both are supplied, both filters apply. With neither filter, returns all fixtures in the latest season.",
+      annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
+      inputSchema: {
+        teamId: positiveId.optional().describe("Optional positive FPL team ID; matches fixtures where the team is home or away."),
+        gameweek: positiveId.optional().describe("Optional positive gameweek number."),
+      },
+    },
+    async ({ teamId, gameweek }) => {
+      const { rows } = await fetchFixtureDifficultyDetails({ teamId, gameweek });
+      return { content: [{ type: "text", text: JSON.stringify({ fixtures: rows }) }] };
+    }
+  );
+
+  server.registerTool(
+    "get_training_data",
+    {
+      title: "Fetch FPL training data",
+      description: "Fetch rows from the fpl.training_data model-training dataset. Rows include player, season and gameweek identifiers; historical match outcome/stat columns; rolling and all-time feature averages; expected goals; position indicator columns; and player/team/kickoff metadata. Optional playerId and gameweek are positive integers; season is a string such as 2026/27; isFuture=true selects future fixture rows and false selects played rows. Filters combine with AND. limit is 1–500 (default 100); offset is a non-negative row offset (default 0) for pagination. Without filters, returns the first page. Results are deterministically ordered by season descending, then gameweek and player ID ascending.",
+      annotations: { readOnlyHint: true, openWorldHint: false, destructiveHint: false },
+      inputSchema: {
+        playerId: positiveId.optional().describe("Filter by positive FPL player ID."),
+        gameweek: positiveId.optional().describe("Filter by positive gameweek number."),
+        season: z.string().trim().min(1).max(20).optional().describe("Filter by season label, for example 2026/27."),
+        isFuture: z.boolean().optional().describe("true for future fixture rows; false for played/historical rows."),
+        limit: z.number().int().min(1).max(500).default(100).describe("Rows per page, from 1 to 500; defaults to 100."),
+        offset: z.number().int().min(0).default(0).describe("Non-negative number of matching rows to skip; defaults to 0."),
+      },
+    },
+    async ({ playerId, gameweek, season, isFuture, limit, offset }) => {
+      const rows = await fetchTrainingData({ playerId, gameweek, season, isFuture, limit, offset });
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ table: "fpl.training_data", filters: { playerId: playerId ?? null, gameweek: gameweek ?? null, season: season ?? null, isFuture: isFuture ?? null }, limit, offset, returned: rows.length, rows }),
+        }],
+      };
+    }
+  );
+
+  server.registerTool(
     "get_player_fixtures",
     {
       title: "Get player fixtures",
-      description: "Fetch all played matches and all remaining scheduled fixtures for an FPL player in the latest season, with fixture details and win probabilities.",
+      description: "Fetch played match history and remaining scheduled fixtures for one FPL player in the latest season, enriched with opponent/team names, fixture details, player-team win probability, expected goals, scores, and finished status. playerId is the required positive integer FPL player ID. Played-match rows include actual appearance/stat data; scheduled rows have not-yet-known player stats.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
-      inputSchema: { playerId: positiveId },
+      inputSchema: { playerId: positiveId.describe("Required positive FPL player ID.") },
     },
     async ({ playerId }) => {
       const { last4, next4 } = await fetchPlayerMatchDetails(playerId);
