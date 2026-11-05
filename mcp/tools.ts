@@ -13,7 +13,7 @@ Call `createOffsideMcpServer()` to create an MCP server with the shared Offside 
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { fetchPlayers, fetchPlayerMatchDetails, fetchPredictions, fetchFixtureDifficultyDetails, fetchTrainingData } from "../lib/db";
+import { fetchPlayers, fetchPlayerMatchDetails, fetchPredictions, fetchFixtureDifficultyDetails, fetchFeatureImportance, fetchTrainingData } from "../lib/db";
 import { buildTeamRows, chooseGameweek, fetchFplJson } from "../lib/fpl";
 
 const mcpWebsiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
@@ -192,6 +192,28 @@ When recommending a move, explain the relevant evidence, assumptions, trade-offs
     async ({ teamId, gameweek }) => {
       const { rows } = await fetchFixtureDifficultyDetails({ teamId, gameweek });
       return { content: [{ type: "text", text: JSON.stringify({ fixtures: rows }) }] };
+    }
+  );
+
+  server.registerTool(
+    "get_feature_importance",
+    {
+      title: "Fetch feature importance",
+      description: "Fetch rows from the fpl.feature_importance model feature-importance table. The raw table columns are returned unchanged. limit is 1–500 (default 100); offset is a non-negative row offset (default 0) for pagination.",
+      annotations: { readOnlyHint: true, openWorldHint: false, destructiveHint: false },
+      inputSchema: {
+        limit: z.number().int().min(1).max(500).default(100).describe("Rows per page, from 1 to 500; defaults to 100."),
+        offset: z.number().int().min(0).default(0).describe("Non-negative number of matching rows to skip; defaults to 0."),
+      },
+    },
+    async ({ limit, offset }) => {
+      const rows = await fetchFeatureImportance({ limit, offset });
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ table: "fpl.feature_importance", limit, offset, returned: rows.length, rows }),
+        }],
+      };
     }
   );
 

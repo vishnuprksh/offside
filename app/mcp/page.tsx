@@ -47,6 +47,11 @@ const tools = [
     source: "Offside PostgreSQL database",
   },
   {
+    name: "get_feature_importance",
+    detail: "Fetch a paginated subset of the model feature-importance table for inspecting which training features contribute most to predictions.",
+    source: "Offside PostgreSQL database",
+  },
+  {
     name: "get_player_fixtures",
     detail: "Review played match history and remaining scheduled fixtures for a positive FPL player ID, including opponent/team details, actual stats where available, win probability, expected goals, scores, and completion status.",
     source: "Offside PostgreSQL database",

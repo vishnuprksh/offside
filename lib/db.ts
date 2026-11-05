@@ -401,6 +401,18 @@ export async function fetchFixtureDifficultyDetails(filters: { teamId?: number; 
   };
 }
 
+export async function fetchFeatureImportance(filters: {
+  limit: number;
+  offset: number;
+}): Promise<Record<string, unknown>[]> {
+  const { rows } = await getPool().query(
+    `SELECT * FROM fpl.feature_importance
+     LIMIT $1 OFFSET $2`,
+    [filters.limit, filters.offset]
+  );
+  return rows;
+}
+
 export async function fetchTrainingData(filters: {
   playerId?: number;
   gameweek?: number;
