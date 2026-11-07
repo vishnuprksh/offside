@@ -374,6 +374,7 @@ export async function fetchFixtureDifficultyDetails(filters: { teamId?: number; 
      SELECT fd.fixture_id, fd.event AS gameweek, fd.kickoff_time::text AS kickoff_time,
             fd.team_h, fd.team_a, fd.team_h_name, fd.team_a_name,
             fd.prob_home_win, fd.prob_draw, fd.prob_away_win,
+            fd.prob_home_clean, fd.prob_away_clean,
             fd.lambda_home, fd.lambda_away, fd.home_score, fd.away_score, fd.finished
      FROM fpl.fixture_difficulties fd, seasons s
      WHERE fd.season = s.season
@@ -392,6 +393,8 @@ export async function fetchFixtureDifficultyDetails(filters: { teamId?: number; 
       prob_home_win: numOrNull(row.prob_home_win),
       prob_draw: numOrNull(row.prob_draw),
       prob_away_win: numOrNull(row.prob_away_win),
+      prob_home_clean: numOrNull(row.prob_home_clean),
+      prob_away_clean: numOrNull(row.prob_away_clean),
       expected_goals_home: numOrNull(row.lambda_home),
       expected_goals_away: numOrNull(row.lambda_away),
       home_score: numOrNull(row.home_score),

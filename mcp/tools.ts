@@ -182,7 +182,7 @@ When recommending a move, explain the relevant evidence, assumptions, trade-offs
     "get_fixture_difficulty",
     {
       title: "Get fixture difficulty details",
-      description: "Fetch latest-season fixture matchups with kickoff, home/draw/away win probabilities, expected goals, scores, and finished status. Optional teamId and gameweek are positive integers; when both are supplied, both filters apply. With neither filter, returns all fixtures in the latest season.",
+      description: "Fetch latest-season fixture matchups with kickoff, home/draw/away win probabilities, clean sheet probabilities, expected goals, scores, and finished status. Optional teamId and gameweek are positive integers; when both are supplied, both filters apply. With neither filter, returns all fixtures in the latest season.",
       annotations: { readOnlyHint: true, openWorldHint: true, destructiveHint: false },
       inputSchema: {
         teamId: positiveId.optional().describe("Optional positive FPL team ID; matches fixtures where the team is home or away."),
