@@ -43,22 +43,31 @@ function formatMatchDate(value: string | null) {
   return new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
-function MatchTable({ rows, upcoming }: { rows: MatchRow[]; upcoming?: boolean }) {
+function FixtureCards({ rows, upcoming, teamName }: { rows: MatchRow[]; upcoming?: boolean; teamName: string }) {
   if (!rows.length) return <p className="text-sm text-[var(--muted)] py-6 text-center">No {upcoming ? "upcoming" : "historic"} matches found.</p>;
   return (
-    <div className="overflow-x-auto">
-      <table className="data min-w-[560px]">
-        <thead><tr><th>GW</th><th>Fixture</th><th>Date</th><th>Min</th><th>G</th><th>A</th><th>Pts</th></tr></thead>
-        <tbody>{rows.map((match) => (
-          <tr key={match.fixture_id}>
-            <td className="text-[var(--muted)]">{match.gameweek ?? "—"}</td>
-            <td className="font-semibold">{match.was_home ? "vs" : "@"} {match.opponent_name ?? `Team ${match.opponent_team ?? "—"}`}</td>
-            <td className="text-[var(--muted)]">{formatMatchDate(match.kickoff_time)}</td>
-            <td>{match.minutes ?? "—"}</td><td>{match.goals_scored ?? 0}</td><td>{match.assists ?? 0}</td>
-            <td className={`font-bold ${upcoming ? "text-[var(--accent)]" : ""}`}>{upcoming ? (match.prob_win == null ? "—" : `${Math.round(match.prob_win * 100)}%`) : match.total_points ?? 0}</td>
-          </tr>
-        ))}</tbody>
-      </table>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {rows.map((match) => {
+        const opponent = match.opponent_name ?? `Team ${match.opponent_team ?? "—"}`;
+
+        return (
+          <article key={match.fixture_id} className="rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-4">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">GW {match.gameweek ?? "—"} · {formatMatchDate(match.kickoff_time)}</p>
+                <p className="mt-2 font-bold">{teamName} <span className="font-medium text-[var(--muted)]">{match.was_home ? "vs" : "@"}</span> {opponent}</p>
+                <p className="mt-1 text-xs text-[var(--muted)]">{match.was_home ? "Home" : "Away"}</p>
+              </div>
+              <div className="text-right">
+                <p className={`text-2xl font-extrabold ${upcoming ? "text-[var(--accent)]" : ""}`}>
+                  {upcoming ? (match.prob_win == null ? "—" : `${Math.round(match.prob_win * 100)}%`) : match.total_points ?? 0}
+                </p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-[var(--muted)]">{upcoming ? "Win chance" : "Points"}</p>
+              </div>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
@@ -111,8 +120,8 @@ function PlayerHistoryModal({ player, onClose }: { player: PlayerRow; onClose: (
         {loadError && <p className="rounded-lg border border-rose-500/30 bg-rose-500/10 p-3 text-sm text-rose-300">{loadError}</p>}
         {!history && !loadError && <p className="py-10 text-center text-sm text-[var(--muted)]">Loading historic data…</p>}
         {history && <div className="grid gap-5 lg:grid-cols-2">
-          <section className="rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-2 flex items-center justify-between"><h3 className="font-bold">Last 4 matches</h3><span className="text-xs text-[var(--muted)]">points scored</span></div><MatchTable rows={history.last4} /></section>
-          <section className="rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-2 flex items-center justify-between"><h3 className="font-bold">Next 4 fixtures</h3><span className="text-xs text-[var(--muted)]">win probability</span></div><MatchTable rows={history.next4} upcoming /></section>
+          <section className="h-[65vh] overflow-y-auto rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-3 flex items-center justify-between"><h3 className="font-bold">Last 4 matches</h3><span className="text-xs text-[var(--muted)]">points scored</span></div><FixtureCards rows={history.last4} teamName={player.team_name} /></section>
+          <section className="h-[65vh] overflow-y-auto rounded-xl border border-[var(--border)] bg-[#0d1526]/70 p-3 sm:p-4"><div className="mb-3 flex items-center justify-between"><h3 className="font-bold">Next 4 fixtures</h3><span className="text-xs text-[var(--muted)]">win chance</span></div><FixtureCards rows={history.next4} upcoming teamName={player.team_name} /></section>
         </div>}
       </section>
     </div>
@@ -241,12 +250,27 @@ export default function PlayersPage() {
                 {visiblePlayers.map((player, index) => {
                   const prediction = predictionById.get(player.player_id);
                   return (
-                    <tr key={player.player_id}>
+                    <tr
+                      key={player.player_id}
+                      tabIndex={0}
+                      role="button"
+                      aria-label={`View history and fixtures for ${player.web_name}`}
+                      aria-haspopup="dialog"
+                      onClick={() => setHistoryPlayer(player)}
+                      onKeyDown={(event) => {
+                        if (event.target !== event.currentTarget) return;
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          setHistoryPlayer(player);
+                        }
+                      }}
+                      className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--accent)]"
+                    >
                       <td className="text-[var(--muted)]">{index + 1}</td>
                       <td>
                         <button
                           type="button"
-                          onClick={() => setHistoryPlayer(player)}
+                          onClick={(event) => { event.stopPropagation(); setHistoryPlayer(player); }}
                           className="text-left font-semibold hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
                           aria-label={`View historic data for ${player.web_name}`}
                         >{player.web_name}</button>
