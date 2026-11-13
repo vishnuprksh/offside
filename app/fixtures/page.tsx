@@ -22,30 +22,81 @@ type FixtureRow = {
 
 const HEADER_BG = "bg-[#0d1526]";
 
-/** Colour scale for win probability: red (low) → amber (mid) → green (high).
- *  Domain clamps to [0.2, 0.8] since most probabilities fall in that range. */
-const PROB_MIN = 0.2;
-const PROB_MAX = 0.8;
+const XG_MIN = 0.5;
+const XG_MAX = 2.5;
 
-/** Grayscale for past (finished) fixtures: black (low win prob) → white (high). */
-function grayColor(p: number | null | undefined): string {
-  if (p == null || !Number.isFinite(p)) return "transparent";
-  const raw = Math.max(0, Math.min(1, p));
-  const pct = Math.max(0, Math.min(1, (raw - PROB_MIN) / (PROB_MAX - PROB_MIN)));
-  const v = Math.round(30 + pct * (255 - 30)); // 30 (near-black) -> 255 (white)
-  return `rgb(${v}, ${v}, ${v})`;
+function xgColor(value: number | null | undefined, mode: "attack" | "defense"): string {
+  if (value == null || !Number.isFinite(value)) return "transparent";
+  const strength = Math.max(0, Math.min(1, (value - XG_MIN) / (XG_MAX - XG_MIN)));
+  const advantage = mode === "attack" ? strength : 1 - strength;
+  if (advantage < 0.5) {
+    const t = advantage / 0.5;
+    return `rgb(${Math.round(239 + (245 - 239) * t)}, ${Math.round(68 + (158 - 68) * t)}, ${Math.round(68 + (11 - 68) * t)})`;
+  }
+  const t = (advantage - 0.5) / 0.5;
+  return `rgb(${Math.round(245 + (34 - 245) * t)}, ${Math.round(158 + (197 - 158) * t)}, ${Math.round(11 + (94 - 11) * t)})`;
 }
 
-function probColor(p: number | null | undefined): string {
-  if (p == null || !Number.isFinite(p)) return "transparent";
-  const raw = Math.max(0, Math.min(1, p));
-  const pct = Math.max(0, Math.min(1, (raw - PROB_MIN) / (PROB_MAX - PROB_MIN)));
-  // 0 -> #ef4444, 0.5 -> #f59e0b, 1 -> #22c55e (simple 2-stop interpolation)
-  const lerp = (a: number, b: number, t: number) => Math.round(a + (b - a) * t);
-  const from = pct <= 0.5 ? [239, 68, 68] : [245, 158, 11];
-  const to = pct <= 0.5 ? [245, 158, 11] : [34, 197, 94];
-  const t = pct <= 0.5 ? pct / 0.5 : (pct - 0.5) / 0.5;
-  return `rgb(${lerp(from[0], to[0], t)}, ${lerp(from[1], to[1], t)}, ${lerp(from[2], to[2], t)})`;
+function MetricTable({
+  title,
+  description,
+  schedule,
+  nameById,
+  metric,
+}: {
+  title: string;
+  description: string;
+  schedule: { teamId: number; cells: { ev: number; fixture: FixtureRow | null }[] }[];
+  nameById: Map<number, string>;
+  metric: "attack" | "defense";
+}) {
+  return (
+    <section className="mt-6">
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="text-lg font-bold tracking-tight">{title}</h2>
+        <p className="text-xs text-[var(--muted)]">{description}</p>
+      </div>
+      <div className="max-h-[65vh] overflow-auto rounded-lg border border-[var(--border)]">
+        <table className="border-collapse text-[11px]" style={{ minWidth: "max-content" }}>
+          <thead>
+            <tr>
+              <th className={`sticky left-0 z-10 ${HEADER_BG} px-3 py-2 text-left text-[10px] uppercase tracking-wide text-[var(--muted)]`}>Team</th>
+              {schedule[0]?.cells.map(({ ev }) => (
+                <th key={ev} className={`${HEADER_BG} py-2 text-center font-semibold`}><span className="block w-[100px] text-[10px]">GW{ev}</span></th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {schedule.map(({ teamId, cells }) => (
+              <tr key={teamId} className="border-t border-[var(--border)]">
+                <th className={`sticky left-0 z-10 ${HEADER_BG} px-3 py-1 text-left font-semibold whitespace-nowrap`}>{nameById.get(teamId)}</th>
+                {cells.map(({ ev, fixture }) => {
+                  if (!fixture) return <td key={ev} className="px-1 py-2 text-center text-[var(--muted)] opacity-40">·</td>;
+                  const home = Number(fixture.team_h) === teamId;
+                  const opponent = home ? fixture.team_a_name : fixture.team_h_name;
+                  const expectedGoals = metric === "attack"
+                    ? (home ? fixture.lambda_home : fixture.lambda_away)
+                    : (home ? fixture.lambda_away : fixture.lambda_home);
+                  const venue = home ? "vs" : "@";
+                  const color = xgColor(expectedGoals, metric);
+                  const textColor = expectedGoals != null && ((metric === "attack" && expectedGoals >= 1.5) || (metric === "defense" && expectedGoals <= 1.5)) ? "text-black/80" : "text-white/95";
+                  const label = metric === "attack" ? "xG for" : "xG against";
+                  return (
+                    <td key={ev} className="p-[2px]">
+                      <div title={`${fixture.team_h_name} ${fixture.home_score ?? "–"} : ${fixture.away_score ?? "–"} ${fixture.team_a_name}\n${label}: ${expectedGoals?.toFixed(2) ?? "—"} · ${fmtKickoff(fixture.kickoff_time)}`} className={`flex h-12 w-[100px] flex-col items-center justify-center rounded ${textColor}`} style={{ backgroundColor: color }}>
+                        <span className="w-full truncate px-1 text-center text-[10px] font-semibold">{venue} {opponent}</span>
+                        <span className="text-[10px] font-bold">{expectedGoals != null ? expectedGoals.toFixed(2) : "—"} {metric === "attack" ? "xGF" : "xGA"}</span>
+                      </div>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
 }
 
 function fmtKickoff(iso: string | null): string {
@@ -113,10 +164,9 @@ export default function FixturesPage() {
 
   return (
     <main className="mx-auto max-w-[1400px] px-2 py-6">
-      <h1 className="text-2xl font-extrabold tracking-tight">Fixtures — Gameweek Schedule</h1>
+      <h1 className="text-2xl font-extrabold tracking-tight">Fixture advantages</h1>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        Each cell shows a team's fixture that week: opponent, home/away and the team's win probability, from the
-        Poisson model in <code>fpl.fixture_difficulties</code>. Hover a cell for score details.
+        Compare each team&apos;s expected goals for and against by gameweek. Values come from the same Poisson model as the match probabilities; greener cells indicate the stronger FPL matchup.
       </p>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -139,63 +189,25 @@ export default function FixturesPage() {
           <p className="mt-3 text-xs text-[var(--muted)]">
             {fixtures.length} fixtures · gameweeks {events.length ? `${events[0]}–${events[events.length - 1]}` : "—"}
           </p>
-          <div className="mt-3 max-h-[70vh] overflow-auto rounded-lg border border-[var(--border)]">
-            <table className="border-collapse text-[11px]" style={{ minWidth: "max-content" }}>
-              <thead>
-                <tr>
-                  <th className={`sticky left-0 z-10 ${HEADER_BG} px-3 py-2 text-left text-[10px] uppercase tracking-wide text-[var(--muted)]`}>
-                    Team
-                  </th>
-                  {events.map((ev) => (
-                    <th key={ev} className={`${HEADER_BG} py-2 text-center font-semibold`}>
-                      <span className="block w-[92px] text-[10px]">GW{ev}</span>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {schedule.map(({ teamId, cells }) => (
-                  <tr key={teamId} className="border-t border-[var(--border)]">
-                    <th className={`sticky left-0 z-10 ${HEADER_BG} px-3 py-1 text-left font-semibold whitespace-nowrap`}>
-                      {nameById.get(teamId)}
-                    </th>
-                    {cells.map(({ ev, fixture }) => {
-                      if (!fixture) {
-                        return <td key={ev} className="px-0.5 py-0.5 text-center text-[var(--muted)] opacity-40">·</td>;
-                      }
-                      const home = Number(fixture.team_h) === teamId;
-                      const p = home ? fixture.prob_home_win : fixture.prob_away_win;
-                      const pct = p != null ? Math.round(p * 100) : null;
-                      const opponent = home ? fixture.team_a_name : fixture.team_h_name;
-                      const isPast = fixture.finished;
-                      const bg = isPast ? grayColor(p) : probColor(p);
-                      return (
-                        <td key={ev} className="p-[2px]">
-                          <div
-                            title={`${fixture.team_h_name} ${fixture.home_score ?? "–"} : ${fixture.away_score ?? "–"} ${fixture.team_a_name}\nGW ${fixture.event ?? "?"} · ${fmtKickoff(fixture.kickoff_time)}\nWin ${pct ?? "?"}% / Draw ${(home ? fixture.prob_draw : fixture.prob_draw) != null ? Math.round((fixture.prob_draw ?? 0) * 100) : "?"}% / Lose ${(home ? fixture.prob_away_win : fixture.prob_home_win) != null ? Math.round((home ? fixture.prob_away_win : fixture.prob_home_win) ?? 0) * 100 : "?"}%`}
-                            className="flex h-12 w-[92px] min-w-0 cursor-default flex-col items-center justify-center rounded"
-                            style={{ backgroundColor: bg }}
-                          >
-                            <span className={`w-full truncate px-0.5 text-center text-[10px] font-semibold ${isPast ? (p != null && p >= 0.5 ? "text-black/80" : "text-white/90") : "text-black/80"}`}>
-                              {home ? "vs" : "@"} {opponent}
-                            </span>
-                            <span className={`text-[9px] font-bold ${isPast ? (p != null && p >= 0.5 ? "text-black/70" : "text-white/80") : "text-black/70"}`}>
-                              {pct != null ? `${pct}%` : "—"}
-                            </span>
-                          </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-4 flex items-center gap-2 text-xs text-[var(--muted)]">
-            <span>&lt;20%</span>
+          <MetricTable
+            title="Attacking advantage"
+            description="Expected goals for (xGF) · higher is better"
+            schedule={schedule}
+            nameById={nameById}
+            metric="attack"
+          />
+          <MetricTable
+            title="Defensive advantage"
+            description="Expected goals against (xGA) · lower is better"
+            schedule={schedule}
+            nameById={nameById}
+            metric="defense"
+          />
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
+            <span>Less favorable</span>
             <span className="h-2 w-40 rounded" style={{ background: "linear-gradient(to right, rgb(239,68,68), rgb(245,158,11), rgb(34,197,94))" }} />
-            <span>&gt;80% win probability</span>
+            <span>More favorable</span>
+            <span className="ml-1">· Colors use the modeled xG scale (0.5–2.5)</span>
           </div>
         </>
       )}
