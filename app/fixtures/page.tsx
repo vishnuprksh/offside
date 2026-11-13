@@ -78,12 +78,13 @@ function MetricTable({
                     ? (home ? fixture.lambda_home : fixture.lambda_away)
                     : (home ? fixture.lambda_away : fixture.lambda_home);
                   const venue = home ? "vs" : "@";
+                  const isPast = fixture.finished || Boolean(fixture.kickoff_time && new Date(fixture.kickoff_time).getTime() < Date.now());
                   const color = xgColor(expectedGoals, metric);
                   const textColor = expectedGoals != null && ((metric === "attack" && expectedGoals >= 1.5) || (metric === "defense" && expectedGoals <= 1.5)) ? "text-black/80" : "text-white/95";
                   const label = metric === "attack" ? "xG for" : "xG against";
                   return (
                     <td key={ev} className="p-[2px]">
-                      <div title={`${fixture.team_h_name} ${fixture.home_score ?? "–"} : ${fixture.away_score ?? "–"} ${fixture.team_a_name}\n${label}: ${expectedGoals?.toFixed(2) ?? "—"} · ${fmtKickoff(fixture.kickoff_time)}`} className={`flex h-12 w-[100px] flex-col items-center justify-center rounded ${textColor}`} style={{ backgroundColor: color }}>
+                      <div title={`${fixture.team_h_name} ${fixture.home_score ?? "–"} : ${fixture.away_score ?? "–"} ${fixture.team_a_name}\n${label}: ${expectedGoals?.toFixed(2) ?? "—"} · ${fmtKickoff(fixture.kickoff_time)}`} className={`flex h-12 w-[100px] flex-col items-center justify-center rounded ${isPast ? "bg-slate-700/70 text-slate-300" : textColor}`} style={isPast ? undefined : { backgroundColor: color }}>
                         <span className="w-full truncate px-1 text-center text-[10px] font-semibold">{venue} {opponent}</span>
                         <span className="text-[10px] font-bold">{expectedGoals != null ? expectedGoals.toFixed(2) : "—"} {metric === "attack" ? "xGF" : "xGA"}</span>
                       </div>
