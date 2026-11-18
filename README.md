@@ -101,3 +101,29 @@ vercel --prod
 | `/players` | Searchable player market with stats and predictions |
 
 Transfer suggestion logic lives in `lib/suggestions.ts` (port of the notebook's algorithm).
+
+
+## Offside11 weekly selections
+
+`/dream15` loads `/api/best-eleven` without caching. The endpoint keeps saved
+`fpl.best_eleven` rows for the latest fixture season and computes missing,
+unfinished gameweeks from `fpl.predictions.gw_predictions`. Weekly points are
+used as supplied by the prediction sync, not the multi-week average.
+
+The selector follows the backend's existing XI policy: £85m for eleven players,
+one goalkeeper, 3–5 defenders, 2–5 midfielders, 1–3 forwards, and at most three
+players per club. It maximizes the raw XI predicted sum, then selects the highest
+predicted scorer as captain and doubles that player's points in the team total.
+The optimizer does not substitute a new objective that maximizes the
+captain-doubled total. Player cards keep raw points.
+
+Saved selections are authoritative and are never rewritten by the endpoint.
+Computed forecasts are read-only and are not historical snapshots. The existing
+backend best-eleven producer and Postgres sync remain responsible for creating
+history and updating actual scores. The frontend does not reconstruct completed
+weeks from later predictions, create database tables, or add scheduled jobs.
+A missing or infeasible weekly pool is reported rather than padded with players
+without forecasts. Diagnostics load independently from weekly selections.
+
+Run policy tests with `npx tsx --test weekly-eleven.test.ts`, and run
+`npm run build` for TypeScript and production compilation checks.
