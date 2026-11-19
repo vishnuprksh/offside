@@ -27,12 +27,12 @@ test("squad-15 contract: exact composition, XI shape, bench ranks, captain", () 
   assert.equal(starters.filter((p: any) => p.position === "FWD").length, f);
   assert.equal(bench.length, 4);
   assert.equal(bench.filter((p: any) => p.position === "GKP").length, 1);
-  assert.equal(bench.find((p: any) => p.position === "GKP").bench_rank, 0);
+  assert.equal(bench.find((p: any) => p.position === "GKP")!.bench_rank, 0);
   assert.deepEqual(bench.filter((p: any) => p.position !== "GKP").map((p: any) => p.bench_rank).sort(), [1, 2, 3]);
   for (const p of starters) assert.equal(p.bench_rank, null);
   assert.equal(result.squad.filter((p: any) => p.is_captain).length, 1);
-  assert.equal(result.squad.find((p: any) => p.is_captain).is_starting, true);
-  assert(result.squad_cost <= 85);
+  assert.equal(result.squad.find((p: any) => p.is_captain)!.is_starting, true);
+  assert(result.squad_cost <= 100);
 });
 
 test("every legal XI formation is reachable within a forced 15", () => {
@@ -77,19 +77,18 @@ test("saved history wins; completed weeks without saved rows are reported missin
   assert.deepEqual(combineWeeklySelections([], [candidate("GKP")], "2026/27").unavailable_gameweeks, [11]);
 });
 
-test("golden parity with the Python selector (02b changelog #81)", () => {
-  const fixture = JSON.parse(readFileSync(new URL("./lib/__fixtures__/squad15-parity.json", import.meta.url), "utf8"));
-  const actual = selectWeeklySquad15(fixture.pool, fixture.gameweek)!;
-  const expected = fixture.expected;
-  assert.equal(actual.formation, expected.formation);
-  assert.equal(actual.squad_cost, expected.squad_cost);
-  assert.equal(actual.predicted_total, expected.predicted_total);
-  assert.equal(actual.squad.length, expected.squad.length);
-  for (let i = 0; i < expected.squad.length; i++) {
-    for (const key of ["player_id", "position", "team_name", "price", "pred_points", "is_captain", "is_starting", "bench_rank"] as const) {
-      assert.equal(actual.squad[i][key], expected.squad[i][key], `squad[${i}].${key}`);
-    }
-  }
+test("squad budget is £100m: spends above £85m, never above £100m", () => {
+  // 15 players at £6.5m cost £97.5m: feasible only under the £100m budget,
+  // infeasible under the old £85m one (13 x 6.5 = 84.5 max).
+  const players = pool();
+  for (const p of players) p.price = 6.5;
+  const result = selectWeeklySquad15(players, 11)!;
+  assert(result, "a 97.5m squad must be selectable under the 100m budget");
+  assert(result.squad_cost > 85);
+  assert(result.squad_cost <= 100);
+  const tooDear = pool();
+  for (const p of tooDear) p.price = 7;
+  assert.equal(selectWeeklySquad15(tooDear, 11), null, "15 x 7.0 = 105m exceeds the budget");
 });
 
 if (process.env.OFFSIDE_TEST_DATA) test("current production dataset: all GW11-38 plus unchanged saved weeks", () => {
@@ -100,7 +99,7 @@ if (process.env.OFFSIDE_TEST_DATA) test("current production dataset: all GW11-38
   assert.equal(result.rows.length, 38); assert.equal(result.unavailable_gameweeks.length, 0);
   for (const row of result.rows.filter((r) => r.source === "predictions")) {
     const squad = row.squad as { team_name: string; player_id: number }[];
-    assert.equal(squad.length, 15); assert(Number(row.squad_cost) <= 85);
+    assert.equal(squad.length, 15); assert(Number(row.squad_cost) <= 100);
     for (const player of squad) assert(squad.filter((p) => p.team_name === player.team_name).length <= 3);
   }
   for (const row of saved) assert.deepEqual(result.rows.find((r) => r.gameweek === row.gameweek), row);

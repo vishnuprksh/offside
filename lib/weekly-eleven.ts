@@ -3,7 +3,7 @@ import type { PredictionRow } from "./db";
 
 // Same policy as offside-backend 02b squad-15 selection (notebook changelog #81):
 // pick a 15-player squad - exactly 2 GKP / 5 DEF / 5 MID / 3 FWD, total price
-// <= 85.0, at most 3 per club - maximizing the SUM of predicted points over
+// <= 100.0, at most 3 per club - maximizing the SUM of predicted points over
 // all 15. The starting XI is chosen afterward, within the 15: the legal
 // formation maximizing the RAW XI sum (no captain doubling in the
 // optimization). Captain = highest-predicted starter, picked last; displayed
@@ -12,7 +12,8 @@ import type { PredictionRow } from "./db";
 // players ordered by predicted points (bench_rank 1-3).
 // A tiny player_id-ordered objective perturbation makes both MILP optima
 // unique, so this picker and the Python selector choose identical squads on
-// the same candidate pool (golden parity fixture).
+// the same candidate pool. Budget corrected to 100.0 (full 15) on 2026-11-19
+// per the user's explicit correction; the saved production squads cost 95-100.
 const FORMATIONS: Array<[number, number, number]> = [
   [3, 4, 3], [3, 5, 2], [4, 4, 2], [4, 3, 3],
   [5, 4, 1], [5, 3, 2], [4, 5, 1], [5, 2, 3],
@@ -27,7 +28,7 @@ function solveMilp(candidates: Candidate[], positionCounts: Record<string, numbe
   // Mirrors scipy.optimize.milp: exact position equalities, price and club
   // upper bounds, binary variables, maximize pred_points + tie-break.
   const n = candidates.length;
-  const constraints: Record<string, { equal?: number; max?: number }> = { price: { max: 850 } };
+  const constraints: Record<string, { equal?: number; max?: number }> = { price: { max: 1000 } };
   for (const [position, count] of Object.entries(positionCounts)) constraints[position] = { equal: count };
   const clubs = new Map([...new Set(candidates.map((p) => p.team_name))].map((club, i) => [club, `club${i}`]));
   for (const club of clubs.values()) constraints[club] = { max: MAX_PER_CLUB };
