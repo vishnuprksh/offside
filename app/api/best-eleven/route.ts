@@ -16,7 +16,9 @@ export async function GET() {
     const season = fixtures.rows[0]?.season;
     if (!season) throw new Error("Current season is unavailable");
     const completed = fixtures.rows.filter((row) => row.finished === true).map((row) => Number(row.event));
-    return NextResponse.json(combineWeeklySelections(saved, predictions, season, completed), { headers: { "Cache-Control": "no-store" } });
+    const result = combineWeeklySelections(saved, predictions, season, completed);
+    for (const row of result.rows) row.finished = completed.includes(Number(row.gameweek));
+    return NextResponse.json(result, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     console.error("Weekly selection failed", error);
     return NextResponse.json({ error: "Unable to load weekly selections. Please try again." }, { status: 500, headers: { "Cache-Control": "no-store" } });

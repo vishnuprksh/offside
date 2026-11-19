@@ -1,0 +1,6693 @@
+{
+ "gameweek": 1,
+ "pool": [
+  {
+   "player_id": 1,
+   "player_name": "Player 1",
+   "position": "GKP",
+   "team_name": "Club 01",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.98
+    }
+   ]
+  },
+  {
+   "player_id": 2,
+   "player_name": "Player 2",
+   "position": "GKP",
+   "team_name": "Club 01",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.98
+    }
+   ]
+  },
+  {
+   "player_id": 3,
+   "player_name": "Player 3",
+   "position": "GKP",
+   "team_name": "Club 01",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.5
+    }
+   ]
+  },
+  {
+   "player_id": 4,
+   "player_name": "Player 4",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 5,
+   "player_name": "Player 5",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.63
+    }
+   ]
+  },
+  {
+   "player_id": 6,
+   "player_name": "Player 6",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.12
+    }
+   ]
+  },
+  {
+   "player_id": 7,
+   "player_name": "Player 7",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.92
+    }
+   ]
+  },
+  {
+   "player_id": 8,
+   "player_name": "Player 8",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.63
+    }
+   ]
+  },
+  {
+   "player_id": 9,
+   "player_name": "Player 9",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.8
+    }
+   ]
+  },
+  {
+   "player_id": 10,
+   "player_name": "Player 10",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 5.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 11,
+   "player_name": "Player 11",
+   "position": "DEF",
+   "team_name": "Club 01",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.01
+    }
+   ]
+  },
+  {
+   "player_id": 12,
+   "player_name": "Player 12",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.27
+    }
+   ]
+  },
+  {
+   "player_id": 13,
+   "player_name": "Player 13",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 11.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.89
+    }
+   ]
+  },
+  {
+   "player_id": 14,
+   "player_name": "Player 14",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.12
+    }
+   ]
+  },
+  {
+   "player_id": 15,
+   "player_name": "Player 15",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.47
+    }
+   ]
+  },
+  {
+   "player_id": 16,
+   "player_name": "Player 16",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.83
+    }
+   ]
+  },
+  {
+   "player_id": 17,
+   "player_name": "Player 17",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 11.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.2
+    }
+   ]
+  },
+  {
+   "player_id": 18,
+   "player_name": "Player 18",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 10.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.52
+    }
+   ]
+  },
+  {
+   "player_id": 19,
+   "player_name": "Player 19",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.21
+    }
+   ]
+  },
+  {
+   "player_id": 20,
+   "player_name": "Player 20",
+   "position": "MID",
+   "team_name": "Club 01",
+   "price": 7.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.58
+    }
+   ]
+  },
+  {
+   "player_id": 21,
+   "player_name": "Player 21",
+   "position": "FWD",
+   "team_name": "Club 01",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.24
+    }
+   ]
+  },
+  {
+   "player_id": 22,
+   "player_name": "Player 22",
+   "position": "FWD",
+   "team_name": "Club 01",
+   "price": 9.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.9
+    }
+   ]
+  },
+  {
+   "player_id": 23,
+   "player_name": "Player 23",
+   "position": "FWD",
+   "team_name": "Club 01",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.01
+    }
+   ]
+  },
+  {
+   "player_id": 24,
+   "player_name": "Player 24",
+   "position": "FWD",
+   "team_name": "Club 01",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.59
+    }
+   ]
+  },
+  {
+   "player_id": 25,
+   "player_name": "Player 25",
+   "position": "FWD",
+   "team_name": "Club 01",
+   "price": 13.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.31
+    }
+   ]
+  },
+  {
+   "player_id": 26,
+   "player_name": "Player 26",
+   "position": "GKP",
+   "team_name": "Club 02",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.86
+    }
+   ]
+  },
+  {
+   "player_id": 27,
+   "player_name": "Player 27",
+   "position": "GKP",
+   "team_name": "Club 02",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.28
+    }
+   ]
+  },
+  {
+   "player_id": 28,
+   "player_name": "Player 28",
+   "position": "GKP",
+   "team_name": "Club 02",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.4
+    }
+   ]
+  },
+  {
+   "player_id": 29,
+   "player_name": "Player 29",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.17
+    }
+   ]
+  },
+  {
+   "player_id": 30,
+   "player_name": "Player 30",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.99
+    }
+   ]
+  },
+  {
+   "player_id": 31,
+   "player_name": "Player 31",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.19
+    }
+   ]
+  },
+  {
+   "player_id": 32,
+   "player_name": "Player 32",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.52
+    }
+   ]
+  },
+  {
+   "player_id": 33,
+   "player_name": "Player 33",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.33
+    }
+   ]
+  },
+  {
+   "player_id": 34,
+   "player_name": "Player 34",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.62
+    }
+   ]
+  },
+  {
+   "player_id": 35,
+   "player_name": "Player 35",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.67
+    }
+   ]
+  },
+  {
+   "player_id": 36,
+   "player_name": "Player 36",
+   "position": "DEF",
+   "team_name": "Club 02",
+   "price": 6.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.51
+    }
+   ]
+  },
+  {
+   "player_id": 37,
+   "player_name": "Player 37",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 38,
+   "player_name": "Player 38",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 9.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.63
+    }
+   ]
+  },
+  {
+   "player_id": 39,
+   "player_name": "Player 39",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 11.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.51
+    }
+   ]
+  },
+  {
+   "player_id": 40,
+   "player_name": "Player 40",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 8.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.77
+    }
+   ]
+  },
+  {
+   "player_id": 41,
+   "player_name": "Player 41",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.69
+    }
+   ]
+  },
+  {
+   "player_id": 42,
+   "player_name": "Player 42",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 10.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.57
+    }
+   ]
+  },
+  {
+   "player_id": 43,
+   "player_name": "Player 43",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 12.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.54
+    }
+   ]
+  },
+  {
+   "player_id": 44,
+   "player_name": "Player 44",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 9.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.25
+    }
+   ]
+  },
+  {
+   "player_id": 45,
+   "player_name": "Player 45",
+   "position": "MID",
+   "team_name": "Club 02",
+   "price": 12.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.49
+    }
+   ]
+  },
+  {
+   "player_id": 46,
+   "player_name": "Player 46",
+   "position": "FWD",
+   "team_name": "Club 02",
+   "price": 11.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.31
+    }
+   ]
+  },
+  {
+   "player_id": 47,
+   "player_name": "Player 47",
+   "position": "FWD",
+   "team_name": "Club 02",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.61
+    }
+   ]
+  },
+  {
+   "player_id": 48,
+   "player_name": "Player 48",
+   "position": "FWD",
+   "team_name": "Club 02",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.75
+    }
+   ]
+  },
+  {
+   "player_id": 49,
+   "player_name": "Player 49",
+   "position": "FWD",
+   "team_name": "Club 02",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.0
+    }
+   ]
+  },
+  {
+   "player_id": 50,
+   "player_name": "Player 50",
+   "position": "FWD",
+   "team_name": "Club 02",
+   "price": 12.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.79
+    }
+   ]
+  },
+  {
+   "player_id": 51,
+   "player_name": "Player 51",
+   "position": "GKP",
+   "team_name": "Club 03",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.31
+    }
+   ]
+  },
+  {
+   "player_id": 52,
+   "player_name": "Player 52",
+   "position": "GKP",
+   "team_name": "Club 03",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.25
+    }
+   ]
+  },
+  {
+   "player_id": 53,
+   "player_name": "Player 53",
+   "position": "GKP",
+   "team_name": "Club 03",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.89
+    }
+   ]
+  },
+  {
+   "player_id": 54,
+   "player_name": "Player 54",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.99
+    }
+   ]
+  },
+  {
+   "player_id": 55,
+   "player_name": "Player 55",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.97
+    }
+   ]
+  },
+  {
+   "player_id": 56,
+   "player_name": "Player 56",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.83
+    }
+   ]
+  },
+  {
+   "player_id": 57,
+   "player_name": "Player 57",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.75
+    }
+   ]
+  },
+  {
+   "player_id": 58,
+   "player_name": "Player 58",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 6.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.52
+    }
+   ]
+  },
+  {
+   "player_id": 59,
+   "player_name": "Player 59",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 7.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.06
+    }
+   ]
+  },
+  {
+   "player_id": 60,
+   "player_name": "Player 60",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.81
+    }
+   ]
+  },
+  {
+   "player_id": 61,
+   "player_name": "Player 61",
+   "position": "DEF",
+   "team_name": "Club 03",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.26
+    }
+   ]
+  },
+  {
+   "player_id": 62,
+   "player_name": "Player 62",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 9.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.84
+    }
+   ]
+  },
+  {
+   "player_id": 63,
+   "player_name": "Player 63",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 9.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.79
+    }
+   ]
+  },
+  {
+   "player_id": 64,
+   "player_name": "Player 64",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 8.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.62
+    }
+   ]
+  },
+  {
+   "player_id": 65,
+   "player_name": "Player 65",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 12.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.13
+    }
+   ]
+  },
+  {
+   "player_id": 66,
+   "player_name": "Player 66",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 9.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.21
+    }
+   ]
+  },
+  {
+   "player_id": 67,
+   "player_name": "Player 67",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.59
+    }
+   ]
+  },
+  {
+   "player_id": 68,
+   "player_name": "Player 68",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 12.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.22
+    }
+   ]
+  },
+  {
+   "player_id": 69,
+   "player_name": "Player 69",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 8.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.28
+    }
+   ]
+  },
+  {
+   "player_id": 70,
+   "player_name": "Player 70",
+   "position": "MID",
+   "team_name": "Club 03",
+   "price": 12.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.97
+    }
+   ]
+  },
+  {
+   "player_id": 71,
+   "player_name": "Player 71",
+   "position": "FWD",
+   "team_name": "Club 03",
+   "price": 10.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.88
+    }
+   ]
+  },
+  {
+   "player_id": 72,
+   "player_name": "Player 72",
+   "position": "FWD",
+   "team_name": "Club 03",
+   "price": 9.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.6
+    }
+   ]
+  },
+  {
+   "player_id": 73,
+   "player_name": "Player 73",
+   "position": "FWD",
+   "team_name": "Club 03",
+   "price": 10.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.02
+    }
+   ]
+  },
+  {
+   "player_id": 74,
+   "player_name": "Player 74",
+   "position": "FWD",
+   "team_name": "Club 03",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.82
+    }
+   ]
+  },
+  {
+   "player_id": 75,
+   "player_name": "Player 75",
+   "position": "FWD",
+   "team_name": "Club 03",
+   "price": 13.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.45
+    }
+   ]
+  },
+  {
+   "player_id": 76,
+   "player_name": "Player 76",
+   "position": "GKP",
+   "team_name": "Club 04",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.66
+    }
+   ]
+  },
+  {
+   "player_id": 77,
+   "player_name": "Player 77",
+   "position": "GKP",
+   "team_name": "Club 04",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.28
+    }
+   ]
+  },
+  {
+   "player_id": 78,
+   "player_name": "Player 78",
+   "position": "GKP",
+   "team_name": "Club 04",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.81
+    }
+   ]
+  },
+  {
+   "player_id": 79,
+   "player_name": "Player 79",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 6.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.22
+    }
+   ]
+  },
+  {
+   "player_id": 80,
+   "player_name": "Player 80",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 81,
+   "player_name": "Player 81",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.69
+    }
+   ]
+  },
+  {
+   "player_id": 82,
+   "player_name": "Player 82",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.65
+    }
+   ]
+  },
+  {
+   "player_id": 83,
+   "player_name": "Player 83",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.47
+    }
+   ]
+  },
+  {
+   "player_id": 84,
+   "player_name": "Player 84",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.14
+    }
+   ]
+  },
+  {
+   "player_id": 85,
+   "player_name": "Player 85",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.5
+    }
+   ]
+  },
+  {
+   "player_id": 86,
+   "player_name": "Player 86",
+   "position": "DEF",
+   "team_name": "Club 04",
+   "price": 7.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.91
+    }
+   ]
+  },
+  {
+   "player_id": 87,
+   "player_name": "Player 87",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 12.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.88
+    }
+   ]
+  },
+  {
+   "player_id": 88,
+   "player_name": "Player 88",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 12.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.29
+    }
+   ]
+  },
+  {
+   "player_id": 89,
+   "player_name": "Player 89",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.64
+    }
+   ]
+  },
+  {
+   "player_id": 90,
+   "player_name": "Player 90",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 9.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.55
+    }
+   ]
+  },
+  {
+   "player_id": 91,
+   "player_name": "Player 91",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 7.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.07
+    }
+   ]
+  },
+  {
+   "player_id": 92,
+   "player_name": "Player 92",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.13
+    }
+   ]
+  },
+  {
+   "player_id": 93,
+   "player_name": "Player 93",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 10.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.9
+    }
+   ]
+  },
+  {
+   "player_id": 94,
+   "player_name": "Player 94",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 7.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.23
+    }
+   ]
+  },
+  {
+   "player_id": 95,
+   "player_name": "Player 95",
+   "position": "MID",
+   "team_name": "Club 04",
+   "price": 7.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.04
+    }
+   ]
+  },
+  {
+   "player_id": 96,
+   "player_name": "Player 96",
+   "position": "FWD",
+   "team_name": "Club 04",
+   "price": 13.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.73
+    }
+   ]
+  },
+  {
+   "player_id": 97,
+   "player_name": "Player 97",
+   "position": "FWD",
+   "team_name": "Club 04",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.07
+    }
+   ]
+  },
+  {
+   "player_id": 98,
+   "player_name": "Player 98",
+   "position": "FWD",
+   "team_name": "Club 04",
+   "price": 8.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.21
+    }
+   ]
+  },
+  {
+   "player_id": 99,
+   "player_name": "Player 99",
+   "position": "FWD",
+   "team_name": "Club 04",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.97
+    }
+   ]
+  },
+  {
+   "player_id": 100,
+   "player_name": "Player 100",
+   "position": "FWD",
+   "team_name": "Club 04",
+   "price": 6.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.57
+    }
+   ]
+  },
+  {
+   "player_id": 101,
+   "player_name": "Player 101",
+   "position": "GKP",
+   "team_name": "Club 05",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 102,
+   "player_name": "Player 102",
+   "position": "GKP",
+   "team_name": "Club 05",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.76
+    }
+   ]
+  },
+  {
+   "player_id": 103,
+   "player_name": "Player 103",
+   "position": "GKP",
+   "team_name": "Club 05",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.5
+    }
+   ]
+  },
+  {
+   "player_id": 104,
+   "player_name": "Player 104",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 4.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.52
+    }
+   ]
+  },
+  {
+   "player_id": 105,
+   "player_name": "Player 105",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.49
+    }
+   ]
+  },
+  {
+   "player_id": 106,
+   "player_name": "Player 106",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.79
+    }
+   ]
+  },
+  {
+   "player_id": 107,
+   "player_name": "Player 107",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 108,
+   "player_name": "Player 108",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.58
+    }
+   ]
+  },
+  {
+   "player_id": 109,
+   "player_name": "Player 109",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.88
+    }
+   ]
+  },
+  {
+   "player_id": 110,
+   "player_name": "Player 110",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.69
+    }
+   ]
+  },
+  {
+   "player_id": 111,
+   "player_name": "Player 111",
+   "position": "DEF",
+   "team_name": "Club 05",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.54
+    }
+   ]
+  },
+  {
+   "player_id": 112,
+   "player_name": "Player 112",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.94
+    }
+   ]
+  },
+  {
+   "player_id": 113,
+   "player_name": "Player 113",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 8.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.77
+    }
+   ]
+  },
+  {
+   "player_id": 114,
+   "player_name": "Player 114",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 7.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.78
+    }
+   ]
+  },
+  {
+   "player_id": 115,
+   "player_name": "Player 115",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 7.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.73
+    }
+   ]
+  },
+  {
+   "player_id": 116,
+   "player_name": "Player 116",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.72
+    }
+   ]
+  },
+  {
+   "player_id": 117,
+   "player_name": "Player 117",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 8.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.6
+    }
+   ]
+  },
+  {
+   "player_id": 118,
+   "player_name": "Player 118",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 119,
+   "player_name": "Player 119",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 10.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.88
+    }
+   ]
+  },
+  {
+   "player_id": 120,
+   "player_name": "Player 120",
+   "position": "MID",
+   "team_name": "Club 05",
+   "price": 9.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.0
+    }
+   ]
+  },
+  {
+   "player_id": 121,
+   "player_name": "Player 121",
+   "position": "FWD",
+   "team_name": "Club 05",
+   "price": 13.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.78
+    }
+   ]
+  },
+  {
+   "player_id": 122,
+   "player_name": "Player 122",
+   "position": "FWD",
+   "team_name": "Club 05",
+   "price": 8.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.72
+    }
+   ]
+  },
+  {
+   "player_id": 123,
+   "player_name": "Player 123",
+   "position": "FWD",
+   "team_name": "Club 05",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.9
+    }
+   ]
+  },
+  {
+   "player_id": 124,
+   "player_name": "Player 124",
+   "position": "FWD",
+   "team_name": "Club 05",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.53
+    }
+   ]
+  },
+  {
+   "player_id": 125,
+   "player_name": "Player 125",
+   "position": "FWD",
+   "team_name": "Club 05",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.69
+    }
+   ]
+  },
+  {
+   "player_id": 126,
+   "player_name": "Player 126",
+   "position": "GKP",
+   "team_name": "Club 06",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.76
+    }
+   ]
+  },
+  {
+   "player_id": 127,
+   "player_name": "Player 127",
+   "position": "GKP",
+   "team_name": "Club 06",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.77
+    }
+   ]
+  },
+  {
+   "player_id": 128,
+   "player_name": "Player 128",
+   "position": "GKP",
+   "team_name": "Club 06",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.71
+    }
+   ]
+  },
+  {
+   "player_id": 129,
+   "player_name": "Player 129",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.38
+    }
+   ]
+  },
+  {
+   "player_id": 130,
+   "player_name": "Player 130",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.99
+    }
+   ]
+  },
+  {
+   "player_id": 131,
+   "player_name": "Player 131",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.53
+    }
+   ]
+  },
+  {
+   "player_id": 132,
+   "player_name": "Player 132",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.77
+    }
+   ]
+  },
+  {
+   "player_id": 133,
+   "player_name": "Player 133",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.95
+    }
+   ]
+  },
+  {
+   "player_id": 134,
+   "player_name": "Player 134",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 4.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.93
+    }
+   ]
+  },
+  {
+   "player_id": 135,
+   "player_name": "Player 135",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.23
+    }
+   ]
+  },
+  {
+   "player_id": 136,
+   "player_name": "Player 136",
+   "position": "DEF",
+   "team_name": "Club 06",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.59
+    }
+   ]
+  },
+  {
+   "player_id": 137,
+   "player_name": "Player 137",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.42
+    }
+   ]
+  },
+  {
+   "player_id": 138,
+   "player_name": "Player 138",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.86
+    }
+   ]
+  },
+  {
+   "player_id": 139,
+   "player_name": "Player 139",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 12.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.31
+    }
+   ]
+  },
+  {
+   "player_id": 140,
+   "player_name": "Player 140",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.78
+    }
+   ]
+  },
+  {
+   "player_id": 141,
+   "player_name": "Player 141",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 7.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.42
+    }
+   ]
+  },
+  {
+   "player_id": 142,
+   "player_name": "Player 142",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.93
+    }
+   ]
+  },
+  {
+   "player_id": 143,
+   "player_name": "Player 143",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.6
+    }
+   ]
+  },
+  {
+   "player_id": 144,
+   "player_name": "Player 144",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 10.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.51
+    }
+   ]
+  },
+  {
+   "player_id": 145,
+   "player_name": "Player 145",
+   "position": "MID",
+   "team_name": "Club 06",
+   "price": 8.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.14
+    }
+   ]
+  },
+  {
+   "player_id": 146,
+   "player_name": "Player 146",
+   "position": "FWD",
+   "team_name": "Club 06",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.0
+    }
+   ]
+  },
+  {
+   "player_id": 147,
+   "player_name": "Player 147",
+   "position": "FWD",
+   "team_name": "Club 06",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.0
+    }
+   ]
+  },
+  {
+   "player_id": 148,
+   "player_name": "Player 148",
+   "position": "FWD",
+   "team_name": "Club 06",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.21
+    }
+   ]
+  },
+  {
+   "player_id": 149,
+   "player_name": "Player 149",
+   "position": "FWD",
+   "team_name": "Club 06",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 150,
+   "player_name": "Player 150",
+   "position": "FWD",
+   "team_name": "Club 06",
+   "price": 7.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.98
+    }
+   ]
+  },
+  {
+   "player_id": 151,
+   "player_name": "Player 151",
+   "position": "GKP",
+   "team_name": "Club 07",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.19
+    }
+   ]
+  },
+  {
+   "player_id": 152,
+   "player_name": "Player 152",
+   "position": "GKP",
+   "team_name": "Club 07",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.35
+    }
+   ]
+  },
+  {
+   "player_id": 153,
+   "player_name": "Player 153",
+   "position": "GKP",
+   "team_name": "Club 07",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.48
+    }
+   ]
+  },
+  {
+   "player_id": 154,
+   "player_name": "Player 154",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.94
+    }
+   ]
+  },
+  {
+   "player_id": 155,
+   "player_name": "Player 155",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.44
+    }
+   ]
+  },
+  {
+   "player_id": 156,
+   "player_name": "Player 156",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.5
+    }
+   ]
+  },
+  {
+   "player_id": 157,
+   "player_name": "Player 157",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 6.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.79
+    }
+   ]
+  },
+  {
+   "player_id": 158,
+   "player_name": "Player 158",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 6.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.15
+    }
+   ]
+  },
+  {
+   "player_id": 159,
+   "player_name": "Player 159",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.82
+    }
+   ]
+  },
+  {
+   "player_id": 160,
+   "player_name": "Player 160",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 4.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.24
+    }
+   ]
+  },
+  {
+   "player_id": 161,
+   "player_name": "Player 161",
+   "position": "DEF",
+   "team_name": "Club 07",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.2
+    }
+   ]
+  },
+  {
+   "player_id": 162,
+   "player_name": "Player 162",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.54
+    }
+   ]
+  },
+  {
+   "player_id": 163,
+   "player_name": "Player 163",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 8.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.92
+    }
+   ]
+  },
+  {
+   "player_id": 164,
+   "player_name": "Player 164",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.15
+    }
+   ]
+  },
+  {
+   "player_id": 165,
+   "player_name": "Player 165",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 12.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.49
+    }
+   ]
+  },
+  {
+   "player_id": 166,
+   "player_name": "Player 166",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 12.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.28
+    }
+   ]
+  },
+  {
+   "player_id": 167,
+   "player_name": "Player 167",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.16
+    }
+   ]
+  },
+  {
+   "player_id": 168,
+   "player_name": "Player 168",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 12.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.4
+    }
+   ]
+  },
+  {
+   "player_id": 169,
+   "player_name": "Player 169",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 10.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.19
+    }
+   ]
+  },
+  {
+   "player_id": 170,
+   "player_name": "Player 170",
+   "position": "MID",
+   "team_name": "Club 07",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.74
+    }
+   ]
+  },
+  {
+   "player_id": 171,
+   "player_name": "Player 171",
+   "position": "FWD",
+   "team_name": "Club 07",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.0
+    }
+   ]
+  },
+  {
+   "player_id": 172,
+   "player_name": "Player 172",
+   "position": "FWD",
+   "team_name": "Club 07",
+   "price": 8.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.23
+    }
+   ]
+  },
+  {
+   "player_id": 173,
+   "player_name": "Player 173",
+   "position": "FWD",
+   "team_name": "Club 07",
+   "price": 13.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.83
+    }
+   ]
+  },
+  {
+   "player_id": 174,
+   "player_name": "Player 174",
+   "position": "FWD",
+   "team_name": "Club 07",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 175,
+   "player_name": "Player 175",
+   "position": "FWD",
+   "team_name": "Club 07",
+   "price": 8.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.71
+    }
+   ]
+  },
+  {
+   "player_id": 176,
+   "player_name": "Player 176",
+   "position": "GKP",
+   "team_name": "Club 08",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.75
+    }
+   ]
+  },
+  {
+   "player_id": 177,
+   "player_name": "Player 177",
+   "position": "GKP",
+   "team_name": "Club 08",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.41
+    }
+   ]
+  },
+  {
+   "player_id": 178,
+   "player_name": "Player 178",
+   "position": "GKP",
+   "team_name": "Club 08",
+   "price": 4.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.4
+    }
+   ]
+  },
+  {
+   "player_id": 179,
+   "player_name": "Player 179",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.85
+    }
+   ]
+  },
+  {
+   "player_id": 180,
+   "player_name": "Player 180",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.68
+    }
+   ]
+  },
+  {
+   "player_id": 181,
+   "player_name": "Player 181",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 6.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.44
+    }
+   ]
+  },
+  {
+   "player_id": 182,
+   "player_name": "Player 182",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.4
+    }
+   ]
+  },
+  {
+   "player_id": 183,
+   "player_name": "Player 183",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.04
+    }
+   ]
+  },
+  {
+   "player_id": 184,
+   "player_name": "Player 184",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.87
+    }
+   ]
+  },
+  {
+   "player_id": 185,
+   "player_name": "Player 185",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.03
+    }
+   ]
+  },
+  {
+   "player_id": 186,
+   "player_name": "Player 186",
+   "position": "DEF",
+   "team_name": "Club 08",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.45
+    }
+   ]
+  },
+  {
+   "player_id": 187,
+   "player_name": "Player 187",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.16
+    }
+   ]
+  },
+  {
+   "player_id": 188,
+   "player_name": "Player 188",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 12.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.23
+    }
+   ]
+  },
+  {
+   "player_id": 189,
+   "player_name": "Player 189",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 12.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.43
+    }
+   ]
+  },
+  {
+   "player_id": 190,
+   "player_name": "Player 190",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 11.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.45
+    }
+   ]
+  },
+  {
+   "player_id": 191,
+   "player_name": "Player 191",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.74
+    }
+   ]
+  },
+  {
+   "player_id": 192,
+   "player_name": "Player 192",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 10.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.54
+    }
+   ]
+  },
+  {
+   "player_id": 193,
+   "player_name": "Player 193",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 8.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.48
+    }
+   ]
+  },
+  {
+   "player_id": 194,
+   "player_name": "Player 194",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 12.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.79
+    }
+   ]
+  },
+  {
+   "player_id": 195,
+   "player_name": "Player 195",
+   "position": "MID",
+   "team_name": "Club 08",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.58
+    }
+   ]
+  },
+  {
+   "player_id": 196,
+   "player_name": "Player 196",
+   "position": "FWD",
+   "team_name": "Club 08",
+   "price": 7.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.14
+    }
+   ]
+  },
+  {
+   "player_id": 197,
+   "player_name": "Player 197",
+   "position": "FWD",
+   "team_name": "Club 08",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.79
+    }
+   ]
+  },
+  {
+   "player_id": 198,
+   "player_name": "Player 198",
+   "position": "FWD",
+   "team_name": "Club 08",
+   "price": 13.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.4
+    }
+   ]
+  },
+  {
+   "player_id": 199,
+   "player_name": "Player 199",
+   "position": "FWD",
+   "team_name": "Club 08",
+   "price": 8.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.97
+    }
+   ]
+  },
+  {
+   "player_id": 200,
+   "player_name": "Player 200",
+   "position": "FWD",
+   "team_name": "Club 08",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.45
+    }
+   ]
+  },
+  {
+   "player_id": 201,
+   "player_name": "Player 201",
+   "position": "GKP",
+   "team_name": "Club 09",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.14
+    }
+   ]
+  },
+  {
+   "player_id": 202,
+   "player_name": "Player 202",
+   "position": "GKP",
+   "team_name": "Club 09",
+   "price": 4.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.47
+    }
+   ]
+  },
+  {
+   "player_id": 203,
+   "player_name": "Player 203",
+   "position": "GKP",
+   "team_name": "Club 09",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.83
+    }
+   ]
+  },
+  {
+   "player_id": 204,
+   "player_name": "Player 204",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.66
+    }
+   ]
+  },
+  {
+   "player_id": 205,
+   "player_name": "Player 205",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.55
+    }
+   ]
+  },
+  {
+   "player_id": 206,
+   "player_name": "Player 206",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.25
+    }
+   ]
+  },
+  {
+   "player_id": 207,
+   "player_name": "Player 207",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.84
+    }
+   ]
+  },
+  {
+   "player_id": 208,
+   "player_name": "Player 208",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.96
+    }
+   ]
+  },
+  {
+   "player_id": 209,
+   "player_name": "Player 209",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 6.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.09
+    }
+   ]
+  },
+  {
+   "player_id": 210,
+   "player_name": "Player 210",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.9
+    }
+   ]
+  },
+  {
+   "player_id": 211,
+   "player_name": "Player 211",
+   "position": "DEF",
+   "team_name": "Club 09",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.32
+    }
+   ]
+  },
+  {
+   "player_id": 212,
+   "player_name": "Player 212",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.73
+    }
+   ]
+  },
+  {
+   "player_id": 213,
+   "player_name": "Player 213",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.56
+    }
+   ]
+  },
+  {
+   "player_id": 214,
+   "player_name": "Player 214",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.12
+    }
+   ]
+  },
+  {
+   "player_id": 215,
+   "player_name": "Player 215",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.75
+    }
+   ]
+  },
+  {
+   "player_id": 216,
+   "player_name": "Player 216",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.11
+    }
+   ]
+  },
+  {
+   "player_id": 217,
+   "player_name": "Player 217",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 7.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.33
+    }
+   ]
+  },
+  {
+   "player_id": 218,
+   "player_name": "Player 218",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 219,
+   "player_name": "Player 219",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 8.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.74
+    }
+   ]
+  },
+  {
+   "player_id": 220,
+   "player_name": "Player 220",
+   "position": "MID",
+   "team_name": "Club 09",
+   "price": 12.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.42
+    }
+   ]
+  },
+  {
+   "player_id": 221,
+   "player_name": "Player 221",
+   "position": "FWD",
+   "team_name": "Club 09",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.33
+    }
+   ]
+  },
+  {
+   "player_id": 222,
+   "player_name": "Player 222",
+   "position": "FWD",
+   "team_name": "Club 09",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 223,
+   "player_name": "Player 223",
+   "position": "FWD",
+   "team_name": "Club 09",
+   "price": 13.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.32
+    }
+   ]
+  },
+  {
+   "player_id": 224,
+   "player_name": "Player 224",
+   "position": "FWD",
+   "team_name": "Club 09",
+   "price": 12.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.13
+    }
+   ]
+  },
+  {
+   "player_id": 225,
+   "player_name": "Player 225",
+   "position": "FWD",
+   "team_name": "Club 09",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.52
+    }
+   ]
+  },
+  {
+   "player_id": 226,
+   "player_name": "Player 226",
+   "position": "GKP",
+   "team_name": "Club 10",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.39
+    }
+   ]
+  },
+  {
+   "player_id": 227,
+   "player_name": "Player 227",
+   "position": "GKP",
+   "team_name": "Club 10",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.0
+    }
+   ]
+  },
+  {
+   "player_id": 228,
+   "player_name": "Player 228",
+   "position": "GKP",
+   "team_name": "Club 10",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.87
+    }
+   ]
+  },
+  {
+   "player_id": 229,
+   "player_name": "Player 229",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.1
+    }
+   ]
+  },
+  {
+   "player_id": 230,
+   "player_name": "Player 230",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 231,
+   "player_name": "Player 231",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 5.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.91
+    }
+   ]
+  },
+  {
+   "player_id": 232,
+   "player_name": "Player 232",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 7.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.5
+    }
+   ]
+  },
+  {
+   "player_id": 233,
+   "player_name": "Player 233",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.34
+    }
+   ]
+  },
+  {
+   "player_id": 234,
+   "player_name": "Player 234",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.07
+    }
+   ]
+  },
+  {
+   "player_id": 235,
+   "player_name": "Player 235",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.44
+    }
+   ]
+  },
+  {
+   "player_id": 236,
+   "player_name": "Player 236",
+   "position": "DEF",
+   "team_name": "Club 10",
+   "price": 6.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.33
+    }
+   ]
+  },
+  {
+   "player_id": 237,
+   "player_name": "Player 237",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 8.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.68
+    }
+   ]
+  },
+  {
+   "player_id": 238,
+   "player_name": "Player 238",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 12.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.02
+    }
+   ]
+  },
+  {
+   "player_id": 239,
+   "player_name": "Player 239",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.22
+    }
+   ]
+  },
+  {
+   "player_id": 240,
+   "player_name": "Player 240",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 12.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.91
+    }
+   ]
+  },
+  {
+   "player_id": 241,
+   "player_name": "Player 241",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.78
+    }
+   ]
+  },
+  {
+   "player_id": 242,
+   "player_name": "Player 242",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 10.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.37
+    }
+   ]
+  },
+  {
+   "player_id": 243,
+   "player_name": "Player 243",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.88
+    }
+   ]
+  },
+  {
+   "player_id": 244,
+   "player_name": "Player 244",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.14
+    }
+   ]
+  },
+  {
+   "player_id": 245,
+   "player_name": "Player 245",
+   "position": "MID",
+   "team_name": "Club 10",
+   "price": 9.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.46
+    }
+   ]
+  },
+  {
+   "player_id": 246,
+   "player_name": "Player 246",
+   "position": "FWD",
+   "team_name": "Club 10",
+   "price": 10.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.03
+    }
+   ]
+  },
+  {
+   "player_id": 247,
+   "player_name": "Player 247",
+   "position": "FWD",
+   "team_name": "Club 10",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.73
+    }
+   ]
+  },
+  {
+   "player_id": 248,
+   "player_name": "Player 248",
+   "position": "FWD",
+   "team_name": "Club 10",
+   "price": 8.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.48
+    }
+   ]
+  },
+  {
+   "player_id": 249,
+   "player_name": "Player 249",
+   "position": "FWD",
+   "team_name": "Club 10",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.94
+    }
+   ]
+  },
+  {
+   "player_id": 250,
+   "player_name": "Player 250",
+   "position": "FWD",
+   "team_name": "Club 10",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.89
+    }
+   ]
+  },
+  {
+   "player_id": 251,
+   "player_name": "Player 251",
+   "position": "GKP",
+   "team_name": "Club 11",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.59
+    }
+   ]
+  },
+  {
+   "player_id": 252,
+   "player_name": "Player 252",
+   "position": "GKP",
+   "team_name": "Club 11",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.37
+    }
+   ]
+  },
+  {
+   "player_id": 253,
+   "player_name": "Player 253",
+   "position": "GKP",
+   "team_name": "Club 11",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.78
+    }
+   ]
+  },
+  {
+   "player_id": 254,
+   "player_name": "Player 254",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.77
+    }
+   ]
+  },
+  {
+   "player_id": 255,
+   "player_name": "Player 255",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.0
+    }
+   ]
+  },
+  {
+   "player_id": 256,
+   "player_name": "Player 256",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.65
+    }
+   ]
+  },
+  {
+   "player_id": 257,
+   "player_name": "Player 257",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.35
+    }
+   ]
+  },
+  {
+   "player_id": 258,
+   "player_name": "Player 258",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.66
+    }
+   ]
+  },
+  {
+   "player_id": 259,
+   "player_name": "Player 259",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.65
+    }
+   ]
+  },
+  {
+   "player_id": 260,
+   "player_name": "Player 260",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.95
+    }
+   ]
+  },
+  {
+   "player_id": 261,
+   "player_name": "Player 261",
+   "position": "DEF",
+   "team_name": "Club 11",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.96
+    }
+   ]
+  },
+  {
+   "player_id": 262,
+   "player_name": "Player 262",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 8.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.45
+    }
+   ]
+  },
+  {
+   "player_id": 263,
+   "player_name": "Player 263",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.48
+    }
+   ]
+  },
+  {
+   "player_id": 264,
+   "player_name": "Player 264",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 9.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.09
+    }
+   ]
+  },
+  {
+   "player_id": 265,
+   "player_name": "Player 265",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 9.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.53
+    }
+   ]
+  },
+  {
+   "player_id": 266,
+   "player_name": "Player 266",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.87
+    }
+   ]
+  },
+  {
+   "player_id": 267,
+   "player_name": "Player 267",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.15
+    }
+   ]
+  },
+  {
+   "player_id": 268,
+   "player_name": "Player 268",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 12.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.96
+    }
+   ]
+  },
+  {
+   "player_id": 269,
+   "player_name": "Player 269",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 8.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.77
+    }
+   ]
+  },
+  {
+   "player_id": 270,
+   "player_name": "Player 270",
+   "position": "MID",
+   "team_name": "Club 11",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.9
+    }
+   ]
+  },
+  {
+   "player_id": 271,
+   "player_name": "Player 271",
+   "position": "FWD",
+   "team_name": "Club 11",
+   "price": 13.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.96
+    }
+   ]
+  },
+  {
+   "player_id": 272,
+   "player_name": "Player 272",
+   "position": "FWD",
+   "team_name": "Club 11",
+   "price": 10.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.13
+    }
+   ]
+  },
+  {
+   "player_id": 273,
+   "player_name": "Player 273",
+   "position": "FWD",
+   "team_name": "Club 11",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.37
+    }
+   ]
+  },
+  {
+   "player_id": 274,
+   "player_name": "Player 274",
+   "position": "FWD",
+   "team_name": "Club 11",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.81
+    }
+   ]
+  },
+  {
+   "player_id": 275,
+   "player_name": "Player 275",
+   "position": "FWD",
+   "team_name": "Club 11",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.87
+    }
+   ]
+  },
+  {
+   "player_id": 276,
+   "player_name": "Player 276",
+   "position": "GKP",
+   "team_name": "Club 12",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 277,
+   "player_name": "Player 277",
+   "position": "GKP",
+   "team_name": "Club 12",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.32
+    }
+   ]
+  },
+  {
+   "player_id": 278,
+   "player_name": "Player 278",
+   "position": "GKP",
+   "team_name": "Club 12",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.75
+    }
+   ]
+  },
+  {
+   "player_id": 279,
+   "player_name": "Player 279",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.63
+    }
+   ]
+  },
+  {
+   "player_id": 280,
+   "player_name": "Player 280",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.92
+    }
+   ]
+  },
+  {
+   "player_id": 281,
+   "player_name": "Player 281",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 6.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.06
+    }
+   ]
+  },
+  {
+   "player_id": 282,
+   "player_name": "Player 282",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 7.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.79
+    }
+   ]
+  },
+  {
+   "player_id": 283,
+   "player_name": "Player 283",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.47
+    }
+   ]
+  },
+  {
+   "player_id": 284,
+   "player_name": "Player 284",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 5.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.06
+    }
+   ]
+  },
+  {
+   "player_id": 285,
+   "player_name": "Player 285",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.87
+    }
+   ]
+  },
+  {
+   "player_id": 286,
+   "player_name": "Player 286",
+   "position": "DEF",
+   "team_name": "Club 12",
+   "price": 6.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.82
+    }
+   ]
+  },
+  {
+   "player_id": 287,
+   "player_name": "Player 287",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 12.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.76
+    }
+   ]
+  },
+  {
+   "player_id": 288,
+   "player_name": "Player 288",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 9.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.14
+    }
+   ]
+  },
+  {
+   "player_id": 289,
+   "player_name": "Player 289",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 9.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.37
+    }
+   ]
+  },
+  {
+   "player_id": 290,
+   "player_name": "Player 290",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.67
+    }
+   ]
+  },
+  {
+   "player_id": 291,
+   "player_name": "Player 291",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.1
+    }
+   ]
+  },
+  {
+   "player_id": 292,
+   "player_name": "Player 292",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.03
+    }
+   ]
+  },
+  {
+   "player_id": 293,
+   "player_name": "Player 293",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 12.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.47
+    }
+   ]
+  },
+  {
+   "player_id": 294,
+   "player_name": "Player 294",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 10.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.24
+    }
+   ]
+  },
+  {
+   "player_id": 295,
+   "player_name": "Player 295",
+   "position": "MID",
+   "team_name": "Club 12",
+   "price": 11.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.43
+    }
+   ]
+  },
+  {
+   "player_id": 296,
+   "player_name": "Player 296",
+   "position": "FWD",
+   "team_name": "Club 12",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.0
+    }
+   ]
+  },
+  {
+   "player_id": 297,
+   "player_name": "Player 297",
+   "position": "FWD",
+   "team_name": "Club 12",
+   "price": 8.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.95
+    }
+   ]
+  },
+  {
+   "player_id": 298,
+   "player_name": "Player 298",
+   "position": "FWD",
+   "team_name": "Club 12",
+   "price": 7.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.29
+    }
+   ]
+  },
+  {
+   "player_id": 299,
+   "player_name": "Player 299",
+   "position": "FWD",
+   "team_name": "Club 12",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.58
+    }
+   ]
+  },
+  {
+   "player_id": 300,
+   "player_name": "Player 300",
+   "position": "FWD",
+   "team_name": "Club 12",
+   "price": 13.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.07
+    }
+   ]
+  },
+  {
+   "player_id": 301,
+   "player_name": "Player 301",
+   "position": "GKP",
+   "team_name": "Club 13",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.89
+    }
+   ]
+  },
+  {
+   "player_id": 302,
+   "player_name": "Player 302",
+   "position": "GKP",
+   "team_name": "Club 13",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.2
+    }
+   ]
+  },
+  {
+   "player_id": 303,
+   "player_name": "Player 303",
+   "position": "GKP",
+   "team_name": "Club 13",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.69
+    }
+   ]
+  },
+  {
+   "player_id": 304,
+   "player_name": "Player 304",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.67
+    }
+   ]
+  },
+  {
+   "player_id": 305,
+   "player_name": "Player 305",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.0
+    }
+   ]
+  },
+  {
+   "player_id": 306,
+   "player_name": "Player 306",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 4.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.74
+    }
+   ]
+  },
+  {
+   "player_id": 307,
+   "player_name": "Player 307",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 5.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.11
+    }
+   ]
+  },
+  {
+   "player_id": 308,
+   "player_name": "Player 308",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.51
+    }
+   ]
+  },
+  {
+   "player_id": 309,
+   "player_name": "Player 309",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.02
+    }
+   ]
+  },
+  {
+   "player_id": 310,
+   "player_name": "Player 310",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.68
+    }
+   ]
+  },
+  {
+   "player_id": 311,
+   "player_name": "Player 311",
+   "position": "DEF",
+   "team_name": "Club 13",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.96
+    }
+   ]
+  },
+  {
+   "player_id": 312,
+   "player_name": "Player 312",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 7.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.42
+    }
+   ]
+  },
+  {
+   "player_id": 313,
+   "player_name": "Player 313",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 12.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.72
+    }
+   ]
+  },
+  {
+   "player_id": 314,
+   "player_name": "Player 314",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.69
+    }
+   ]
+  },
+  {
+   "player_id": 315,
+   "player_name": "Player 315",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 316,
+   "player_name": "Player 316",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 6.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.79
+    }
+   ]
+  },
+  {
+   "player_id": 317,
+   "player_name": "Player 317",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.8
+    }
+   ]
+  },
+  {
+   "player_id": 318,
+   "player_name": "Player 318",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.22
+    }
+   ]
+  },
+  {
+   "player_id": 319,
+   "player_name": "Player 319",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 10.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.79
+    }
+   ]
+  },
+  {
+   "player_id": 320,
+   "player_name": "Player 320",
+   "position": "MID",
+   "team_name": "Club 13",
+   "price": 7.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.78
+    }
+   ]
+  },
+  {
+   "player_id": 321,
+   "player_name": "Player 321",
+   "position": "FWD",
+   "team_name": "Club 13",
+   "price": 9.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.76
+    }
+   ]
+  },
+  {
+   "player_id": 322,
+   "player_name": "Player 322",
+   "position": "FWD",
+   "team_name": "Club 13",
+   "price": 9.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.97
+    }
+   ]
+  },
+  {
+   "player_id": 323,
+   "player_name": "Player 323",
+   "position": "FWD",
+   "team_name": "Club 13",
+   "price": 12.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.34
+    }
+   ]
+  },
+  {
+   "player_id": 324,
+   "player_name": "Player 324",
+   "position": "FWD",
+   "team_name": "Club 13",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.22
+    }
+   ]
+  },
+  {
+   "player_id": 325,
+   "player_name": "Player 325",
+   "position": "FWD",
+   "team_name": "Club 13",
+   "price": 10.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.22
+    }
+   ]
+  },
+  {
+   "player_id": 326,
+   "player_name": "Player 326",
+   "position": "GKP",
+   "team_name": "Club 14",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.89
+    }
+   ]
+  },
+  {
+   "player_id": 327,
+   "player_name": "Player 327",
+   "position": "GKP",
+   "team_name": "Club 14",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.98
+    }
+   ]
+  },
+  {
+   "player_id": 328,
+   "player_name": "Player 328",
+   "position": "GKP",
+   "team_name": "Club 14",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.85
+    }
+   ]
+  },
+  {
+   "player_id": 329,
+   "player_name": "Player 329",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.99
+    }
+   ]
+  },
+  {
+   "player_id": 330,
+   "player_name": "Player 330",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.94
+    }
+   ]
+  },
+  {
+   "player_id": 331,
+   "player_name": "Player 331",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.07
+    }
+   ]
+  },
+  {
+   "player_id": 332,
+   "player_name": "Player 332",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.61
+    }
+   ]
+  },
+  {
+   "player_id": 333,
+   "player_name": "Player 333",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.63
+    }
+   ]
+  },
+  {
+   "player_id": 334,
+   "player_name": "Player 334",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.24
+    }
+   ]
+  },
+  {
+   "player_id": 335,
+   "player_name": "Player 335",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.94
+    }
+   ]
+  },
+  {
+   "player_id": 336,
+   "player_name": "Player 336",
+   "position": "DEF",
+   "team_name": "Club 14",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.62
+    }
+   ]
+  },
+  {
+   "player_id": 337,
+   "player_name": "Player 337",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.78
+    }
+   ]
+  },
+  {
+   "player_id": 338,
+   "player_name": "Player 338",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 9.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.79
+    }
+   ]
+  },
+  {
+   "player_id": 339,
+   "player_name": "Player 339",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 10.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.9
+    }
+   ]
+  },
+  {
+   "player_id": 340,
+   "player_name": "Player 340",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.9
+    }
+   ]
+  },
+  {
+   "player_id": 341,
+   "player_name": "Player 341",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 9.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.6
+    }
+   ]
+  },
+  {
+   "player_id": 342,
+   "player_name": "Player 342",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.7
+    }
+   ]
+  },
+  {
+   "player_id": 343,
+   "player_name": "Player 343",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 12.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.86
+    }
+   ]
+  },
+  {
+   "player_id": 344,
+   "player_name": "Player 344",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 11.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.17
+    }
+   ]
+  },
+  {
+   "player_id": 345,
+   "player_name": "Player 345",
+   "position": "MID",
+   "team_name": "Club 14",
+   "price": 5.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.07
+    }
+   ]
+  },
+  {
+   "player_id": 346,
+   "player_name": "Player 346",
+   "position": "FWD",
+   "team_name": "Club 14",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.17
+    }
+   ]
+  },
+  {
+   "player_id": 347,
+   "player_name": "Player 347",
+   "position": "FWD",
+   "team_name": "Club 14",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.11
+    }
+   ]
+  },
+  {
+   "player_id": 348,
+   "player_name": "Player 348",
+   "position": "FWD",
+   "team_name": "Club 14",
+   "price": 11.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.93
+    }
+   ]
+  },
+  {
+   "player_id": 349,
+   "player_name": "Player 349",
+   "position": "FWD",
+   "team_name": "Club 14",
+   "price": 12.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.5
+    }
+   ]
+  },
+  {
+   "player_id": 350,
+   "player_name": "Player 350",
+   "position": "FWD",
+   "team_name": "Club 14",
+   "price": 7.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.94
+    }
+   ]
+  },
+  {
+   "player_id": 351,
+   "player_name": "Player 351",
+   "position": "GKP",
+   "team_name": "Club 15",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.2
+    }
+   ]
+  },
+  {
+   "player_id": 352,
+   "player_name": "Player 352",
+   "position": "GKP",
+   "team_name": "Club 15",
+   "price": 4.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.43
+    }
+   ]
+  },
+  {
+   "player_id": 353,
+   "player_name": "Player 353",
+   "position": "GKP",
+   "team_name": "Club 15",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.85
+    }
+   ]
+  },
+  {
+   "player_id": 354,
+   "player_name": "Player 354",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.2
+    }
+   ]
+  },
+  {
+   "player_id": 355,
+   "player_name": "Player 355",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 6.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.07
+    }
+   ]
+  },
+  {
+   "player_id": 356,
+   "player_name": "Player 356",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.37
+    }
+   ]
+  },
+  {
+   "player_id": 357,
+   "player_name": "Player 357",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.73
+    }
+   ]
+  },
+  {
+   "player_id": 358,
+   "player_name": "Player 358",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.29
+    }
+   ]
+  },
+  {
+   "player_id": 359,
+   "player_name": "Player 359",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.23
+    }
+   ]
+  },
+  {
+   "player_id": 360,
+   "player_name": "Player 360",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.26
+    }
+   ]
+  },
+  {
+   "player_id": 361,
+   "player_name": "Player 361",
+   "position": "DEF",
+   "team_name": "Club 15",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.93
+    }
+   ]
+  },
+  {
+   "player_id": 362,
+   "player_name": "Player 362",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.53
+    }
+   ]
+  },
+  {
+   "player_id": 363,
+   "player_name": "Player 363",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 12.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.9
+    }
+   ]
+  },
+  {
+   "player_id": 364,
+   "player_name": "Player 364",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 10.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.79
+    }
+   ]
+  },
+  {
+   "player_id": 365,
+   "player_name": "Player 365",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 8.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 366,
+   "player_name": "Player 366",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.54
+    }
+   ]
+  },
+  {
+   "player_id": 367,
+   "player_name": "Player 367",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.06
+    }
+   ]
+  },
+  {
+   "player_id": 368,
+   "player_name": "Player 368",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 7.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.16
+    }
+   ]
+  },
+  {
+   "player_id": 369,
+   "player_name": "Player 369",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 7.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.56
+    }
+   ]
+  },
+  {
+   "player_id": 370,
+   "player_name": "Player 370",
+   "position": "MID",
+   "team_name": "Club 15",
+   "price": 12.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.2
+    }
+   ]
+  },
+  {
+   "player_id": 371,
+   "player_name": "Player 371",
+   "position": "FWD",
+   "team_name": "Club 15",
+   "price": 7.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.04
+    }
+   ]
+  },
+  {
+   "player_id": 372,
+   "player_name": "Player 372",
+   "position": "FWD",
+   "team_name": "Club 15",
+   "price": 13.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.29
+    }
+   ]
+  },
+  {
+   "player_id": 373,
+   "player_name": "Player 373",
+   "position": "FWD",
+   "team_name": "Club 15",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.47
+    }
+   ]
+  },
+  {
+   "player_id": 374,
+   "player_name": "Player 374",
+   "position": "FWD",
+   "team_name": "Club 15",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.1
+    }
+   ]
+  },
+  {
+   "player_id": 375,
+   "player_name": "Player 375",
+   "position": "FWD",
+   "team_name": "Club 15",
+   "price": 8.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.04
+    }
+   ]
+  },
+  {
+   "player_id": 376,
+   "player_name": "Player 376",
+   "position": "GKP",
+   "team_name": "Club 16",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 377,
+   "player_name": "Player 377",
+   "position": "GKP",
+   "team_name": "Club 16",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.85
+    }
+   ]
+  },
+  {
+   "player_id": 378,
+   "player_name": "Player 378",
+   "position": "GKP",
+   "team_name": "Club 16",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.44
+    }
+   ]
+  },
+  {
+   "player_id": 379,
+   "player_name": "Player 379",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.99
+    }
+   ]
+  },
+  {
+   "player_id": 380,
+   "player_name": "Player 380",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.72
+    }
+   ]
+  },
+  {
+   "player_id": 381,
+   "player_name": "Player 381",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.42
+    }
+   ]
+  },
+  {
+   "player_id": 382,
+   "player_name": "Player 382",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 6.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.29
+    }
+   ]
+  },
+  {
+   "player_id": 383,
+   "player_name": "Player 383",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 5.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.83
+    }
+   ]
+  },
+  {
+   "player_id": 384,
+   "player_name": "Player 384",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.4
+    }
+   ]
+  },
+  {
+   "player_id": 385,
+   "player_name": "Player 385",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.08
+    }
+   ]
+  },
+  {
+   "player_id": 386,
+   "player_name": "Player 386",
+   "position": "DEF",
+   "team_name": "Club 16",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.46
+    }
+   ]
+  },
+  {
+   "player_id": 387,
+   "player_name": "Player 387",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.25
+    }
+   ]
+  },
+  {
+   "player_id": 388,
+   "player_name": "Player 388",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 11.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.76
+    }
+   ]
+  },
+  {
+   "player_id": 389,
+   "player_name": "Player 389",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.35
+    }
+   ]
+  },
+  {
+   "player_id": 390,
+   "player_name": "Player 390",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 9.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.68
+    }
+   ]
+  },
+  {
+   "player_id": 391,
+   "player_name": "Player 391",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 10.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.45
+    }
+   ]
+  },
+  {
+   "player_id": 392,
+   "player_name": "Player 392",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 11.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.25
+    }
+   ]
+  },
+  {
+   "player_id": 393,
+   "player_name": "Player 393",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 10.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.28
+    }
+   ]
+  },
+  {
+   "player_id": 394,
+   "player_name": "Player 394",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 9.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.5
+    }
+   ]
+  },
+  {
+   "player_id": 395,
+   "player_name": "Player 395",
+   "position": "MID",
+   "team_name": "Club 16",
+   "price": 8.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.71
+    }
+   ]
+  },
+  {
+   "player_id": 396,
+   "player_name": "Player 396",
+   "position": "FWD",
+   "team_name": "Club 16",
+   "price": 13.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.92
+    }
+   ]
+  },
+  {
+   "player_id": 397,
+   "player_name": "Player 397",
+   "position": "FWD",
+   "team_name": "Club 16",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.79
+    }
+   ]
+  },
+  {
+   "player_id": 398,
+   "player_name": "Player 398",
+   "position": "FWD",
+   "team_name": "Club 16",
+   "price": 12.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.72
+    }
+   ]
+  },
+  {
+   "player_id": 399,
+   "player_name": "Player 399",
+   "position": "FWD",
+   "team_name": "Club 16",
+   "price": 6.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.84
+    }
+   ]
+  },
+  {
+   "player_id": 400,
+   "player_name": "Player 400",
+   "position": "FWD",
+   "team_name": "Club 16",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.59
+    }
+   ]
+  },
+  {
+   "player_id": 401,
+   "player_name": "Player 401",
+   "position": "GKP",
+   "team_name": "Club 17",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.7
+    }
+   ]
+  },
+  {
+   "player_id": 402,
+   "player_name": "Player 402",
+   "position": "GKP",
+   "team_name": "Club 17",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.18
+    }
+   ]
+  },
+  {
+   "player_id": 403,
+   "player_name": "Player 403",
+   "position": "GKP",
+   "team_name": "Club 17",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.46
+    }
+   ]
+  },
+  {
+   "player_id": 404,
+   "player_name": "Player 404",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.67
+    }
+   ]
+  },
+  {
+   "player_id": 405,
+   "player_name": "Player 405",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.3
+    }
+   ]
+  },
+  {
+   "player_id": 406,
+   "player_name": "Player 406",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 6.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.93
+    }
+   ]
+  },
+  {
+   "player_id": 407,
+   "player_name": "Player 407",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.42
+    }
+   ]
+  },
+  {
+   "player_id": 408,
+   "player_name": "Player 408",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.76
+    }
+   ]
+  },
+  {
+   "player_id": 409,
+   "player_name": "Player 409",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 410,
+   "player_name": "Player 410",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.37
+    }
+   ]
+  },
+  {
+   "player_id": 411,
+   "player_name": "Player 411",
+   "position": "DEF",
+   "team_name": "Club 17",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.63
+    }
+   ]
+  },
+  {
+   "player_id": 412,
+   "player_name": "Player 412",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 9.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.06
+    }
+   ]
+  },
+  {
+   "player_id": 413,
+   "player_name": "Player 413",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 8.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.08
+    }
+   ]
+  },
+  {
+   "player_id": 414,
+   "player_name": "Player 414",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.33
+    }
+   ]
+  },
+  {
+   "player_id": 415,
+   "player_name": "Player 415",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 10.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.7
+    }
+   ]
+  },
+  {
+   "player_id": 416,
+   "player_name": "Player 416",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.54
+    }
+   ]
+  },
+  {
+   "player_id": 417,
+   "player_name": "Player 417",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 9.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.55
+    }
+   ]
+  },
+  {
+   "player_id": 418,
+   "player_name": "Player 418",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 9.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.4
+    }
+   ]
+  },
+  {
+   "player_id": 419,
+   "player_name": "Player 419",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 8.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.51
+    }
+   ]
+  },
+  {
+   "player_id": 420,
+   "player_name": "Player 420",
+   "position": "MID",
+   "team_name": "Club 17",
+   "price": 10.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.02
+    }
+   ]
+  },
+  {
+   "player_id": 421,
+   "player_name": "Player 421",
+   "position": "FWD",
+   "team_name": "Club 17",
+   "price": 8.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.15
+    }
+   ]
+  },
+  {
+   "player_id": 422,
+   "player_name": "Player 422",
+   "position": "FWD",
+   "team_name": "Club 17",
+   "price": 10.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.35
+    }
+   ]
+  },
+  {
+   "player_id": 423,
+   "player_name": "Player 423",
+   "position": "FWD",
+   "team_name": "Club 17",
+   "price": 13.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.18
+    }
+   ]
+  },
+  {
+   "player_id": 424,
+   "player_name": "Player 424",
+   "position": "FWD",
+   "team_name": "Club 17",
+   "price": 12.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.64
+    }
+   ]
+  },
+  {
+   "player_id": 425,
+   "player_name": "Player 425",
+   "position": "FWD",
+   "team_name": "Club 17",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.9
+    }
+   ]
+  },
+  {
+   "player_id": 426,
+   "player_name": "Player 426",
+   "position": "GKP",
+   "team_name": "Club 18",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.84
+    }
+   ]
+  },
+  {
+   "player_id": 427,
+   "player_name": "Player 427",
+   "position": "GKP",
+   "team_name": "Club 18",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.43
+    }
+   ]
+  },
+  {
+   "player_id": 428,
+   "player_name": "Player 428",
+   "position": "GKP",
+   "team_name": "Club 18",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.71
+    }
+   ]
+  },
+  {
+   "player_id": 429,
+   "player_name": "Player 429",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 6.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.5
+    }
+   ]
+  },
+  {
+   "player_id": 430,
+   "player_name": "Player 430",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 5.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.87
+    }
+   ]
+  },
+  {
+   "player_id": 431,
+   "player_name": "Player 431",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 6.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.42
+    }
+   ]
+  },
+  {
+   "player_id": 432,
+   "player_name": "Player 432",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 6.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.4
+    }
+   ]
+  },
+  {
+   "player_id": 433,
+   "player_name": "Player 433",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 4.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.44
+    }
+   ]
+  },
+  {
+   "player_id": 434,
+   "player_name": "Player 434",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 4.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.45
+    }
+   ]
+  },
+  {
+   "player_id": 435,
+   "player_name": "Player 435",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.49
+    }
+   ]
+  },
+  {
+   "player_id": 436,
+   "player_name": "Player 436",
+   "position": "DEF",
+   "team_name": "Club 18",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.85
+    }
+   ]
+  },
+  {
+   "player_id": 437,
+   "player_name": "Player 437",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 8.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.33
+    }
+   ]
+  },
+  {
+   "player_id": 438,
+   "player_name": "Player 438",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 11.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.35
+    }
+   ]
+  },
+  {
+   "player_id": 439,
+   "player_name": "Player 439",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 10.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.75
+    }
+   ]
+  },
+  {
+   "player_id": 440,
+   "player_name": "Player 440",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 10.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.14
+    }
+   ]
+  },
+  {
+   "player_id": 441,
+   "player_name": "Player 441",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 9.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.06
+    }
+   ]
+  },
+  {
+   "player_id": 442,
+   "player_name": "Player 442",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 7.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.5
+    }
+   ]
+  },
+  {
+   "player_id": 443,
+   "player_name": "Player 443",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 10.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.24
+    }
+   ]
+  },
+  {
+   "player_id": 444,
+   "player_name": "Player 444",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 12.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.92
+    }
+   ]
+  },
+  {
+   "player_id": 445,
+   "player_name": "Player 445",
+   "position": "MID",
+   "team_name": "Club 18",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.18
+    }
+   ]
+  },
+  {
+   "player_id": 446,
+   "player_name": "Player 446",
+   "position": "FWD",
+   "team_name": "Club 18",
+   "price": 12.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.6
+    }
+   ]
+  },
+  {
+   "player_id": 447,
+   "player_name": "Player 447",
+   "position": "FWD",
+   "team_name": "Club 18",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.59
+    }
+   ]
+  },
+  {
+   "player_id": 448,
+   "player_name": "Player 448",
+   "position": "FWD",
+   "team_name": "Club 18",
+   "price": 10.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.45
+    }
+   ]
+  },
+  {
+   "player_id": 449,
+   "player_name": "Player 449",
+   "position": "FWD",
+   "team_name": "Club 18",
+   "price": 11.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.38
+    }
+   ]
+  },
+  {
+   "player_id": 450,
+   "player_name": "Player 450",
+   "position": "FWD",
+   "team_name": "Club 18",
+   "price": 8.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.25
+    }
+   ]
+  },
+  {
+   "player_id": 451,
+   "player_name": "Player 451",
+   "position": "GKP",
+   "team_name": "Club 19",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.78
+    }
+   ]
+  },
+  {
+   "player_id": 452,
+   "player_name": "Player 452",
+   "position": "GKP",
+   "team_name": "Club 19",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.95
+    }
+   ]
+  },
+  {
+   "player_id": 453,
+   "player_name": "Player 453",
+   "position": "GKP",
+   "team_name": "Club 19",
+   "price": 4.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.91
+    }
+   ]
+  },
+  {
+   "player_id": 454,
+   "player_name": "Player 454",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 5.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.01
+    }
+   ]
+  },
+  {
+   "player_id": 455,
+   "player_name": "Player 455",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.48
+    }
+   ]
+  },
+  {
+   "player_id": 456,
+   "player_name": "Player 456",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 5.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.15
+    }
+   ]
+  },
+  {
+   "player_id": 457,
+   "player_name": "Player 457",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 7.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.96
+    }
+   ]
+  },
+  {
+   "player_id": 458,
+   "player_name": "Player 458",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 4.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.86
+    }
+   ]
+  },
+  {
+   "player_id": 459,
+   "player_name": "Player 459",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 7.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.11
+    }
+   ]
+  },
+  {
+   "player_id": 460,
+   "player_name": "Player 460",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.21
+    }
+   ]
+  },
+  {
+   "player_id": 461,
+   "player_name": "Player 461",
+   "position": "DEF",
+   "team_name": "Club 19",
+   "price": 4.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.32
+    }
+   ]
+  },
+  {
+   "player_id": 462,
+   "player_name": "Player 462",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 9.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.66
+    }
+   ]
+  },
+  {
+   "player_id": 463,
+   "player_name": "Player 463",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.36
+    }
+   ]
+  },
+  {
+   "player_id": 464,
+   "player_name": "Player 464",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 9.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.39
+    }
+   ]
+  },
+  {
+   "player_id": 465,
+   "player_name": "Player 465",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 9.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.2
+    }
+   ]
+  },
+  {
+   "player_id": 466,
+   "player_name": "Player 466",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 11.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.4
+    }
+   ]
+  },
+  {
+   "player_id": 467,
+   "player_name": "Player 467",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 9.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.84
+    }
+   ]
+  },
+  {
+   "player_id": 468,
+   "player_name": "Player 468",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 11.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.27
+    }
+   ]
+  },
+  {
+   "player_id": 469,
+   "player_name": "Player 469",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 9.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.35
+    }
+   ]
+  },
+  {
+   "player_id": 470,
+   "player_name": "Player 470",
+   "position": "MID",
+   "team_name": "Club 19",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.28
+    }
+   ]
+  },
+  {
+   "player_id": 471,
+   "player_name": "Player 471",
+   "position": "FWD",
+   "team_name": "Club 19",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.06
+    }
+   ]
+  },
+  {
+   "player_id": 472,
+   "player_name": "Player 472",
+   "position": "FWD",
+   "team_name": "Club 19",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.86
+    }
+   ]
+  },
+  {
+   "player_id": 473,
+   "player_name": "Player 473",
+   "position": "FWD",
+   "team_name": "Club 19",
+   "price": 13.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.86
+    }
+   ]
+  },
+  {
+   "player_id": 474,
+   "player_name": "Player 474",
+   "position": "FWD",
+   "team_name": "Club 19",
+   "price": 13.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 4.33
+    }
+   ]
+  },
+  {
+   "player_id": 475,
+   "player_name": "Player 475",
+   "position": "FWD",
+   "team_name": "Club 19",
+   "price": 8.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.8
+    }
+   ]
+  },
+  {
+   "player_id": 476,
+   "player_name": "Player 476",
+   "position": "GKP",
+   "team_name": "Club 20",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.53
+    }
+   ]
+  },
+  {
+   "player_id": 477,
+   "player_name": "Player 477",
+   "position": "GKP",
+   "team_name": "Club 20",
+   "price": 4.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.62
+    }
+   ]
+  },
+  {
+   "player_id": 478,
+   "player_name": "Player 478",
+   "position": "GKP",
+   "team_name": "Club 20",
+   "price": 5.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.49
+    }
+   ]
+  },
+  {
+   "player_id": 479,
+   "player_name": "Player 479",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 5.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.57
+    }
+   ]
+  },
+  {
+   "player_id": 480,
+   "player_name": "Player 480",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.64
+    }
+   ]
+  },
+  {
+   "player_id": 481,
+   "player_name": "Player 481",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 4.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.76
+    }
+   ]
+  },
+  {
+   "player_id": 482,
+   "player_name": "Player 482",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 6.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.67
+    }
+   ]
+  },
+  {
+   "player_id": 483,
+   "player_name": "Player 483",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 7.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.24
+    }
+   ]
+  },
+  {
+   "player_id": 484,
+   "player_name": "Player 484",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 5.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.56
+    }
+   ]
+  },
+  {
+   "player_id": 485,
+   "player_name": "Player 485",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 4.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.97
+    }
+   ]
+  },
+  {
+   "player_id": 486,
+   "player_name": "Player 486",
+   "position": "DEF",
+   "team_name": "Club 20",
+   "price": 6.0,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.58
+    }
+   ]
+  },
+  {
+   "player_id": 487,
+   "player_name": "Player 487",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 8.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.97
+    }
+   ]
+  },
+  {
+   "player_id": 488,
+   "player_name": "Player 488",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 10.5,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.73
+    }
+   ]
+  },
+  {
+   "player_id": 489,
+   "player_name": "Player 489",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 9.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.18
+    }
+   ]
+  },
+  {
+   "player_id": 490,
+   "player_name": "Player 490",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 7.9,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.55
+    }
+   ]
+  },
+  {
+   "player_id": 491,
+   "player_name": "Player 491",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 11.7,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.49
+    }
+   ]
+  },
+  {
+   "player_id": 492,
+   "player_name": "Player 492",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 5.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.31
+    }
+   ]
+  },
+  {
+   "player_id": 493,
+   "player_name": "Player 493",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 5.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.82
+    }
+   ]
+  },
+  {
+   "player_id": 494,
+   "player_name": "Player 494",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 12.3,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.73
+    }
+   ]
+  },
+  {
+   "player_id": 495,
+   "player_name": "Player 495",
+   "position": "MID",
+   "team_name": "Club 20",
+   "price": 11.1,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 0.75
+    }
+   ]
+  },
+  {
+   "player_id": 496,
+   "player_name": "Player 496",
+   "position": "FWD",
+   "team_name": "Club 20",
+   "price": 8.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.65
+    }
+   ]
+  },
+  {
+   "player_id": 497,
+   "player_name": "Player 497",
+   "position": "FWD",
+   "team_name": "Club 20",
+   "price": 7.8,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 2.31
+    }
+   ]
+  },
+  {
+   "player_id": 498,
+   "player_name": "Player 498",
+   "position": "FWD",
+   "team_name": "Club 20",
+   "price": 6.2,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.51
+    }
+   ]
+  },
+  {
+   "player_id": 499,
+   "player_name": "Player 499",
+   "position": "FWD",
+   "team_name": "Club 20",
+   "price": 9.6,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 3.19
+    }
+   ]
+  },
+  {
+   "player_id": 500,
+   "player_name": "Player 500",
+   "position": "FWD",
+   "team_name": "Club 20",
+   "price": 7.4,
+   "gw_predictions": [
+    {
+     "gw": 1,
+     "pred_points": 1.51
+    }
+   ]
+  }
+ ],
+ "expected": {
+  "gameweek": 1,
+  "formation": "3-4-3",
+  "squad_cost": 85.0,
+  "predicted_total": 35.61,
+  "squad": [
+   {
+    "player_id": 102,
+    "player_name": "Player 102",
+    "position": "GKP",
+    "team_name": "Club 05",
+    "price": 5.4,
+    "pred_points": 2.76,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 483,
+    "player_name": "Player 483",
+    "position": "DEF",
+    "team_name": "Club 20",
+    "price": 7.0,
+    "pred_points": 3.24,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 355,
+    "player_name": "Player 355",
+    "position": "DEF",
+    "team_name": "Club 15",
+    "price": 6.3,
+    "pred_points": 3.07,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 383,
+    "player_name": "Player 383",
+    "position": "DEF",
+    "team_name": "Club 16",
+    "price": 5.5,
+    "pred_points": 2.83,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 141,
+    "player_name": "Player 141",
+    "position": "MID",
+    "team_name": "Club 06",
+    "price": 7.8,
+    "pred_points": 3.42,
+    "is_captain": true,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 12,
+    "player_name": "Player 12",
+    "position": "MID",
+    "team_name": "Club 01",
+    "price": 7.1,
+    "pred_points": 3.27,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 167,
+    "player_name": "Player 167",
+    "position": "MID",
+    "team_name": "Club 07",
+    "price": 7.1,
+    "pred_points": 3.16,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 218,
+    "player_name": "Player 218",
+    "position": "MID",
+    "team_name": "Club 09",
+    "price": 4.7,
+    "pred_points": 2.53,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 197,
+    "player_name": "Player 197",
+    "position": "FWD",
+    "team_name": "Club 08",
+    "price": 5.5,
+    "pred_points": 2.79,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 24,
+    "player_name": "Player 24",
+    "position": "FWD",
+    "team_name": "Club 01",
+    "price": 4.8,
+    "pred_points": 2.59,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 149,
+    "player_name": "Player 149",
+    "position": "FWD",
+    "team_name": "Club 06",
+    "price": 4.6,
+    "pred_points": 2.53,
+    "is_captain": false,
+    "is_starting": true,
+    "bench_rank": null,
+    "actual_points": null
+   },
+   {
+    "player_id": 128,
+    "player_name": "Player 128",
+    "position": "GKP",
+    "team_name": "Club 06",
+    "price": 5.4,
+    "pred_points": 2.71,
+    "is_captain": false,
+    "is_starting": false,
+    "bench_rank": 0,
+    "actual_points": null
+   },
+   {
+    "player_id": 37,
+    "player_name": "Player 37",
+    "position": "MID",
+    "team_name": "Club 02",
+    "price": 4.7,
+    "pred_points": 2.49,
+    "is_captain": false,
+    "is_starting": false,
+    "bench_rank": 1,
+    "actual_points": null
+   },
+   {
+    "player_id": 107,
+    "player_name": "Player 107",
+    "position": "DEF",
+    "team_name": "Club 05",
+    "price": 4.6,
+    "pred_points": 2.49,
+    "is_captain": false,
+    "is_starting": false,
+    "bench_rank": 2,
+    "actual_points": null
+   },
+   {
+    "player_id": 435,
+    "player_name": "Player 435",
+    "position": "DEF",
+    "team_name": "Club 18",
+    "price": 4.5,
+    "pred_points": 2.49,
+    "is_captain": false,
+    "is_starting": false,
+    "bench_rank": 3,
+    "actual_points": null
+   }
+  ]
+ }
+}
